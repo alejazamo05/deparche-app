@@ -12,11 +12,13 @@
 
     <meta
         name="description"
-        content="CONTACTA A DEPARCHE APP SAS. Solicita información sobre nuestros servicios digitales y empresariales."
+        content="Contacta a DEPARCHE APP SAS y cuéntanos cómo podemos ayudarte a impulsar tu negocio."
     >
 
     <title>CONTACTO | DEPARCHE APP SAS</title>
 
+
+    <!-- FUENTE -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -32,21 +34,628 @@
     >
 
 
+    <!-- ICONOS -->
+
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     >
 
 
+    <!-- ESTILOS PRINCIPALES -->
+
     <link
         rel="stylesheet"
         href="css/estilos.css"
     >
 
+
+    <style>
+
+        /* =====================================================
+           CONTACTO
+        ===================================================== */
+
+        .contacto-page {
+            position: relative;
+            overflow-x: hidden;
+        }
+
+
+        .contacto-hero {
+
+            padding: 70px 0 80px;
+
+            background:
+                radial-gradient(
+                    circle at 12% 20%,
+                    rgba(144, 50, 187, 0.11),
+                    transparent 32%
+                ),
+
+                radial-gradient(
+                    circle at 88% 80%,
+                    rgba(144, 50, 187, 0.09),
+                    transparent 35%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #FBF7FD 0%,
+                    #FFFFFF 52%,
+                    #F5E8F9 100%
+                );
+        }
+
+
+        .contacto-hero-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                0.9fr 1.1fr;
+
+            gap: 65px;
+
+            align-items: center;
+        }
+
+
+        /* =====================================================
+           PRESENTACIÓN
+        ===================================================== */
+
+        .contacto-presentacion {
+
+            max-width: 520px;
+        }
+
+
+        .contacto-presentacion .etiqueta {
+
+            margin-bottom: 15px;
+        }
+
+
+        .contacto-presentacion h1 {
+
+            font-size:
+                clamp(42px, 5vw, 66px);
+
+            line-height: 0.98;
+
+            letter-spacing: -3px;
+
+            margin:
+                0 0 22px;
+        }
+
+
+        .contacto-presentacion h1 span {
+
+            display: block;
+
+            color: var(--morado);
+        }
+
+
+        .contacto-presentacion >
+        p:not(.etiqueta) {
+
+            color: var(--gris);
+
+            font-size: 16px;
+
+            line-height: 1.75;
+
+            margin: 0;
+        }
+
+
+        /* =====================================================
+           INFORMACIÓN
+        ===================================================== */
+
+        .contacto-lista {
+
+            margin-top: 30px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+
+        .contacto-lista-item {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            padding: 13px 15px;
+
+            background:
+                rgba(255,255,255,0.92);
+
+            border:
+                1px solid
+                rgba(144, 50, 187, 0.13);
+
+            border-radius: 14px;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+
+        .contacto-lista-item:hover {
+
+            transform:
+                translateX(5px);
+
+            border-color:
+                rgba(144, 50, 187, 0.28);
+
+            box-shadow:
+                0 10px 28px
+                rgba(144, 50, 187, 0.09);
+        }
+
+
+        .contacto-lista-icono {
+
+            width: 42px;
+
+            height: 42px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 11px;
+
+            background:
+                var(--morado-claro);
+
+            color:
+                var(--morado);
+        }
+
+
+        .contacto-lista-item strong {
+
+            display: block;
+
+            font-size: 12px;
+
+            margin-bottom: 3px;
+        }
+
+
+        .contacto-lista-item a {
+
+            color: var(--gris);
+
+            font-size: 11px;
+
+            text-decoration: none;
+
+            transition:
+                color 0.2s ease;
+        }
+
+
+        .contacto-lista-item a:hover {
+
+            color:
+                var(--morado);
+        }
+
+
+        /* =====================================================
+           REDES
+        ===================================================== */
+
+        .contacto-redes {
+
+            margin-top: 27px;
+        }
+
+
+        .contacto-redes > p {
+
+            color: var(--gris);
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            margin-bottom: 11px;
+        }
+
+
+        .contacto-redes-botones {
+
+            display: flex;
+
+            gap: 9px;
+        }
+
+
+        .contacto-red-social {
+
+            width: 38px;
+
+            height: 38px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border:
+                1px solid
+                var(--borde);
+
+            border-radius: 50%;
+
+            background:
+                var(--blanco);
+
+            color:
+                var(--morado);
+
+            text-decoration: none;
+
+            transition:
+                all 0.25s ease;
+        }
+
+
+        .contacto-red-social:hover {
+
+            background:
+                var(--morado);
+
+            color:
+                var(--blanco);
+
+            transform:
+                translateY(-3px);
+        }
+
+
+        /* =====================================================
+           FORMULARIO
+        ===================================================== */
+
+        .contacto-formulario {
+
+            background:
+                #FFFFFF;
+
+            padding: 38px;
+
+            border:
+                1px solid
+                rgba(144, 50, 187, 0.16);
+
+            border-radius: 28px;
+
+            box-shadow:
+                0 25px 60px
+                rgba(60, 30, 70, 0.10);
+        }
+
+
+        .contacto-formulario-header {
+
+            border-left:
+                4px solid
+                var(--morado);
+
+            padding-left: 16px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .contacto-formulario-header span {
+
+            display: block;
+
+            color:
+                var(--morado);
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.7px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .contacto-formulario-header h2 {
+
+            font-size: 28px;
+
+            line-height: 1.1;
+
+            margin: 0 0 7px;
+        }
+
+
+        .contacto-formulario-header p {
+
+            color:
+                var(--gris);
+
+            font-size: 13px;
+
+            line-height: 1.5;
+
+            margin: 0;
+        }
+
+
+        .contacto-form-row {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 17px;
+        }
+
+
+        .contacto-campo {
+
+            margin-bottom: 17px;
+        }
+
+
+        .contacto-campo label {
+
+            display: block;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            margin-bottom: 7px;
+        }
+
+
+        .contacto-campo input,
+        .contacto-campo select,
+        .contacto-campo textarea {
+
+            width: 100%;
+
+            padding: 13px 14px;
+
+            border:
+                1px solid
+                #DED5E2;
+
+            border-radius: 11px;
+
+            background:
+                #FFFFFF;
+
+            color:
+                var(--texto);
+
+            font-family:
+                inherit;
+
+            font-size: 13px;
+
+            outline: none;
+
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .contacto-campo input::placeholder,
+        .contacto-campo textarea::placeholder {
+
+            color:
+                var(--gris-claro);
+        }
+
+
+        .contacto-campo input:focus,
+        .contacto-campo select:focus,
+        .contacto-campo textarea:focus {
+
+            border-color:
+                var(--morado);
+
+            box-shadow:
+                0 0 0 3px
+                rgba(144, 50, 187, 0.10);
+        }
+
+
+        .contacto-campo textarea {
+
+            min-height: 115px;
+
+            resize: vertical;
+        }
+
+
+        .contacto-boton {
+
+            width: 100%;
+
+            min-height: 52px;
+
+            border: none;
+
+            cursor: pointer;
+        }
+
+
+        .contacto-boton:disabled {
+
+            opacity: 0.65;
+
+            cursor: wait;
+        }
+
+
+        .contacto-estado {
+
+            min-height: 20px;
+
+            margin-top: 13px;
+
+            text-align: center;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            line-height: 1.5;
+        }
+
+
+        .contacto-privacidad {
+
+            margin-top: 8px;
+
+            color:
+                #99939C;
+
+            text-align: center;
+
+            font-size: 9px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 950px) {
+
+            .contacto-hero {
+
+                padding:
+                    60px 0 70px;
+            }
+
+
+            .contacto-hero-grid {
+
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+            }
+
+
+            .contacto-presentacion {
+
+                max-width: 700px;
+
+                margin: auto;
+
+                text-align: center;
+            }
+
+
+            .contacto-lista {
+
+                max-width: 520px;
+
+                margin:
+                    28px auto 0;
+
+                text-align: left;
+            }
+
+
+            .contacto-redes {
+
+                display: flex;
+
+                flex-direction: column;
+
+                align-items: center;
+            }
+
+
+            .contacto-formulario {
+
+                max-width: 700px;
+
+                width: 100%;
+
+                margin: auto;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .contacto-hero {
+
+                padding:
+                    45px 0 60px;
+            }
+
+
+            .contacto-presentacion h1 {
+
+                font-size: 43px;
+
+                letter-spacing: -2px;
+            }
+
+
+            .contacto-formulario {
+
+                padding: 25px;
+
+                border-radius: 22px;
+            }
+
+
+            .contacto-form-row {
+
+                grid-template-columns: 1fr;
+
+                gap: 0;
+            }
+
+        }
+
+    </style>
+
 </head>
 
 
-<body>
+<body class="contacto-page">
 
 
 <!-- =====================================================
@@ -80,7 +689,7 @@
                 SERVICIOS
             </a>
 
-            <a href="index.html#nosotros">
+            <a href="nosotros.html">
                 NOSOTROS
             </a>
 
@@ -92,10 +701,8 @@
 
 
         <a
-            href="https://wa.me/573133514030?text=Hola%20DEPARCHE%20APP%20SAS,%20me%20gustaría%20conocer%20más%20sobre%20sus%20servicios."
+            href="contacto.html"
             class="boton boton-nav"
-            target="_blank"
-            rel="noopener noreferrer"
         >
             HABLEMOS
         </a>
@@ -125,7 +732,7 @@
             SERVICIOS
         </a>
 
-        <a href="index.html#nosotros">
+        <a href="nosotros.html">
             NOSOTROS
         </a>
 
@@ -140,52 +747,85 @@
 
 
 <!-- =====================================================
-     CONTACTO
+     CONTENIDO
 ===================================================== -->
 
 <main>
 
-<section class="seccion contacto" id="contacto">
+<section class="contacto-hero">
 
-    <div class="contenedor contacto-grid">
+    <div class="contenedor contacto-hero-grid">
 
 
-        <!-- INFORMACIÓN -->
+        <!-- =================================================
+             INFORMACIÓN
+        ================================================= -->
 
-        <div class="contacto-info">
+        <div class="contacto-presentacion">
 
             <p class="etiqueta">
-                CONTACTO
+                HABLEMOS
             </p>
 
 
             <h1>
-                CUÉNTANOS QUÉ NECESITAS.
+
+                CONECTEMOS.
+
+                <span>
+                    CREZCAMOS.
+                </span>
+
             </h1>
 
 
             <p>
-                Si tienes una idea, necesitas apoyo para tu
-                empresa o quieres conocer nuestros servicios,
-                escríbenos. Nuestro equipo está listo para
-                escucharte.
+
+                Cuéntanos qué tienes en mente.
+                En DEPARCHE APP SAS convertimos
+                ideas y necesidades en soluciones
+                digitales que ayudan a los negocios
+                a avanzar.
+
             </p>
 
 
+            <div class="contacto-lista">
 
-            <div class="contacto-datos">
+
+                <!-- CORREO -->
+
+                <div class="contacto-lista-item">
+
+                    <div class="contacto-lista-icono">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            CORREO
+                        </strong>
+
+                        <a
+                            href="mailto:commercial@deparchesas.com"
+                        >
+                            commercial@deparchesas.com
+                        </a>
+
+                    </div>
+
+                </div>
 
 
                 <!-- WHATSAPP -->
 
-                <a
-                    href="https://wa.me/573133514030?text=Hola%20DEPARCHE%20APP%20SAS,%20me%20gustaría%20conocer%20más%20sobre%20sus%20servicios."
-                    class="contacto-item"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <div class="contacto-lista-item">
 
-                    <div class="contacto-icono">
+                    <div class="contacto-lista-icono">
 
                         <i class="fa-brands fa-whatsapp"></i>
 
@@ -198,43 +838,17 @@
                             WHATSAPP
                         </strong>
 
-                        <span>
+                        <a
+                            href="https://wa.me/573133514030"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
                             +57 313 351 4030
-                        </span>
+                        </a>
 
                     </div>
 
-                </a>
-
-
-
-                <!-- CORREO -->
-
-                <a
-                    href="mailto:commercial@deparchesas.com"
-                    class="contacto-item"
-                >
-
-                    <div class="contacto-icono">
-
-                        <i class="fa-solid fa-envelope"></i>
-
-                    </div>
-
-
-                    <div>
-
-                        <strong>
-                            CORREO ELECTRÓNICO
-                        </strong>
-
-                        <span>
-                            commercial@deparchesas.com
-                        </span>
-
-                    </div>
-
-                </a>
+                </div>
 
             </div>
 
@@ -242,76 +856,72 @@
 
             <!-- REDES -->
 
-            <div class="redes-sociales">
+            <div class="contacto-redes">
 
                 <p>
                     SÍGUENOS
                 </p>
 
 
-                <div class="redes-botones">
+                <div class="contacto-redes-botones">
 
 
                     <a
                         href="https://www.facebook.com/share/1L8ehq9Eez/?mibextid=wwXIfr"
-                        class="red-social"
+                        class="contacto-red-social"
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="Facebook"
                     >
 
-                        <span class="red-icono">
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </span>
-
-                        FACEBOOK
+                        <i
+                            class="fa-brands fa-facebook-f"
+                        ></i>
 
                     </a>
 
 
                     <a
-                        href="https://www.instagram.com/deparcheapp?stkn=MTAybnJwcXNwa3h6Mg=="
-                        class="red-social"
+                        href="https://www.instagram.com/deparcheapp"
+                        class="contacto-red-social"
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="Instagram"
                     >
 
-                        <span class="red-icono">
-                            <i class="fa-brands fa-instagram"></i>
-                        </span>
-
-                        INSTAGRAM
+                        <i
+                            class="fa-brands fa-instagram"
+                        ></i>
 
                     </a>
 
 
                     <a
                         href="https://x.com/deparcheapp_?s=11"
-                        class="red-social"
+                        class="contacto-red-social"
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="X"
                     >
 
-                        <span class="red-icono">
-                            <i class="fa-brands fa-x-twitter"></i>
-                        </span>
-
-                        X
+                        <i
+                            class="fa-brands fa-x-twitter"
+                        ></i>
 
                     </a>
 
 
                     <a
                         href="https://www.linkedin.com/company/deparche"
-                        class="red-social"
+                        class="contacto-red-social"
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="LinkedIn"
                     >
 
-                        <span class="red-icono">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                        </span>
-
-                        LINKEDIN
+                        <i
+                            class="fa-brands fa-linkedin-in"
+                        ></i>
 
                     </a>
 
@@ -323,67 +933,96 @@
 
 
 
-        <!-- FORMULARIO -->
+        <!-- =================================================
+             FORMULARIO
+        ================================================= -->
 
-        <div class="formulario-contenedor">
+        <div class="contacto-formulario">
 
 
-            <div class="formulario-titulo">
+            <div class="contacto-formulario-header">
 
                 <span>
-                    CUÉNTANOS SOBRE TU PROYECTO
+                    CUÉNTANOS TU PROYECTO
                 </span>
 
-
                 <h2>
-                    HABLEMOS
+                    HABLEMOS DE TU IDEA.
                 </h2>
 
-
                 <p>
-                    Completa el formulario y envía tu solicitud
-                    a nuestro equipo.
+                    Completa el formulario y nuestro equipo
+                    recibirá tu solicitud.
                 </p>
 
             </div>
 
 
 
-            <form id="formularioContacto">
+            <form
+                id="formularioContacto"
+                novalidate
+            >
 
 
-                <div class="form-row">
+                <!-- WEB3FORMS -->
+
+                <input
+                    type="hidden"
+                    name="access_key"
+                    value="834635d6-a9bf-46e1-8f74-55bf79fd12eb"
+                >
 
 
-                    <div class="campo">
+                <input
+                    type="hidden"
+                    name="subject"
+                    value="Nueva solicitud de servicio - DEPARCHE APP SAS"
+                >
+
+
+                <input
+                    type="hidden"
+                    name="from_name"
+                    value="DEPARCHE APP SAS - Sitio Web"
+                >
+
+
+                <!-- NOMBRE / EMPRESA -->
+
+                <div class="contacto-form-row">
+
+
+                    <div class="contacto-campo">
 
                         <label for="nombre">
-                            NOMBRE
+                            Nombre *
                         </label>
 
                         <input
                             type="text"
                             id="nombre"
                             name="nombre"
-                            placeholder="TU NOMBRE"
+                            placeholder="Tu nombre"
+                            autocomplete="name"
                             required
                         >
 
                     </div>
 
 
-                    <div class="campo">
+                    <div class="contacto-campo">
 
                         <label for="empresa">
-                            EMPRESA
+                            Empresa
                         </label>
 
                         <input
                             type="text"
                             id="empresa"
                             name="empresa"
-                            placeholder="NOMBRE DE TU EMPRESA"
-                            required
+                            placeholder="Nombre de tu empresa"
+                            autocomplete="organization"
                         >
 
                     </div>
@@ -392,38 +1031,41 @@
 
 
 
-                <div class="form-row">
+                <!-- CORREO / TELÉFONO -->
+
+                <div class="contacto-form-row">
 
 
-                    <div class="campo">
+                    <div class="contacto-campo">
 
                         <label for="email">
-                            CORREO ELECTRÓNICO
+                            Correo electrónico *
                         </label>
 
                         <input
                             type="email"
                             id="email"
                             name="email"
-                            placeholder="CORREO@EJEMPLO.COM"
+                            placeholder="tu@correo.com"
+                            autocomplete="email"
                             required
                         >
 
                     </div>
 
 
-                    <div class="campo">
+                    <div class="contacto-campo">
 
                         <label for="telefono">
-                            TELÉFONO
+                            Teléfono
                         </label>
 
                         <input
                             type="tel"
                             id="telefono"
                             name="telefono"
-                            placeholder="TU TELÉFONO"
-                            required
+                            placeholder="+57 300 000 0000"
+                            autocomplete="tel"
                         >
 
                     </div>
@@ -432,10 +1074,12 @@
 
 
 
-                <div class="campo">
+                <!-- SERVICIO -->
+
+                <div class="contacto-campo">
 
                     <label for="servicio">
-                        ¿QUÉ SERVICIO NECESITAS?
+                        Servicio de interés *
                     </label>
 
 
@@ -445,37 +1089,28 @@
                         required
                     >
 
-                        <option
-                            value=""
-                            selected
-                            disabled
-                        >
-                            SELECCIONA UNA OPCIÓN
+                        <option value="">
+                            Selecciona un servicio
                         </option>
 
-
-                        <option value="MARKETING DIGITAL & ADQUISICIÓN">
-                            MARKETING DIGITAL &amp; ADQUISICIÓN
+                        <option value="Marketing Digital & Adquisición">
+                            Marketing Digital & Adquisición
                         </option>
 
-
-                        <option value="CONTENIDO & MEDIOS DIGITALES">
-                            CONTENIDO &amp; MEDIOS DIGITALES
+                        <option value="Contenido & Medios Digitales">
+                            Contenido & Medios Digitales
                         </option>
 
-
-                        <option value="SOLUCIONES WEB & SEO">
-                            SOLUCIONES WEB &amp; SEO
+                        <option value="Soluciones Web & SEO">
+                            Soluciones Web & SEO
                         </option>
 
-
-                        <option value="OPERACIONES, CRM & SOPORTE">
-                            OPERACIONES, CRM &amp; SOPORTE
+                        <option value="Operaciones, CRM & Soporte">
+                            Operaciones, CRM & Soporte
                         </option>
 
-
-                        <option value="OTRO">
-                            OTRO
+                        <option value="Otro">
+                            Otro
                         </option>
 
                     </select>
@@ -484,36 +1119,68 @@
 
 
 
-                <div class="campo">
+                <!-- MENSAJE OPCIONAL -->
+
+                <div class="contacto-campo">
 
                     <label for="mensaje">
-                        CUÉNTANOS SOBRE TU NECESIDAD
+                        Cuéntanos sobre tu proyecto
                     </label>
 
 
                     <textarea
                         id="mensaje"
                         name="mensaje"
-                        placeholder="CUÉNTANOS QUÉ NECESITAS..."
-                        required
+                        placeholder="Cuéntanos qué necesitas..."
                     ></textarea>
 
                 </div>
 
 
 
+                <!-- ANTISPAM -->
+
+                <input
+                    type="checkbox"
+                    name="botcheck"
+                    style="display:none"
+                    tabindex="-1"
+                    autocomplete="off"
+                >
+
+
+
+                <!-- BOTÓN -->
+
                 <button
                     type="submit"
-                    class="boton boton-principal boton-enviar"
+                    class="boton boton-principal contacto-boton"
+                    id="botonEnviar"
                 >
-                    ENVIAR SOLICITUD
+
+                    <span id="textoBoton">
+                        ENVIAR SOLICITUD
+                    </span>
+
                 </button>
 
 
-                <p class="formulario-nota">
-                    Envía tu solicitud a nuestro equipo.
-                </p>
 
+                <!-- MENSAJE -->
+
+                <p
+                    id="mensajeFormulario"
+                    class="contacto-estado"
+                    aria-live="polite"
+                ></p>
+
+
+                <p class="contacto-privacidad">
+
+                    Al enviar este formulario, tus datos serán utilizados
+                    únicamente para responder a tu solicitud.
+
+                </p>
 
             </form>
 
@@ -557,7 +1224,7 @@
                 SERVICIOS
             </a>
 
-            <a href="index.html#nosotros">
+            <a href="nosotros.html">
                 NOSOTROS
             </a>
 
@@ -570,7 +1237,6 @@
 
         <div class="footer-redes">
 
-
             <a
                 href="https://www.facebook.com/share/1L8ehq9Eez/?mibextid=wwXIfr"
                 target="_blank"
@@ -582,7 +1248,7 @@
 
 
             <a
-                href="https://www.instagram.com/deparcheapp?stkn=MTAybnJwcXNwa3h6Mg=="
+                href="https://www.instagram.com/deparcheapp"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
