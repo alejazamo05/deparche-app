@@ -18,7 +18,9 @@
     <title>NOSOTROS | DEPARCHE APP SAS</title>
 
 
-    <!-- FUENTE -->
+    <!-- =====================================================
+         FUENTE
+    ====================================================== -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -34,7 +36,9 @@
     >
 
 
-    <!-- ICONOS -->
+    <!-- =====================================================
+         ICONOS
+    ====================================================== -->
 
     <link
         rel="stylesheet"
@@ -42,7 +46,9 @@
     >
 
 
-    <!-- ESTILOS PRINCIPALES -->
+    <!-- =====================================================
+         ESTILOS PRINCIPALES
+    ====================================================== -->
 
     <link
         rel="stylesheet"
@@ -56,15 +62,22 @@
 
     <style>
 
+        /* =====================================================
+           BASE
+        ====================================================== */
+
         .nosotros-page {
+
             position: relative;
+
             overflow-x: hidden;
+
         }
 
 
         /* =====================================================
            HERO
-        ===================================================== */
+        ====================================================== */
 
         .nosotros-hero {
 
@@ -226,7 +239,7 @@
 
         /* =====================================================
            TÍTULO
-        ===================================================== */
+        ====================================================== */
 
         .nosotros-titulo {
 
@@ -289,7 +302,7 @@
 
         /* =====================================================
            TARJETA
-        ===================================================== */
+        ====================================================== */
 
         .nosotros-card {
 
@@ -445,7 +458,7 @@
 
         /* =====================================================
            HISTORIA
-        ===================================================== */
+        ====================================================== */
 
         .historia {
 
@@ -548,7 +561,7 @@
 
         /* =====================================================
            EVOLUCIÓN
-        ===================================================== */
+        ====================================================== */
 
         .evolucion {
 
@@ -635,7 +648,9 @@
                 var(--blanco);
 
             transition:
-                all 0.3s ease;
+                border-color 0.3s ease,
+                box-shadow 0.3s ease,
+                transform 0.3s ease;
 
         }
 
@@ -722,7 +737,7 @@
 
         /* =====================================================
            VISIÓN
-        ===================================================== */
+        ====================================================== */
 
         .vision {
 
@@ -811,7 +826,7 @@
 
         /* =====================================================
            CTA
-        ===================================================== */
+        ====================================================== */
 
         .nosotros-cta {
 
@@ -899,7 +914,7 @@
 
         /* =====================================================
            MODAL CONTACTO
-        ===================================================== */
+        ====================================================== */
 
         .modal-contacto {
 
@@ -1263,8 +1278,232 @@
 
 
         /* =====================================================
+           =====================================================
+           ANIMACIONES AL HACER SCROLL
+           =====================================================
+           ===================================================== */
+
+
+        /*
+         * Animación general desde abajo.
+         *
+         * IMPORTANTE:
+         * Solo se aplica a elementos que no tengan
+         * una opacidad propia que queramos conservar.
+         */
+
+        .anim-scroll {
+
+            opacity: 0;
+
+            transform:
+                translateY(45px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+
+        }
+
+
+        .anim-scroll.mostrar {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+
+        }
+
+
+        /* =====================================================
+           ANIMACIÓN DESDE LA IZQUIERDA
+        ====================================================== */
+
+        .anim-left {
+
+            opacity: 0;
+
+            transform:
+                translateX(-55px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+
+        }
+
+
+        .anim-left.mostrar {
+
+            opacity: 1;
+
+            transform:
+                translateX(0);
+
+        }
+
+
+        /* =====================================================
+           ANIMACIÓN DESDE LA DERECHA
+        ====================================================== */
+
+        .anim-right {
+
+            opacity: 0;
+
+            transform:
+                translateX(55px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+
+        }
+
+
+        .anim-right.mostrar {
+
+            opacity: 1;
+
+            transform:
+                translateX(0);
+
+        }
+
+
+        /* =====================================================
+           ANIMACIÓN DE TARJETAS
+        ====================================================== */
+
+        .anim-card {
+
+            opacity: 0;
+
+            transform:
+                translateY(40px)
+                scale(0.96);
+
+            transition:
+                opacity 0.7s ease,
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+
+        }
+
+
+        .anim-card.mostrar {
+
+            opacity: 1;
+
+            transform:
+                translateY(0)
+                scale(1);
+
+        }
+
+
+        /* =====================================================
+           RETRASOS PARA LAS TARJETAS
+        ====================================================== */
+
+        .anim-delay-1 {
+
+            transition-delay:
+                0.10s;
+
+        }
+
+
+        .anim-delay-2 {
+
+            transition-delay:
+                0.20s;
+
+        }
+
+
+        .anim-delay-3 {
+
+            transition-delay:
+                0.30s;
+
+        }
+
+
+        .anim-delay-4 {
+
+            transition-delay:
+                0.40s;
+
+        }
+
+
+        /* =====================================================
+           ANIMACIÓN ESPECIAL DEL 2020
+           
+           NO TOCA SU COLOR.
+           NO TOCA SU OPACIDAD.
+           
+           Solamente mueve el elemento.
+        ====================================================== */
+
+        .historia-numero.anim-2020 {
+
+            opacity:
+                0.10;
+
+            color:
+                var(--morado);
+
+            transform:
+                translateY(45px);
+
+            transition:
+                transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+
+        }
+
+
+        .historia-numero.anim-2020.mostrar {
+
+            opacity:
+                0.10;
+
+            color:
+                var(--morado);
+
+            transform:
+                translateY(0);
+
+        }
+
+
+        /* =====================================================
+           REDUCCIÓN DE MOVIMIENTO
+        ====================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .anim-scroll,
+            .anim-left,
+            .anim-right,
+            .anim-card,
+            .historia-numero.anim-2020 {
+
+                opacity: 1;
+
+                transform: none;
+
+                transition: none;
+
+            }
+
+        }
+
+
+        /* =====================================================
            RESPONSIVE
-        ===================================================== */
+        ====================================================== */
 
         @media (max-width: 900px) {
 
@@ -1684,8 +1923,6 @@
                 NOSOTROS
             </a>
 
-            <!-- PORTAFOLIO -->
-
             <a href="portafolio.html">
                 PORTAFOLIO
             </a>
@@ -1696,8 +1933,6 @@
 
         </nav>
 
-
-        <!-- HABLEMOS AHORA ABRE WHATSAPP -->
 
         <a
             href="https://wa.me/573133514030"
@@ -1747,7 +1982,6 @@
             CONTACTO
         </a>
 
-        <!-- HABLEMOS DEL MENÚ MÓVIL ABRE WHATSAPP -->
 
         <a
             href="https://wa.me/573133514030"
@@ -1784,7 +2018,9 @@
     <div class="contenedor nosotros-hero-grid">
 
 
-        <div>
+        <!-- HERO TEXTO -->
+
+        <div class="anim-left">
 
             <p class="nosotros-etiqueta">
                 SOBRE DEPARCHE APP SAS
@@ -1823,7 +2059,9 @@
         </div>
 
 
-        <div class="nosotros-card">
+        <!-- HERO TARJETA -->
+
+        <div class="nosotros-card anim-right">
 
             <div class="nosotros-card-glow"></div>
 
@@ -1864,14 +2102,20 @@
 
         <div>
 
-            <div class="historia-numero">
+            <!--
+                IMPORTANTE:
+                El 2020 conserva exactamente su color
+                y su opacidad original.
+            -->
+
+            <div class="historia-numero anim-2020">
                 2020
             </div>
 
         </div>
 
 
-        <div class="historia-contenido">
+        <div class="historia-contenido anim-scroll">
 
             <p class="etiqueta">
                 NUESTRA HISTORIA
@@ -1930,7 +2174,7 @@
     <div class="contenedor">
 
 
-        <div class="evolucion-titulo">
+        <div class="evolucion-titulo anim-scroll">
 
             <p class="etiqueta">
                 NUESTRA EVOLUCIÓN
@@ -1958,7 +2202,7 @@
 
             <!-- MARKETING -->
 
-            <article class="evolucion-card">
+            <article class="evolucion-card anim-card anim-delay-1">
 
                 <span class="evolucion-card-numero">
                     01 / AGENCY
@@ -1988,7 +2232,7 @@
 
             <!-- CONTENIDO -->
 
-            <article class="evolucion-card">
+            <article class="evolucion-card anim-card anim-delay-2">
 
                 <span class="evolucion-card-numero">
                     02 / PRODUCTS
@@ -2017,7 +2261,7 @@
 
             <!-- WEB / SEO -->
 
-            <article class="evolucion-card">
+            <article class="evolucion-card anim-card anim-delay-3">
 
                 <span class="evolucion-card-numero">
                     03 / PLATFORMS
@@ -2046,7 +2290,7 @@
 
             <!-- OPERACIONES -->
 
-            <article class="evolucion-card">
+            <article class="evolucion-card anim-card anim-delay-4">
 
                 <span class="evolucion-card-numero">
                     04 / CX
@@ -2087,7 +2331,7 @@
 
 <section class="vision">
 
-    <div class="contenedor vision-contenido">
+    <div class="contenedor vision-contenido anim-scroll">
 
         <p class="etiqueta">
             DEPARCHE HOY
@@ -2137,7 +2381,7 @@
     <div class="contenedor">
 
 
-        <div class="nosotros-cta-box">
+        <div class="nosotros-cta-box anim-scroll">
 
             <p class="etiqueta">
                 ¿LISTO PARA DAR EL SIGUIENTE PASO?
@@ -2199,7 +2443,9 @@
             id="cerrarModalContacto"
             aria-label="Cerrar formulario"
         >
+
             <i class="fa-solid fa-xmark"></i>
+
         </button>
 
 
@@ -2229,6 +2475,7 @@
         <form
             id="formularioContactoNosotros"
         >
+
 
             <!-- WEB3FORMS -->
 
@@ -2377,10 +2624,18 @@
             <div class="modal-campo">
 
                 <label for="mensajeNosotros">
+
                     Cuéntanos sobre tu proyecto
-                    <span style="font-weight:400; color:#999;">
+
+                    <span
+                        style="
+                            font-weight:400;
+                            color:#999;
+                        "
+                    >
                         (opcional)
                     </span>
+
                 </label>
 
 
@@ -2495,7 +2750,9 @@
                 rel="noopener noreferrer"
                 aria-label="Facebook"
             >
+
                 <i class="fa-brands fa-facebook-f"></i>
+
             </a>
 
 
@@ -2505,7 +2762,9 @@
                 rel="noopener noreferrer"
                 aria-label="Instagram"
             >
+
                 <i class="fa-brands fa-instagram"></i>
+
             </a>
 
 
@@ -2515,7 +2774,9 @@
                 rel="noopener noreferrer"
                 aria-label="X"
             >
+
                 <i class="fa-brands fa-x-twitter"></i>
+
             </a>
 
 
@@ -2525,7 +2786,9 @@
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
             >
+
                 <i class="fa-brands fa-linkedin-in"></i>
+
             </a>
 
         </div>
@@ -2544,9 +2807,108 @@
 
 
 
-<!-- JAVASCRIPT -->
+<!-- =====================================================
+     JAVASCRIPT PRINCIPAL
+===================================================== -->
 
 <script src="js/script.js"></script>
+
+
+<!-- =====================================================
+     ANIMACIONES AL HACER SCROLL
+===================================================== -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /*
+     * Seleccionamos todos los elementos
+     * que deben tener animación.
+     */
+
+    const elementosAnimados = document.querySelectorAll(
+        ".anim-scroll, " +
+        ".anim-left, " +
+        ".anim-right, " +
+        ".anim-card, " +
+        ".anim-2020"
+    );
+
+
+    /*
+     * IntersectionObserver detecta cuando
+     * un elemento entra o sale de la pantalla.
+     */
+
+    const observer = new IntersectionObserver(
+
+        function (entradas) {
+
+
+            entradas.forEach(function (entrada) {
+
+
+                /*
+                 * Si el elemento entra en pantalla:
+                 * agregamos la clase "mostrar".
+                 */
+
+                if (entrada.isIntersecting) {
+
+                    entrada.target.classList.add("mostrar");
+
+                }
+
+
+                /*
+                 * Si el elemento sale de pantalla:
+                 * quitamos "mostrar".
+                 *
+                 * Esto es MUY IMPORTANTE porque permite
+                 * que la animación vuelva a ejecutarse
+                 * cuando el usuario sube y vuelve a bajar.
+                 */
+
+                else {
+
+                    entrada.target.classList.remove("mostrar");
+
+                }
+
+            });
+
+        },
+
+
+        {
+            /*
+             * El elemento necesita estar al menos
+             * 15% visible para activar la animación.
+             */
+
+            threshold: 0.15
+
+        }
+
+    );
+
+
+    /*
+     * Activamos el observador para cada elemento.
+     */
+
+    elementosAnimados.forEach(function (elemento) {
+
+        observer.observe(elemento);
+
+    });
+
+
+});
+
+</script>
 
 
 </body>
