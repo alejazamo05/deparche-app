@@ -1589,6 +1589,129 @@
 
     }
 
+
+    /* =====================================================
+       ANIMACIONES DE SCROLL
+       MISMO SISTEMA DE LA PÁGINA PRINCIPAL / PORTAFOLIO
+    ====================================================== */
+
+    .scroll-reveal,
+    .scroll-reveal-left,
+    .scroll-reveal-right,
+    .scroll-scale {
+
+        opacity: 0;
+
+        transition:
+            opacity 0.8s ease,
+            transform 0.8s ease;
+
+        will-change: opacity, transform;
+
+    }
+
+
+    /* Entrada desde abajo */
+
+    .scroll-reveal {
+
+        transform: translateY(45px);
+
+    }
+
+
+    /* Entrada desde la izquierda */
+
+    .scroll-reveal-left {
+
+        transform: translateX(-55px);
+
+    }
+
+
+    /* Entrada desde la derecha */
+
+    .scroll-reveal-right {
+
+        transform: translateX(55px);
+
+    }
+
+
+    /* Entrada con escala */
+
+    .scroll-scale {
+
+        transform: scale(0.94);
+
+    }
+
+
+    /* Estado visible */
+
+    .scroll-reveal.mostrar,
+    .scroll-reveal-left.mostrar,
+    .scroll-reveal-right.mostrar,
+    .scroll-scale.mostrar {
+
+        opacity: 1;
+
+        transform:
+            translate(0, 0)
+            scale(1);
+
+    }
+
+
+    /* Retrasos */
+
+    .reveal-delay-1 {
+
+        transition-delay: 0.10s;
+
+    }
+
+
+    .reveal-delay-2 {
+
+        transition-delay: 0.20s;
+
+    }
+
+
+    .reveal-delay-3 {
+
+        transition-delay: 0.30s;
+
+    }
+
+
+    .reveal-delay-4 {
+
+        transition-delay: 0.40s;
+
+    }
+
+
+    /* Accesibilidad */
+
+    @media (prefers-reduced-motion: reduce) {
+
+        .scroll-reveal,
+        .scroll-reveal-left,
+        .scroll-reveal-right,
+        .scroll-scale {
+
+            opacity: 1;
+
+            transform: none;
+
+            transition: none;
+
+        }
+
+    }
+
 </style>
 
 </head>
@@ -2963,9 +3086,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================================
        BOTONES CONTÁCTANOS
-       
+
        Estos permanecen exactamente con su función original.
-    ===================================================== */
+    ====================================================== */
 
     botonesContacto.forEach(function (boton) {
 
@@ -2984,7 +3107,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================================
        CORREO
-    ===================================================== */
+    ====================================================== */
 
     if (opcionCorreo) {
 
@@ -2999,7 +3122,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================================
        CERRAR SELECTOR
-    ===================================================== */
+    ====================================================== */
 
     if (cerrarSelector) {
 
@@ -3014,7 +3137,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================================
        CERRAR MODAL
-    ===================================================== */
+    ====================================================== */
 
     if (cerrarModal) {
 
@@ -3029,7 +3152,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================================
        CLICK FUERA DEL SELECTOR
-    ===================================================== */
+    ====================================================== */
 
     if (selector) {
 
@@ -3052,7 +3175,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================================
        CLICK FUERA DEL FORMULARIO
-    ===================================================== */
+    ====================================================== */
 
     if (modal) {
 
@@ -3075,7 +3198,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================================
        ESC
-    ===================================================== */
+    ====================================================== */
 
     document.addEventListener(
         "keydown",
@@ -3116,7 +3239,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================================
        MENÚ MÓVIL
-    ===================================================== */
+    ====================================================== */
 
     if (menuMobile && menuMobileContent) {
 
@@ -3208,7 +3331,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================================
        SOLICITAR SERVICIO
-    ===================================================== */
+    ====================================================== */
 
     const enlacesServicio =
         document.querySelectorAll(
@@ -3255,7 +3378,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================================
        ENVÍO WEB3FORMS
-    ===================================================== */
+    ====================================================== */
 
     const formulario =
         document.getElementById(
@@ -3373,6 +3496,332 @@ document.addEventListener("DOMContentLoaded", function () {
                     boton.disabled = false;
 
                 }
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       ANIMACIONES DE SCROLL
+       MISMO EFECTO DE LA PÁGINA PRINCIPAL / PORTAFOLIO
+
+       IMPORTANTE:
+       - La animación aparece al entrar.
+       - Se elimina al salir.
+       - Al volver a entrar se reproduce nuevamente.
+    ====================================================== */
+
+    const elementosScroll = [];
+
+
+    /* =====================================================
+       HERO
+    ====================================================== */
+
+    const heroContenido =
+        document.querySelector(
+            ".servicios-hero-contenido"
+        );
+
+
+    if (heroContenido) {
+
+        const heroTexto =
+            heroContenido.children[0];
+
+        const heroVisual =
+            heroContenido.children[1];
+
+
+        if (heroTexto) {
+
+            heroTexto.classList.add(
+                "scroll-reveal-left"
+            );
+
+        }
+
+
+        if (heroVisual) {
+
+            heroVisual.classList.add(
+                "scroll-reveal-right"
+            );
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       INTRO
+    ====================================================== */
+
+    const introContenido =
+        document.querySelector(
+            ".servicios-intro-contenido"
+        );
+
+
+    if (introContenido) {
+
+        introContenido.classList.add(
+            "scroll-reveal"
+        );
+
+        elementosScroll.push(
+            introContenido
+        );
+
+    }
+
+
+
+    /* =====================================================
+       SERVICIOS
+    ====================================================== */
+
+    const servicios =
+        document.querySelectorAll(
+            ".servicio-detalle"
+        );
+
+
+    servicios.forEach(
+        function (servicio, index) {
+
+            if (index % 2 === 0) {
+
+                servicio.classList.add(
+                    "scroll-reveal-left"
+                );
+
+            } else {
+
+                servicio.classList.add(
+                    "scroll-reveal-right"
+                );
+
+            }
+
+
+            if (index === 1) {
+
+                servicio.classList.add(
+                    "reveal-delay-1"
+                );
+
+            }
+
+
+            if (index === 2) {
+
+                servicio.classList.add(
+                    "reveal-delay-2"
+                );
+
+            }
+
+
+            if (index === 3) {
+
+                servicio.classList.add(
+                    "reveal-delay-3"
+                );
+
+            }
+
+
+            elementosScroll.push(
+                servicio
+            );
+
+        }
+    );
+
+
+
+    /* =====================================================
+       ENCABEZADO DEL PROCESO
+    ====================================================== */
+
+    const procesoHeader =
+        document.querySelector(
+            ".servicios-proceso-header"
+        );
+
+
+    if (procesoHeader) {
+
+        procesoHeader.classList.add(
+            "scroll-reveal"
+        );
+
+        elementosScroll.push(
+            procesoHeader
+        );
+
+    }
+
+
+
+    /* =====================================================
+       TARJETAS DEL PROCESO
+    ====================================================== */
+
+    const procesoServicios =
+        document.querySelectorAll(
+            ".proceso-servicio"
+        );
+
+
+    procesoServicios.forEach(
+        function (servicio, index) {
+
+            servicio.classList.add(
+                "scroll-reveal"
+            );
+
+
+            if (index === 1) {
+
+                servicio.classList.add(
+                    "reveal-delay-1"
+                );
+
+            }
+
+
+            if (index === 2) {
+
+                servicio.classList.add(
+                    "reveal-delay-2"
+                );
+
+            }
+
+
+            if (index === 3) {
+
+                servicio.classList.add(
+                    "reveal-delay-3"
+                );
+
+            }
+
+
+            elementosScroll.push(
+                servicio
+            );
+
+        }
+    );
+
+
+
+    /* =====================================================
+       CTA FINAL
+    ====================================================== */
+
+    const ctaBox =
+        document.querySelector(
+            ".servicios-cta-box"
+        );
+
+
+    if (ctaBox) {
+
+        ctaBox.classList.add(
+            "scroll-scale"
+        );
+
+        elementosScroll.push(
+            ctaBox
+        );
+
+    }
+
+
+
+    /* =====================================================
+       AGREGAR HERO AL OBSERVER
+    ====================================================== */
+
+    const elementosAnimados =
+        document.querySelectorAll(
+            ".scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-scale"
+        );
+
+
+    /* =====================================================
+       INTERSECTION OBSERVER
+
+       La animación se REPITE:
+       entra → mostrar
+       sale → quitar mostrar
+       vuelve a entrar → mostrar nuevamente
+    ====================================================== */
+
+    if ("IntersectionObserver" in window) {
+
+        const observer =
+            new IntersectionObserver(
+                function (entries) {
+
+                    entries.forEach(
+                        function (entry) {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target.classList.add(
+                                    "mostrar"
+                                );
+
+                            } else {
+
+                                entry.target.classList.remove(
+                                    "mostrar"
+                                );
+
+                            }
+
+                        }
+                    );
+
+                },
+                {
+                    threshold: 0.12,
+
+                    rootMargin:
+                        "0px 0px -50px 0px"
+                }
+            );
+
+
+        elementosAnimados.forEach(
+            function (elemento) {
+
+                observer.observe(
+                    elemento
+                );
+
+            }
+        );
+
+    } else {
+
+        elementosAnimados.forEach(
+            function (elemento) {
+
+                elemento.classList.add(
+                    "mostrar"
+                );
 
             }
         );
