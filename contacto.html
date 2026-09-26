@@ -555,6 +555,99 @@
 
 
     /* =====================================================
+       ANIMACIONES TIPO APPLE
+    ===================================================== */
+
+    .animar-scroll,
+    .animar-izquierda,
+    .animar-derecha,
+    .animar-escala {
+
+        opacity: 0;
+
+        transition:
+            opacity 0.8s ease,
+            transform 0.8s cubic-bezier(.22,1,.36,1);
+    }
+
+
+    /* Aparición desde abajo */
+
+    .animar-scroll {
+
+        transform:
+            translateY(45px);
+    }
+
+
+    /* Aparición desde la izquierda */
+
+    .animar-izquierda {
+
+        transform:
+            translateX(-55px);
+    }
+
+
+    /* Aparición desde la derecha */
+
+    .animar-derecha {
+
+        transform:
+            translateX(55px);
+    }
+
+
+    /* Aparición con zoom sutil */
+
+    .animar-escala {
+
+        transform:
+            scale(.92);
+    }
+
+
+    /* Estado visible */
+
+    .animar-scroll.visible,
+    .animar-izquierda.visible,
+    .animar-derecha.visible,
+    .animar-escala.visible {
+
+        opacity: 1;
+
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+
+    /* =====================================================
+       RETARDOS
+    ===================================================== */
+
+    .retraso-1 {
+        transition-delay: .10s;
+    }
+
+    .retraso-2 {
+        transition-delay: .20s;
+    }
+
+    .retraso-3 {
+        transition-delay: .30s;
+    }
+
+    .retraso-4 {
+        transition-delay: .40s;
+    }
+
+    .retraso-5 {
+        transition-delay: .50s;
+    }
+
+
+    /* =====================================================
        RESPONSIVE
     ===================================================== */
 
@@ -647,6 +740,27 @@
             grid-template-columns: 1fr;
 
             gap: 0;
+        }
+
+    }
+
+
+    /* =====================================================
+       ACCESIBILIDAD
+    ===================================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+        .animar-scroll,
+        .animar-izquierda,
+        .animar-derecha,
+        .animar-escala {
+
+            opacity: 1;
+
+            transform: none;
+
+            transition: none;
         }
 
     }
@@ -770,14 +884,14 @@
          INFORMACIÓN
     ================================================= -->
 
-    <div class="contacto-presentacion">
+    <div class="contacto-presentacion animar-izquierda">
 
         <p class="etiqueta">
             HABLEMOS
         </p>
 
 
-        <h1>
+        <h1 class="animar-scroll retraso-1">
 
             CONECTEMOS.
 
@@ -788,7 +902,7 @@
         </h1>
 
 
-        <p>
+        <p class="animar-scroll retraso-2">
 
             Cuéntanos qué tienes en mente.
             En DEPARCHE APP SAS convertimos
@@ -804,7 +918,7 @@
 
             <!-- CORREO -->
 
-            <div class="contacto-lista-item">
+            <div class="contacto-lista-item animar-scroll retraso-3">
 
                 <div class="contacto-lista-icono">
 
@@ -832,7 +946,7 @@
 
             <!-- WHATSAPP -->
 
-            <div class="contacto-lista-item">
+            <div class="contacto-lista-item animar-scroll retraso-4">
 
                 <div class="contacto-lista-icono">
 
@@ -865,7 +979,7 @@
 
         <!-- REDES -->
 
-        <div class="contacto-redes">
+        <div class="contacto-redes animar-escala retraso-5">
 
             <p>
                 SÍGUENOS
@@ -946,10 +1060,10 @@
          FORMULARIO
     ================================================= -->
 
-    <div class="contacto-formulario">
+    <div class="contacto-formulario animar-derecha">
 
 
-        <div class="contacto-formulario-header">
+        <div class="contacto-formulario-header animar-scroll retraso-1">
 
             <span>
                 CUÉNTANOS TU PROYECTO
@@ -999,7 +1113,7 @@
 
             <!-- NOMBRE / EMPRESA -->
 
-            <div class="contacto-form-row">
+            <div class="contacto-form-row animar-scroll retraso-2">
 
 
                 <div class="contacto-campo">
@@ -1042,7 +1156,7 @@
 
             <!-- CORREO / TELÉFONO -->
 
-            <div class="contacto-form-row">
+            <div class="contacto-form-row animar-scroll retraso-3">
 
 
                 <div class="contacto-campo">
@@ -1085,7 +1199,7 @@
 
             <!-- SERVICIO -->
 
-            <div class="contacto-campo">
+            <div class="contacto-campo animar-scroll retraso-4">
 
                 <label for="servicio">
                     Servicio de interés *
@@ -1130,7 +1244,7 @@
 
             <!-- MENSAJE OPCIONAL -->
 
-            <div class="contacto-campo">
+            <div class="contacto-campo animar-scroll retraso-4">
 
                 <label for="mensaje">
                     Cuéntanos sobre tu proyecto
@@ -1163,7 +1277,7 @@
 
             <button
                 type="submit"
-                class="boton boton-principal contacto-boton"
+                class="boton boton-principal contacto-boton animar-escala retraso-5"
                 id="botonEnviar"
             >
 
@@ -1301,7 +1415,60 @@
 
 </footer>
 
+
 <script src="js/script.js"></script>
+
+
+<!-- =====================================================
+     ANIMACIONES AL HACER SCROLL
+===================================================== -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const elementos = document.querySelectorAll(
+        ".animar-scroll, .animar-izquierda, .animar-derecha, .animar-escala"
+    );
+
+
+    const observador = new IntersectionObserver(
+
+        (entradas) => {
+
+            entradas.forEach((entrada) => {
+
+                if (entrada.isIntersecting) {
+
+                    entrada.target.classList.add("visible");
+
+                } else {
+
+                    entrada.target.classList.remove("visible");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        }
+
+    );
+
+
+    elementos.forEach((elemento) => {
+
+        observador.observe(elemento);
+
+    });
+
+});
+
+</script>
 
 </body>
 
