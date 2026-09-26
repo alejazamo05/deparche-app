@@ -26,7 +26,7 @@
 
 <link
     rel="preconnect"
-    href="https://fonts.googleapis.com"
+    href="https://fonts.gstatic.com"
     crossorigin
 >
 
@@ -64,6 +64,151 @@
 
 .portafolio-page {
     overflow-x: hidden;
+}
+
+
+/* =====================================================
+   ANIMACIONES AL HACER SCROLL
+===================================================== */
+
+.animar-scroll {
+
+    opacity: 0;
+
+    transform: translateY(45px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.22,1,.36,1);
+
+    will-change:
+        opacity,
+        transform;
+
+}
+
+
+.animar-scroll.visible {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+/* =====================================================
+   ANIMACIÓN DESDE LA IZQUIERDA
+===================================================== */
+
+.animar-izquierda {
+
+    opacity: 0;
+
+    transform: translateX(-55px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.22,1,.36,1);
+
+    will-change:
+        opacity,
+        transform;
+
+}
+
+
+.animar-izquierda.visible {
+
+    opacity: 1;
+
+    transform: translateX(0);
+
+}
+
+
+/* =====================================================
+   ANIMACIÓN DESDE LA DERECHA
+===================================================== */
+
+.animar-derecha {
+
+    opacity: 0;
+
+    transform: translateX(55px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.22,1,.36,1);
+
+    will-change:
+        opacity,
+        transform;
+
+}
+
+
+.animar-derecha.visible {
+
+    opacity: 1;
+
+    transform: translateX(0);
+
+}
+
+
+/* =====================================================
+   ANIMACIÓN DE ESCALA
+===================================================== */
+
+.animar-escala {
+
+    opacity: 0;
+
+    transform: scale(.92);
+
+    transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.22,1,.36,1);
+
+    will-change:
+        opacity,
+        transform;
+
+}
+
+
+.animar-escala.visible {
+
+    opacity: 1;
+
+    transform: scale(1);
+
+}
+
+
+/* =====================================================
+   RETARDOS
+===================================================== */
+
+.retraso-1 {
+    transition-delay: .10s;
+}
+
+.retraso-2 {
+    transition-delay: .20s;
+}
+
+.retraso-3 {
+    transition-delay: .30s;
+}
+
+.retraso-4 {
+    transition-delay: .40s;
+}
+
+.retraso-5 {
+    transition-delay: .50s;
 }
 
 
@@ -644,7 +789,7 @@
 
 
 /* =====================================================
-   VISUALES DE PROYECTOS
+   IMÁGENES DE PROYECTOS
 ===================================================== */
 
 .proyecto-visual {
@@ -654,6 +799,34 @@
     inset: 0;
 
     overflow: hidden;
+
+    background: #24152D;
+
+}
+
+
+.proyecto-visual img {
+
+    position: absolute;
+
+    inset: -8px;
+
+    width: calc(100% + 16px);
+
+    height: calc(100% + 16px);
+
+    object-fit: cover;
+
+    filter: blur(3px);
+
+    transform: scale(1.03);
+
+    opacity: 0.88;
+
+    transition:
+        transform .5s ease,
+        filter .5s ease,
+        opacity .5s ease;
 
 }
 
@@ -666,201 +839,25 @@
 
     inset: 0;
 
+    z-index: 2;
+
     background:
         linear-gradient(
             to bottom,
-            rgba(30,15,38,0.02),
+            rgba(30,15,38,0.08),
             rgba(30,15,38,0.78)
         );
 
 }
 
 
-.proyecto-visual-1 {
+.proyecto-card:hover .proyecto-visual img {
 
-    background:
-        radial-gradient(
-            circle at 75% 25%,
-            rgba(182,93,216,0.30),
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            #201329,
-            #5F2377
-        );
+    filter: blur(4px);
 
-}
+    transform: scale(1.06);
 
-
-.proyecto-visual-2 {
-
-    background:
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(231,184,242,0.30),
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            #392342,
-            #8D3D9F
-        );
-
-}
-
-
-.proyecto-visual-3 {
-
-    background:
-        radial-gradient(
-            circle at 80% 20%,
-            rgba(255,255,255,0.18),
-            transparent 32%
-        ),
-        linear-gradient(
-            135deg,
-            #24152D,
-            #704281
-        );
-
-}
-
-
-.proyecto-visual-4 {
-
-    background:
-        radial-gradient(
-            circle at 25% 70%,
-            rgba(231,184,242,0.22),
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            #301936,
-            #612D70
-        );
-
-}
-
-
-/* =====================================================
-   ELEMENTOS INTERNOS VISUALES
-===================================================== */
-
-.proyecto-mockup {
-
-    position: absolute;
-
-    z-index: 1;
-
-    top: 55px;
-
-    left: 50%;
-
-    width: 75%;
-
-    min-height: 210px;
-
-    transform: translateX(-50%);
-
-    padding: 20px;
-
-    border:
-        1px solid rgba(255,255,255,0.18);
-
-    border-radius: 20px;
-
-    background:
-        rgba(255,255,255,0.10);
-
-    backdrop-filter: blur(9px);
-
-    -webkit-backdrop-filter: blur(9px);
-
-    box-shadow:
-        0 20px 50px rgba(0,0,0,0.22);
-
-}
-
-
-.mockup-barra {
-
-    display: flex;
-
-    gap: 5px;
-
-    margin-bottom: 18px;
-
-}
-
-
-.mockup-barra span {
-
-    width: 6px;
-
-    height: 6px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,255,255,0.55);
-
-}
-
-
-.mockup-linea {
-
-    width: 70%;
-
-    height: 7px;
-
-    margin-bottom: 11px;
-
-    border-radius: 20px;
-
-    background:
-        rgba(255,255,255,0.65);
-
-}
-
-
-.mockup-linea-pequena {
-
-    width: 45%;
-
-    height: 5px;
-
-    margin-bottom: 22px;
-
-    border-radius: 20px;
-
-    background:
-        rgba(255,255,255,0.27);
-
-}
-
-
-.mockup-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 8px;
-
-}
-
-
-.mockup-grid div {
-
-    height: 75px;
-
-    border-radius: 10px;
-
-    background:
-        rgba(255,255,255,0.10);
+    opacity: 0.82;
 
 }
 
@@ -1862,6 +1859,28 @@
 
 
 /* =====================================================
+   ACCESIBILIDAD
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .animar-scroll,
+    .animar-izquierda,
+    .animar-derecha,
+    .animar-escala {
+
+        opacity: 1;
+
+        transform: none;
+
+        transition: none;
+
+    }
+
+}
+
+
+/* =====================================================
    RESPONSIVE
 ===================================================== */
 
@@ -2177,10 +2196,6 @@
     </nav>
 
 
-    <!-- =================================================
-         HABLEMOS SUPERIOR → WHATSAPP DIRECTO
-    ================================================== -->
-
     <a
         href="https://wa.me/573133514030?text=Hola%20DEPARCHE%20APP%20SAS,%20me%20gustaría%20conocer%20más%20sobre%20sus%20proyectos."
         class="boton boton-nav"
@@ -2234,8 +2249,6 @@
     </a>
 
 
-    <!-- HABLEMOS DEL MENÚ SUPERIOR → WHATSAPP -->
-
     <a
         href="https://wa.me/573133514030?text=Hola%20DEPARCHE%20APP%20SAS,%20me%20gustaría%20conocer%20más%20sobre%20sus%20proyectos."
         target="_blank"
@@ -2278,7 +2291,7 @@
 <div class="contenedor portafolio-hero-contenido">
 
 
-    <div>
+    <div class="animar-izquierda">
 
 
         <p class="portafolio-etiqueta">
@@ -2337,7 +2350,7 @@
 
 
 
-    <div class="portafolio-visual">
+    <div class="portafolio-visual animar-derecha">
 
 
         <div class="portafolio-visual-glow"></div>
@@ -2398,7 +2411,7 @@
 <div class="contenedor">
 
 
-    <div class="portafolio-intro-contenido">
+    <div class="portafolio-intro-contenido animar-scroll">
 
 
         <p class="etiqueta">
@@ -2443,7 +2456,7 @@
 <div class="contenedor">
 
 
-    <div class="portafolio-header">
+    <div class="portafolio-header animar-scroll">
 
 
         <div>
@@ -2476,42 +2489,19 @@
     <div class="portafolio-grid">
 
 
-        <!-- PROYECTO 01 -->
+        <!-- =================================================
+             PROYECTO 01
+        ================================================== -->
 
-        <article class="proyecto-card">
+        <article class="proyecto-card animar-scroll retraso-1">
 
 
             <div class="proyecto-visual proyecto-visual-1">
 
-
-                <div class="proyecto-mockup">
-
-
-                    <div class="mockup-barra">
-
-                        <span></span>
-                        <span></span>
-                        <span></span>
-
-                    </div>
-
-
-                    <div class="mockup-linea"></div>
-
-                    <div class="mockup-linea-pequena"></div>
-
-
-                    <div class="mockup-grid">
-
-                        <div></div>
-                        <div></div>
-                        <div></div>
-
-                    </div>
-
-
-                </div>
-
+                <img
+                    src="img/deparche-app.png"
+                    alt="DEPARCHE APP"
+                >
 
             </div>
 
@@ -2563,42 +2553,19 @@
 
 
 
-        <!-- PROYECTO 02 -->
+        <!-- =================================================
+             PROYECTO 02
+        ================================================== -->
 
-        <article class="proyecto-card">
+        <article class="proyecto-card animar-scroll retraso-2">
 
 
             <div class="proyecto-visual proyecto-visual-2">
 
-
-                <div class="proyecto-mockup">
-
-
-                    <div class="mockup-barra">
-
-                        <span></span>
-                        <span></span>
-                        <span></span>
-
-                    </div>
-
-
-                    <div class="mockup-linea"></div>
-
-                    <div class="mockup-linea-pequena"></div>
-
-
-                    <div class="mockup-grid">
-
-                        <div></div>
-                        <div></div>
-                        <div></div>
-
-                    </div>
-
-
-                </div>
-
+                <img
+                    src="img/ecosistema-digital.png"
+                    alt="Ecosistema digital"
+                >
 
             </div>
 
@@ -2650,42 +2617,19 @@
 
 
 
-        <!-- PROYECTO 03 -->
+        <!-- =================================================
+             PROYECTO 03
+        ================================================== -->
 
-        <article class="proyecto-card">
+        <article class="proyecto-card animar-scroll retraso-3">
 
 
             <div class="proyecto-visual proyecto-visual-3">
 
-
-                <div class="proyecto-mockup">
-
-
-                    <div class="mockup-barra">
-
-                        <span></span>
-                        <span></span>
-                        <span></span>
-
-                    </div>
-
-
-                    <div class="mockup-linea"></div>
-
-                    <div class="mockup-linea-pequena"></div>
-
-
-                    <div class="mockup-grid">
-
-                        <div></div>
-                        <div></div>
-                        <div></div>
-
-                    </div>
-
-
-                </div>
-
+                <img
+                    src="img/experiencia-web.png"
+                    alt="Experiencia web"
+                >
 
             </div>
 
@@ -2737,42 +2681,19 @@
 
 
 
-        <!-- PROYECTO 04 -->
+        <!-- =================================================
+             PROYECTO 04
+        ================================================== -->
 
-        <article class="proyecto-card">
+        <article class="proyecto-card animar-scroll retraso-4">
 
 
             <div class="proyecto-visual proyecto-visual-4">
 
-
-                <div class="proyecto-mockup">
-
-
-                    <div class="mockup-barra">
-
-                        <span></span>
-                        <span></span>
-                        <span></span>
-
-                    </div>
-
-
-                    <div class="mockup-linea"></div>
-
-                    <div class="mockup-linea-pequena"></div>
-
-
-                    <div class="mockup-grid">
-
-                        <div></div>
-                        <div></div>
-                        <div></div>
-
-                    </div>
-
-
-                </div>
-
+                <img
+                    src="img/gestion-digital.png"
+                    alt="Gestión digital"
+                >
 
             </div>
 
@@ -2842,7 +2763,7 @@
 <div class="contenedor experiencia-contenido">
 
 
-    <div class="experiencia-intro">
+    <div class="experiencia-intro animar-izquierda">
 
 
         <p class="etiqueta">
@@ -2872,7 +2793,7 @@
     <div class="experiencia-lista">
 
 
-        <article class="experiencia-item">
+        <article class="experiencia-item animar-derecha retraso-1">
 
 
             <span class="experiencia-item-numero">
@@ -2901,7 +2822,7 @@
 
 
 
-        <article class="experiencia-item">
+        <article class="experiencia-item animar-derecha retraso-2">
 
 
             <span class="experiencia-item-numero">
@@ -2930,7 +2851,7 @@
 
 
 
-        <article class="experiencia-item">
+        <article class="experiencia-item animar-derecha retraso-3">
 
 
             <span class="experiencia-item-numero">
@@ -2959,7 +2880,7 @@
 
 
 
-        <article class="experiencia-item">
+        <article class="experiencia-item animar-derecha retraso-4">
 
 
             <span class="experiencia-item-numero">
@@ -3006,7 +2927,7 @@
 <div class="contenedor">
 
 
-    <div class="capacidades-header">
+    <div class="capacidades-header animar-scroll">
 
 
         <p class="etiqueta">
@@ -3035,7 +2956,7 @@
     <div class="capacidades-grid">
 
 
-        <article class="capacidad">
+        <article class="capacidad animar-scroll retraso-1">
 
             <i class="fa-solid fa-lightbulb"></i>
 
@@ -3052,7 +2973,7 @@
 
 
 
-        <article class="capacidad">
+        <article class="capacidad animar-scroll retraso-2">
 
             <i class="fa-solid fa-laptop-code"></i>
 
@@ -3069,7 +2990,7 @@
 
 
 
-        <article class="capacidad">
+        <article class="capacidad animar-scroll retraso-3">
 
             <i class="fa-solid fa-chart-line"></i>
 
@@ -3086,7 +3007,7 @@
 
 
 
-        <article class="capacidad">
+        <article class="capacidad animar-scroll retraso-4">
 
             <i class="fa-solid fa-wand-magic-sparkles"></i>
 
@@ -3121,7 +3042,7 @@
 <div class="contenedor">
 
 
-    <div class="portafolio-cta-box">
+    <div class="portafolio-cta-box animar-escala">
 
 
         <p class="etiqueta">
@@ -3142,8 +3063,6 @@
 
         </p>
 
-
-        <!-- ESTE BOTÓN SE DEJA COMO ESTABA -->
 
         <button
             type="button"
@@ -3215,8 +3134,6 @@
     <div class="opciones-contacto">
 
 
-        <!-- WHATSAPP -->
-
         <a
             href="https://wa.me/573133514030?text=Hola%20DEPARCHE%20APP%20SAS,%20me%20gustaría%20conocer%20más%20sobre%20sus%20proyectos."
             class="opcion-contacto"
@@ -3248,8 +3165,6 @@
         </a>
 
 
-
-        <!-- CORREO -->
 
         <button
             type="button"
@@ -3349,8 +3264,6 @@
     <form id="formularioContactoPortafolio">
 
 
-        <!-- WEB3FORMS -->
-
         <input
             type="hidden"
             name="access_key"
@@ -3371,8 +3284,6 @@
             value="Formulario Portafolio - DEPARCHE APP SAS"
         >
 
-
-        <!-- CORREO DESTINO -->
 
         <input
             type="hidden"
@@ -3561,8 +3472,6 @@
 
 
 
-        <!-- ANTI-SPAM -->
-
         <input
             type="checkbox"
             name="botcheck"
@@ -3745,6 +3654,64 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
+       ANIMACIONES AL HACER SCROLL
+    ===================================================== */
+
+    const elementosAnimados =
+        document.querySelectorAll(
+            ".animar-scroll, .animar-izquierda, .animar-derecha, .animar-escala"
+        );
+
+
+    const observerScroll =
+        new IntersectionObserver(
+            function (entradas) {
+
+                entradas.forEach(
+                    function (entrada) {
+
+                        if (entrada.isIntersecting) {
+
+                            entrada.target.classList.add(
+                                "visible"
+                            );
+
+                        } else {
+
+                            entrada.target.classList.remove(
+                                "visible"
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+
+                threshold: 0.15,
+
+                rootMargin:
+                    "0px 0px -50px 0px"
+
+            }
+        );
+
+
+    elementosAnimados.forEach(
+        function (elemento) {
+
+            observerScroll.observe(
+                elemento
+            );
+
+        }
+    );
+
+
+
+    /* =====================================================
        ELEMENTOS
     ===================================================== */
 
@@ -3759,17 +3726,6 @@ document.addEventListener("DOMContentLoaded", function () {
             "modalPortafolio"
         );
 
-
-    /*
-     * IMPORTANTE:
-     *
-     * El botón HABLEMOS del HEADER YA NO ESTÁ AQUÍ.
-     *
-     * Ahora es un enlace directo a WhatsApp.
-     *
-     * Los botones CONTÁCTANOS del HERO y del CTA inferior
-     * siguen funcionando con el selector como antes.
-     */
 
     const botonesContacto = [
 
@@ -3967,13 +3923,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================================
        BOTONES CONTÁCTANOS
-       
-       SOLO:
-       - CONTÁCTANOS DEL HERO
-       - CONTÁCTANOS DE ABAJO
-       
-       EL HABLEMOS SUPERIOR NO SE TOCA.
-       ===================================================== */
+    ===================================================== */
 
     botonesContacto.forEach(
         function (boton) {
