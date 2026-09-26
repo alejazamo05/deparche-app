@@ -19,6 +19,23 @@
 
 
     <!-- =====================================================
+         FAVICON DE DEPARCHE APP SAS
+    ====================================================== -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="img/logo.png"
+    >
+
+    <link
+        rel="shortcut icon"
+        type="image/png"
+        href="img/logo.png"
+    >
+
+
+    <!-- =====================================================
          FUENTE
     ====================================================== -->
 
@@ -1278,19 +1295,8 @@
 
 
         /* =====================================================
-           =====================================================
            ANIMACIONES AL HACER SCROLL
-           =====================================================
-           ===================================================== */
-
-
-        /*
-         * Animación general desde abajo.
-         *
-         * IMPORTANTE:
-         * Solo se aplica a elementos que no tengan
-         * una opacidad propia que queramos conservar.
-         */
+        ====================================================== */
 
         .anim-scroll {
 
@@ -1440,11 +1446,6 @@
 
         /* =====================================================
            ANIMACIÓN ESPECIAL DEL 2020
-           
-           NO TOCA SU COLOR.
-           NO TOCA SU OPACIDAD.
-           
-           Solamente mueve el elemento.
         ====================================================== */
 
         .historia-numero.anim-2020 {
@@ -2102,12 +2103,6 @@
 
         <div>
 
-            <!--
-                IMPORTANTE:
-                El 2020 conserva exactamente su color
-                y su opacidad original.
-            -->
-
             <div class="historia-numero anim-2020">
                 2020
             </div>
@@ -2200,8 +2195,6 @@
         <div class="evolucion-grid">
 
 
-            <!-- MARKETING -->
-
             <article class="evolucion-card anim-card anim-delay-1">
 
                 <span class="evolucion-card-numero">
@@ -2230,8 +2223,6 @@
 
 
 
-            <!-- CONTENIDO -->
-
             <article class="evolucion-card anim-card anim-delay-2">
 
                 <span class="evolucion-card-numero">
@@ -2259,8 +2250,6 @@
 
 
 
-            <!-- WEB / SEO -->
-
             <article class="evolucion-card anim-card anim-delay-3">
 
                 <span class="evolucion-card-numero">
@@ -2287,8 +2276,6 @@
             </article>
 
 
-
-            <!-- OPERACIONES -->
 
             <article class="evolucion-card anim-card anim-delay-4">
 
@@ -2477,8 +2464,6 @@
         >
 
 
-            <!-- WEB3FORMS -->
-
             <input
                 type="hidden"
                 name="access_key"
@@ -2648,8 +2633,6 @@
             </div>
 
 
-
-            <!-- ANTISPAM -->
 
             <input
                 type="checkbox"
@@ -2823,11 +2806,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
 
-    /*
-     * Seleccionamos todos los elementos
-     * que deben tener animación.
-     */
-
     const elementosAnimados = document.querySelectorAll(
         ".anim-scroll, " +
         ".anim-left, " +
@@ -2837,11 +2815,6 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
 
-    /*
-     * IntersectionObserver detecta cuando
-     * un elemento entra o sale de la pantalla.
-     */
-
     const observer = new IntersectionObserver(
 
         function (entradas) {
@@ -2850,26 +2823,12 @@ document.addEventListener("DOMContentLoaded", function () {
             entradas.forEach(function (entrada) {
 
 
-                /*
-                 * Si el elemento entra en pantalla:
-                 * agregamos la clase "mostrar".
-                 */
-
                 if (entrada.isIntersecting) {
 
                     entrada.target.classList.add("mostrar");
 
                 }
 
-
-                /*
-                 * Si el elemento sale de pantalla:
-                 * quitamos "mostrar".
-                 *
-                 * Esto es MUY IMPORTANTE porque permite
-                 * que la animación vuelva a ejecutarse
-                 * cuando el usuario sube y vuelve a bajar.
-                 */
 
                 else {
 
@@ -2883,10 +2842,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         {
-            /*
-             * El elemento necesita estar al menos
-             * 15% visible para activar la animación.
-             */
 
             threshold: 0.15
 
@@ -2894,10 +2849,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     );
 
-
-    /*
-     * Activamos el observador para cada elemento.
-     */
 
     elementosAnimados.forEach(function (elemento) {
 
