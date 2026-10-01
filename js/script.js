@@ -1,354 +1,683 @@
 /* =====================================================
    DEPARCHE APP SAS
    SCRIPT PRINCIPAL
-   Compatible con contacto.html
+   Compatible con URLs limpias mediante carpetas
+
+   Estructura:
+
+   /
+   /contacto/
+   /nosotros/
+   /portafolio/
+
+===================================================== */
+
+"use strict";
+
+
+/* =====================================================
+   INICIO
 ===================================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    /* =================================================
-       MENÚ MÓVIL
-    ================================================= */
+    inicializarMenuMovil();
 
-    const menuMobile = document.getElementById("menuMobile");
-    const menuMobileContent = document.getElementById("menuMobileContent");
+    inicializarAnimaciones();
 
-    if (menuMobile && menuMobileContent) {
+    inicializarFormularioContacto();
 
-        menuMobile.addEventListener("click", function () {
+    inicializarEnlacesInternos();
 
-            menuMobileContent.classList.toggle("activo");
-
-            const menuAbierto =
-                menuMobileContent.classList.contains("activo");
-
-            menuMobile.setAttribute(
-                "aria-expanded",
-                menuAbierto
-            );
-
-            menuMobile.setAttribute(
-                "aria-label",
-                menuAbierto
-                    ? "Cerrar menú"
-                    : "Abrir menú"
-            );
-
-            menuMobile.innerHTML =
-                menuAbierto
-                    ? "✕"
-                    : "☰";
-        });
+});
 
 
-        /* =============================================
-           CERRAR MENÚ AL HACER CLIC EN UN ENLACE
-        ============================================= */
+/* =====================================================
+   1. MENÚ MÓVIL
+===================================================== */
 
-        const enlacesMenu =
-            menuMobileContent.querySelectorAll("a");
+function inicializarMenuMovil() {
 
-        enlacesMenu.forEach(function (enlace) {
+    const botonMenu =
+        document.getElementById("menuMobile");
 
-            enlace.addEventListener("click", function () {
-
-                menuMobileContent.classList.remove("activo");
-
-                menuMobile.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-                menuMobile.setAttribute(
-                    "aria-label",
-                    "Abrir menú"
-                );
-
-                menuMobile.innerHTML = "☰";
-            });
-
-        });
+    const menuMovil =
+        document.getElementById("menuMobileContent");
 
 
-        /* =============================================
-           CERRAR MENÚ AL HACER CLIC FUERA
-        ============================================= */
+    /*
+       Si la página no tiene menú móvil,
+       simplemente no hacemos nada.
+    */
 
-        document.addEventListener("click", function (evento) {
-
-            const clicDentroMenu =
-                menuMobileContent.contains(evento.target);
-
-            const clicBoton =
-                menuMobile.contains(evento.target);
-
-            if (
-                !clicDentroMenu &&
-                !clicBoton &&
-                menuMobileContent.classList.contains("activo")
-            ) {
-
-                menuMobileContent.classList.remove("activo");
-
-                menuMobile.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-                menuMobile.setAttribute(
-                    "aria-label",
-                    "Abrir menú"
-                );
-
-                menuMobile.innerHTML = "☰";
-            }
-
-        });
-
+    if (!botonMenu || !menuMovil) {
+        return;
     }
 
 
     /* =================================================
-       FORMULARIO DE CONTACTO
-       WEB3FORMS
+       ABRIR / CERRAR MENÚ
     ================================================= */
 
-    const formulario =
-        document.getElementById("formularioContacto");
+    botonMenu.addEventListener("click", function () {
 
-    const botonEnviar =
-        document.getElementById("botonEnviar");
-
-    const textoBoton =
-        document.getElementById("textoBoton");
-
-    const mensajeFormulario =
-        document.getElementById("mensajeFormulario");
+        const estaAbierto =
+            menuMovil.classList.contains("active");
 
 
-    if (
-        formulario &&
-        botonEnviar &&
-        textoBoton &&
-        mensajeFormulario
-    ) {
+        menuMovil.classList.toggle(
+            "active"
+        );
 
 
-        /* =============================================
-           FUNCIÓN PARA MOSTRAR MENSAJES
-        ============================================= */
+        botonMenu.setAttribute(
+            "aria-expanded",
+            String(!estaAbierto)
+        );
 
-        function mostrarMensaje(texto, tipo) {
 
-            mensajeFormulario.textContent = texto;
+        botonMenu.setAttribute(
+            "aria-label",
+            estaAbierto
+                ? "Abrir menú"
+                : "Cerrar menú"
+        );
 
-            mensajeFormulario.style.color =
-                tipo === "exito"
-                    ? "#3B8D4A"
-                    : "#C0392B";
+
+        /*
+           Cambiamos visualmente el icono
+        */
+
+        botonMenu.textContent =
+            estaAbierto
+                ? "☰"
+                : "✕";
+
+    });
+
+
+    /* =================================================
+       CERRAR AL HACER CLICK EN UN ENLACE
+    ================================================= */
+
+    const enlaces =
+        menuMovil.querySelectorAll("a");
+
+
+    enlaces.forEach(function (enlace) {
+
+        enlace.addEventListener(
+            "click",
+            function () {
+
+                menuMovil.classList.remove(
+                    "active"
+                );
+
+
+                botonMenu.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+
+                botonMenu.setAttribute(
+                    "aria-label",
+                    "Abrir menú"
+                );
+
+
+                botonMenu.textContent = "☰";
+
+            }
+        );
+
+    });
+
+
+    /* =================================================
+       CERRAR AL HACER CLICK FUERA
+    ================================================= */
+
+    document.addEventListener(
+        "click",
+        function (evento) {
+
+            const hizoClickDentroDelMenu =
+                menuMovil.contains(evento.target);
+
+            const hizoClickEnBoton =
+                botonMenu.contains(evento.target);
+
+
+            if (
+                !hizoClickDentroDelMenu &&
+                !hizoClickEnBoton
+            ) {
+
+                menuMovil.classList.remove(
+                    "active"
+                );
+
+
+                botonMenu.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+
+                botonMenu.setAttribute(
+                    "aria-label",
+                    "Abrir menú"
+                );
+
+
+                botonMenu.textContent = "☰";
+
+            }
 
         }
+    );
 
 
-        /* =============================================
-           VALIDACIÓN DEL FORMULARIO
-        ============================================= */
+    /* =================================================
+       ESC PARA CERRAR
+    ================================================= */
 
-        formulario.addEventListener(
-            "submit",
-            async function (evento) {
+    document.addEventListener(
+        "keydown",
+        function (evento) {
 
-                evento.preventDefault();
+            if (
+                evento.key === "Escape" &&
+                menuMovil.classList.contains("active")
+            ) {
 
-
-                /* =========================================
-                   OBTENER CAMPOS
-                ========================================= */
-
-                const nombre =
-                    document.getElementById("nombre");
-
-                const email =
-                    document.getElementById("email");
-
-                const servicio =
-                    document.getElementById("servicio");
+                menuMovil.classList.remove(
+                    "active"
+                );
 
 
-                /* =========================================
-                   LIMPIAR MENSAJE ANTERIOR
-                ========================================= */
+                botonMenu.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
 
-                mensajeFormulario.textContent = "";
+
+                botonMenu.setAttribute(
+                    "aria-label",
+                    "Abrir menú"
+                );
 
 
-                /* =========================================
-                   VALIDAR NOMBRE
-                ========================================= */
+                botonMenu.textContent = "☰";
 
-                if (!nombre.value.trim()) {
+            }
 
-                    mostrarMensaje(
-                        "Por favor, escribe tu nombre.",
-                        "error"
+        }
+    );
+
+}
+
+
+/* =====================================================
+   2. ANIMACIONES AL HACER SCROLL
+===================================================== */
+
+function inicializarAnimaciones() {
+
+    const elementos =
+        document.querySelectorAll(
+            ".animar-scroll, " +
+            ".animar-izquierda, " +
+            ".animar-derecha, " +
+            ".animar-escala"
+        );
+
+
+    /*
+       Si la página no tiene elementos animados,
+       no hacemos nada.
+    */
+
+    if (!elementos.length) {
+        return;
+    }
+
+
+    /* =================================================
+       RESPETAR ACCESIBILIDAD
+    ================================================= */
+
+    const reducirMovimiento =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+
+    if (reducirMovimiento) {
+
+        elementos.forEach(
+            function (elemento) {
+
+                elemento.classList.add(
+                    "visible"
+                );
+
+            }
+        );
+
+        return;
+    }
+
+
+    /* =================================================
+       INTERSECTION OBSERVER
+    ================================================= */
+
+    if (
+        "IntersectionObserver" in window
+    ) {
+
+        const observador =
+            new IntersectionObserver(
+
+                function (entradas) {
+
+                    entradas.forEach(
+                        function (entrada) {
+
+                            if (
+                                entrada.isIntersecting
+                            ) {
+
+                                entrada.target.classList.add(
+                                    "visible"
+                                );
+
+                            }
+
+                        }
                     );
 
-                    nombre.focus();
+                },
 
-                    return;
+                {
+                    threshold: 0.15,
+
+                    rootMargin:
+                        "0px 0px -50px 0px"
+
                 }
 
-
-                /* =========================================
-                   VALIDAR CORREO
-                ========================================= */
-
-                if (!email.value.trim()) {
-
-                    mostrarMensaje(
-                        "Por favor, escribe tu correo electrónico.",
-                        "error"
-                    );
-
-                    email.focus();
-
-                    return;
-                }
+            );
 
 
-                /* =========================================
-                   VALIDAR FORMATO DEL CORREO
-                ========================================= */
+        elementos.forEach(
+            function (elemento) {
 
-                const formatoEmail =
-                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                observador.observe(
+                    elemento
+                );
 
-                if (!formatoEmail.test(email.value.trim())) {
+            }
+        );
 
-                    mostrarMensaje(
-                        "Por favor, escribe un correo electrónico válido.",
-                        "error"
-                    );
+    }
 
-                    email.focus();
+    /*
+       Fallback para navegadores que no
+       soporten IntersectionObserver.
+    */
 
-                    return;
-                }
+    else {
 
+        elementos.forEach(
+            function (elemento) {
 
-                /* =========================================
-                   VALIDAR SERVICIO
-                ========================================= */
+                elemento.classList.add(
+                    "visible"
+                );
 
-                if (!servicio.value) {
+            }
+        );
 
-                    mostrarMensaje(
-                        "Por favor, selecciona un servicio.",
-                        "error"
-                    );
+    }
 
-                    servicio.focus();
-
-                    return;
-                }
+}
 
 
-                /* =========================================
-                   BOTÓN EN ESTADO DE ENVÍO
-                ========================================= */
+/* =====================================================
+   3. FORMULARIO DE CONTACTO
+===================================================== */
+
+function inicializarFormularioContacto() {
+
+    const formulario =
+        document.getElementById(
+            "formularioContacto"
+        );
+
+
+    /*
+       Solo existe en contacto/index.html.
+    */
+
+    if (!formulario) {
+        return;
+    }
+
+
+    const botonEnviar =
+        document.getElementById(
+            "botonEnviar"
+        );
+
+
+    const textoBoton =
+        document.getElementById(
+            "textoBoton"
+        );
+
+
+    const mensajeFormulario =
+        document.getElementById(
+            "mensajeFormulario"
+        );
+
+
+    /* =================================================
+       ENVÍO
+    ================================================= */
+
+    formulario.addEventListener(
+        "submit",
+        async function (evento) {
+
+            evento.preventDefault();
+
+
+            /* =============================================
+               VALIDACIÓN
+            ============================================= */
+
+            const nombre =
+                document.getElementById(
+                    "nombre"
+                );
+
+
+            const email =
+                document.getElementById(
+                    "email"
+                );
+
+
+            const servicio =
+                document.getElementById(
+                    "servicio"
+                );
+
+
+            if (!nombre || !email || !servicio) {
+                return;
+            }
+
+
+            const nombreValor =
+                nombre.value.trim();
+
+
+            const emailValor =
+                email.value.trim();
+
+
+            const servicioValor =
+                servicio.value.trim();
+
+
+            /* =============================================
+               LIMPIAR ESTADO ANTERIOR
+            ============================================= */
+
+            mostrarEstadoFormulario(
+                mensajeFormulario,
+                "",
+                ""
+            );
+
+
+            limpiarErroresFormulario(
+                formulario
+            );
+
+
+            /* =============================================
+               NOMBRE
+            ============================================= */
+
+            if (!nombreValor) {
+
+                mostrarErrorCampo(
+                    nombre,
+                    "Por favor, escribe tu nombre."
+                );
+
+                nombre.focus();
+
+                return;
+
+            }
+
+
+            /* =============================================
+               CORREO
+            ============================================= */
+
+            if (!emailValor) {
+
+                mostrarErrorCampo(
+                    email,
+                    "Por favor, escribe tu correo electrónico."
+                );
+
+                email.focus();
+
+                return;
+
+            }
+
+
+            if (
+                !validarEmail(emailValor)
+            ) {
+
+                mostrarErrorCampo(
+                    email,
+                    "Por favor, escribe un correo electrónico válido."
+                );
+
+                email.focus();
+
+                return;
+
+            }
+
+
+            /* =============================================
+               SERVICIO
+            ============================================= */
+
+            if (!servicioValor) {
+
+                mostrarErrorCampo(
+                    servicio,
+                    "Por favor, selecciona un servicio."
+                );
+
+                servicio.focus();
+
+                return;
+
+            }
+
+
+            /* =============================================
+               BOTÓN CARGANDO
+            ============================================= */
+
+            if (botonEnviar) {
 
                 botonEnviar.disabled = true;
+
+            }
+
+
+            if (textoBoton) {
 
                 textoBoton.textContent =
                     "ENVIANDO...";
 
+            }
+
+
+            mostrarEstadoFormulario(
+                mensajeFormulario,
+                "Estamos enviando tu solicitud...",
+                "cargando"
+            );
+
+
+            /* =============================================
+               DATOS DEL FORMULARIO
+            ============================================= */
+
+            const datos =
+                new FormData(formulario);
+
+
+            /*
+               Web3Forms utiliza esta dirección
+               como endpoint.
+            */
+
+            try {
+
+                const respuesta =
+                    await fetch(
+                        "https://api.web3forms.com/submit",
+                        {
+                            method: "POST",
+                            body: datos
+                        }
+                    );
+
+
+                const resultado =
+                    await respuesta.json();
+
 
                 /* =========================================
-                   PREPARAR DATOS
+                   ENVÍO EXITOSO
                 ========================================= */
 
-                const datos =
-                    new FormData(formulario);
+                if (
+                    respuesta.ok &&
+                    resultado.success
+                ) {
+
+                    mostrarEstadoFormulario(
+                        mensajeFormulario,
+                        "¡Solicitud enviada correctamente! Nos pondremos en contacto contigo.",
+                        "exito"
+                    );
 
 
-                /* =========================================
-                   ENVIAR A WEB3FORMS
-                ========================================= */
-
-                try {
-
-                    const respuesta =
-                        await fetch(
-                            "https://api.web3forms.com/submit",
-                            {
-                                method: "POST",
-                                body: datos
-                            }
-                        );
+                    formulario.reset();
 
 
-                    const resultado =
-                        await respuesta.json();
+                    /*
+                       Después del envío dejamos
+                       el botón disponible nuevamente.
+                    */
 
+                    if (botonEnviar) {
 
-                    /* =====================================
-                       RESPUESTA EXITOSA
-                    ===================================== */
-
-                    if (resultado.success) {
-
-                        mostrarMensaje(
-                            "¡Solicitud enviada correctamente! Nos pondremos en contacto contigo.",
-                            "exito"
-                        );
-
-
-                        textoBoton.textContent =
-                            "SOLICITUD ENVIADA";
-
-
-                        formulario.reset();
-
-
-                        /* =================================
-                           RESTAURAR BOTÓN DESPUÉS
-                        ================================= */
-
-                        setTimeout(function () {
-
-                            botonEnviar.disabled = false;
-
-                            textoBoton.textContent =
-                                "ENVIAR SOLICITUD";
-
-                        }, 5000);
-
-
-                    } else {
-
-                        throw new Error(
-                            resultado.message ||
-                            "No fue posible enviar el formulario."
-                        );
+                        botonEnviar.disabled =
+                            false;
 
                     }
 
 
-                } catch (error) {
+                    if (textoBoton) {
 
-                    console.error(
-                        "Error al enviar formulario:",
-                        error
+                        textoBoton.textContent =
+                            "SOLICITUD ENVIADA";
+
+                    }
+
+
+                    /*
+                       Después de unos segundos
+                       restauramos el texto.
+                    */
+
+                    setTimeout(
+                        function () {
+
+                            if (textoBoton) {
+
+                                textoBoton.textContent =
+                                    "ENVIAR SOLICITUD";
+
+                            }
+
+                        },
+                        4000
                     );
 
+                }
 
-                    mostrarMensaje(
-                        "No pudimos enviar tu solicitud. Por favor, inténtalo nuevamente o escríbenos directamente por correo o WhatsApp.",
-                        "error"
+
+                /* =========================================
+                   ERROR DE WEB3FORMS
+                ========================================= */
+
+                else {
+
+                    throw new Error(
+                        resultado.message ||
+                        "No fue posible enviar el formulario."
                     );
 
+                }
 
-                    botonEnviar.disabled = false;
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Error al enviar formulario:",
+                    error
+                );
+
+
+                mostrarEstadoFormulario(
+                    mensajeFormulario,
+                    "No pudimos enviar tu solicitud. Inténtalo nuevamente o escríbenos directamente por correo o WhatsApp.",
+                    "error"
+                );
+
+
+                if (botonEnviar) {
+
+                    botonEnviar.disabled =
+                        false;
+
+                }
+
+
+                if (textoBoton) {
 
                     textoBoton.textContent =
                         "ENVIAR SOLICITUD";
@@ -356,70 +685,534 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
             }
+
+        }
+    );
+
+
+    /* =================================================
+       VALIDACIÓN EN TIEMPO REAL
+    ================================================= */
+
+    const campos =
+        formulario.querySelectorAll(
+            "input, select, textarea"
+        );
+
+
+    campos.forEach(
+        function (campo) {
+
+            campo.addEventListener(
+                "input",
+                function () {
+
+                    quitarErrorCampo(
+                        campo
+                    );
+
+                }
+            );
+
+
+            campo.addEventListener(
+                "change",
+                function () {
+
+                    quitarErrorCampo(
+                        campo
+                    );
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   4. VALIDAR CORREO
+===================================================== */
+
+function validarEmail(email) {
+
+    const expresion =
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+    return expresion.test(email);
+
+}
+
+
+/* =====================================================
+   5. MOSTRAR ERROR DE CAMPO
+===================================================== */
+
+function mostrarErrorCampo(
+    campo,
+    mensaje
+) {
+
+    if (!campo) {
+        return;
+    }
+
+
+    campo.style.borderColor =
+        "#D9534F";
+
+
+    campo.style.boxShadow =
+        "0 0 0 3px rgba(217, 83, 79, 0.10)";
+
+
+    /*
+       Buscamos un mensaje existente
+       asociado al campo.
+    */
+
+    let mensajeError =
+        campo.parentElement.querySelector(
+            ".mensaje-error-campo"
+        );
+
+
+    /*
+       Si no existe, lo creamos.
+    */
+
+    if (!mensajeError) {
+
+        mensajeError =
+            document.createElement(
+                "small"
+            );
+
+
+        mensajeError.className =
+            "mensaje-error-campo";
+
+
+        mensajeError.style.display =
+            "block";
+
+
+        mensajeError.style.marginTop =
+            "5px";
+
+
+        mensajeError.style.color =
+            "#D9534F";
+
+
+        mensajeError.style.fontSize =
+            "10px";
+
+
+        mensajeError.style.fontWeight =
+            "600";
+
+
+        campo.parentElement.appendChild(
+            mensajeError
         );
 
     }
 
 
-    /* =================================================
-       CERRAR MENÚ AL CAMBIAR A ESCRITORIO
-    ================================================= */
+    mensajeError.textContent =
+        mensaje;
 
-    window.addEventListener("resize", function () {
+}
 
-        if (
-            window.innerWidth > 768 &&
-            menuMobileContent
-        ) {
 
-            menuMobileContent.classList.remove("activo");
+/* =====================================================
+   6. QUITAR ERROR DE CAMPO
+===================================================== */
 
-            if (menuMobile) {
+function quitarErrorCampo(campo) {
 
-                menuMobile.setAttribute(
-                    "aria-expanded",
-                    "false"
+    if (!campo) {
+        return;
+    }
+
+
+    campo.style.borderColor =
+        "";
+
+
+    campo.style.boxShadow =
+        "";
+
+
+    const mensajeError =
+        campo.parentElement.querySelector(
+            ".mensaje-error-campo"
+        );
+
+
+    if (mensajeError) {
+
+        mensajeError.remove();
+
+    }
+
+}
+
+
+/* =====================================================
+   7. LIMPIAR TODOS LOS ERRORES
+===================================================== */
+
+function limpiarErroresFormulario(
+    formulario
+) {
+
+    if (!formulario) {
+        return;
+    }
+
+
+    const campos =
+        formulario.querySelectorAll(
+            "input, select, textarea"
+        );
+
+
+    campos.forEach(
+        function (campo) {
+
+            quitarErrorCampo(
+                campo
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   8. MENSAJE DEL FORMULARIO
+===================================================== */
+
+function mostrarEstadoFormulario(
+    elemento,
+    mensaje,
+    tipo
+) {
+
+    if (!elemento) {
+        return;
+    }
+
+
+    elemento.textContent =
+        mensaje;
+
+
+    /*
+       Limpiamos estilos anteriores
+    */
+
+    elemento.style.color = "";
+
+
+    if (tipo === "exito") {
+
+        elemento.style.color =
+            "#248A4A";
+
+    }
+
+
+    if (tipo === "error") {
+
+        elemento.style.color =
+            "#D9534F";
+
+    }
+
+
+    if (tipo === "cargando") {
+
+        elemento.style.color =
+            "#9032BB";
+
+    }
+
+}
+
+
+/* =====================================================
+   9. ENLACES INTERNOS
+===================================================== */
+
+function inicializarEnlacesInternos() {
+
+    const enlaces =
+        document.querySelectorAll(
+            'a[href^="#"]'
+        );
+
+
+    if (!enlaces.length) {
+        return;
+    }
+
+
+    enlaces.forEach(
+        function (enlace) {
+
+            enlace.addEventListener(
+                "click",
+                function (evento) {
+
+                    const destino =
+                        enlace.getAttribute(
+                            "href"
+                        );
+
+
+                    /*
+                       Si es solamente "#",
+                       no hacemos nada.
+                    */
+
+                    if (
+                        !destino ||
+                        destino === "#"
+                    ) {
+
+                        evento.preventDefault();
+
+                        return;
+
+                    }
+
+
+                    const elemento =
+                        document.querySelector(
+                            destino
+                        );
+
+
+                    /*
+                       Si el elemento existe,
+                       hacemos desplazamiento suave.
+                    */
+
+                    if (elemento) {
+
+                        evento.preventDefault();
+
+
+                        elemento.scrollIntoView(
+                            {
+                                behavior:
+                                    "smooth",
+
+                                block:
+                                    "start"
+                            }
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   10. DETECTAR PÁGINA ACTUAL
+===================================================== */
+
+function obtenerPaginaActual() {
+
+    const ruta =
+        window.location.pathname;
+
+
+    /*
+       Página principal
+    */
+
+    if (
+        ruta === "/" ||
+        ruta === ""
+    ) {
+
+        return "inicio";
+
+    }
+
+
+    /*
+       Contacto
+    */
+
+    if (
+        ruta.startsWith(
+            "/contacto"
+        )
+    ) {
+
+        return "contacto";
+
+    }
+
+
+    /*
+       Nosotros
+    */
+
+    if (
+        ruta.startsWith(
+            "/nosotros"
+        )
+    ) {
+
+        return "nosotros";
+
+    }
+
+
+    /*
+       Portafolio
+    */
+
+    if (
+        ruta.startsWith(
+            "/portafolio"
+        )
+    ) {
+
+        return "portafolio";
+
+    }
+
+
+    return "";
+
+}
+
+
+/* =====================================================
+   11. MARCAR ENLACE ACTIVO
+===================================================== */
+
+function marcarEnlaceActivo() {
+
+    const pagina =
+        obtenerPaginaActual();
+
+
+    if (!pagina) {
+        return;
+    }
+
+
+    const enlaces =
+        document.querySelectorAll(
+            ".menu a, .menu-mobile-content a"
+        );
+
+
+    enlaces.forEach(
+        function (enlace) {
+
+            enlace.classList.remove(
+                "activo"
+            );
+
+
+            const href =
+                enlace.getAttribute(
+                    "href"
                 );
 
-                menuMobile.setAttribute(
-                    "aria-label",
-                    "Abrir menú"
+
+            if (!href) {
+                return;
+            }
+
+
+            let corresponde = false;
+
+
+            if (
+                pagina === "inicio" &&
+                (
+                    href === "/" ||
+                    href === "/#servicios"
+                )
+            ) {
+
+                corresponde =
+                    href === "/";
+
+            }
+
+
+            if (
+                pagina === "contacto" &&
+                href === "/contacto/"
+            ) {
+
+                corresponde = true;
+
+            }
+
+
+            if (
+                pagina === "nosotros" &&
+                href === "/nosotros/"
+            ) {
+
+                corresponde = true;
+
+            }
+
+
+            if (
+                pagina === "portafolio" &&
+                href === "/portafolio/"
+            ) {
+
+                corresponde = true;
+
+            }
+
+
+            if (corresponde) {
+
+                enlace.classList.add(
+                    "activo"
                 );
 
-                menuMobile.innerHTML = "☰";
             }
 
         }
+    );
 
-    });
+}
 
 
-    /* =================================================
-       PROTECCIÓN BÁSICA DEL FORMULARIO
-    ================================================= */
+/* =====================================================
+   12. EJECUTAR ENLACE ACTIVO
+===================================================== */
 
-    if (formulario) {
+marcarEnlaceActivo();
 
-        formulario.addEventListener(
-            "keydown",
-            function (evento) {
 
-                if (
-                    evento.key === "Enter" &&
-                    evento.target.tagName === "INPUT"
-                ) {
-
-                    /*
-                       Permitimos Enter normalmente en
-                       campos de texto, pero evitamos
-                       comportamientos accidentales.
-                    */
-
-                }
-
-            }
-        );
-
-    }
-
-});
+/* =====================================================
+   FIN DEL SCRIPT
+===================================================== */
