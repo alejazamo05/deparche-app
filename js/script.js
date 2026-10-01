@@ -1,240 +1,433 @@
 /* =====================================================
    DEPARCHE APP SAS
-   JAVASCRIPT GENERAL
+   JAVASCRIPT PRINCIPAL - INDEX
+   ESPAÑOL + INGLÉS
 ===================================================== */
 
-
-/* =====================================================
-   ESPERAR A QUE CARGUE EL DOCUMENTO
-===================================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
 
 
-    /* =================================================
+    /* =====================================================
+       IDIOMA ACTUAL
+    ===================================================== */
+
+    const idioma =
+        document.documentElement.lang === "en"
+            ? "en"
+            : "es";
+
+
+    /* =====================================================
+       TEXTOS
+    ===================================================== */
+
+    const textos = {
+
+        es: {
+
+            enviando:
+                "ENVIANDO...",
+
+            enviado:
+                "ENVIADO ✓",
+
+            solicitudEnviada:
+                "¡Solicitud enviada correctamente! Nos pondremos en contacto contigo.",
+
+            errorEnvio:
+                "No pudimos enviar tu solicitud. Inténtalo nuevamente.",
+
+            intentarNuevamente:
+                "INTENTAR NUEVAMENTE",
+
+            noSePudoEnviar:
+                "No se pudo enviar el formulario."
+
+        },
+
+
+        en: {
+
+            enviando:
+                "SENDING...",
+
+            enviado:
+                "SENT ✓",
+
+            solicitudEnviada:
+                "Request sent successfully! We will contact you soon.",
+
+            errorEnvio:
+                "We could not send your request. Please try again.",
+
+            intentarNuevamente:
+                "TRY AGAIN",
+
+            noSePudoEnviar:
+                "The form could not be submitted."
+
+        }
+
+    };
+
+
+    const t = textos[idioma];
+
+
+
+    /* =====================================================
        MENÚ MÓVIL
-    ================================================= */
+    ===================================================== */
 
     const menuMobile =
         document.getElementById("menuMobile");
+
 
     const menuMobileContent =
         document.getElementById("menuMobileContent");
 
 
-    if (menuMobile && menuMobileContent) {
+    if (
+        menuMobile &&
+        menuMobileContent
+    ) {
 
 
-        menuMobile.addEventListener("click", function () {
+        menuMobile.addEventListener(
+            "click",
+            function () {
 
-            const activo =
-                menuMobileContent.classList.toggle("active");
+
+                const activo =
+                    menuMobileContent.classList.toggle(
+                        "active"
+                    );
 
 
-            menuMobile.setAttribute(
-                "aria-expanded",
-                activo ? "true" : "false"
-            );
+                menuMobile.setAttribute(
+                    "aria-expanded",
+                    activo ? "true" : "false"
+                );
 
-        });
+
+            }
+        );
 
 
         const enlacesMenu =
             menuMobileContent.querySelectorAll("a");
 
 
-        enlacesMenu.forEach(function (enlace) {
+        enlacesMenu.forEach(
+            function (enlace) {
 
-            enlace.addEventListener("click", function () {
 
-                menuMobileContent.classList.remove("active");
+                enlace.addEventListener(
+                    "click",
+                    function () {
 
-                menuMobile.setAttribute(
-                    "aria-expanded",
-                    "false"
+
+                        menuMobileContent.classList.remove(
+                            "active"
+                        );
+
+
+                        menuMobile.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+
+                    }
                 );
 
-            });
 
-        });
+            }
+        );
 
-
-        /* BOTÓN HABLEMOS DEL MENÚ MÓVIL */
-
-        const botonContactanosMobile =
-            document.getElementById(
-                "botonContactanosMobile"
-            );
-
-
-        if (botonContactanosMobile) {
-
-            botonContactanosMobile.addEventListener(
-                "click",
-                function () {
-
-                    menuMobileContent.classList.remove(
-                        "active"
-                    );
-
-                    menuMobile.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-
-                    abrirModalContacto();
-
-                }
-            );
-
-        }
 
     }
 
 
 
-    /* =================================================
-       MODAL CONTACTO - NOSOTROS
-    ================================================= */
+    /* =====================================================
+       ELEMENTOS DEL SELECTOR DE CONTACTO
+    ===================================================== */
 
-    const modalContacto =
-        document.getElementById("modalContacto");
-
-
-    const cerrarModalContacto =
-        document.getElementById("cerrarModalContacto");
-
-
-    const botonContactanos =
-        document.getElementById("botonContactanos");
-
-
-    const botonContactanosHeader =
+    const selector =
         document.getElementById(
-            "botonContactanosHeader"
+            "contactoSelectorInicio"
+        );
+
+
+    const botonHero =
+        document.getElementById(
+            "botonHablemosHero"
+        );
+
+
+    const botonContactarnos =
+        document.getElementById(
+            "botonContactarnosInicio"
+        );
+
+
+    const cerrarSelector =
+        document.getElementById(
+            "cerrarSelectorInicio"
+        );
+
+
+    const opcionCorreo =
+        document.getElementById(
+            "opcionCorreoInicio"
         );
 
 
 
-    /* =================================================
-       FUNCIÓN ABRIR MODAL
-    ================================================= */
+    /* =====================================================
+       ELEMENTOS DEL MODAL
+    ===================================================== */
 
-    function abrirModalContacto() {
+    const modal =
+        document.getElementById(
+            "modalInicio"
+        );
 
-        if (!modalContacto) {
+
+    const cerrarModal =
+        document.getElementById(
+            "cerrarModalInicio"
+        );
+
+
+    const formulario =
+        document.getElementById(
+            "formularioContactoInicio"
+        );
+
+
+    const botonEnviar =
+        document.getElementById(
+            "botonEnviarInicio"
+        );
+
+
+    const textoBoton =
+        document.getElementById(
+            "textoBotonInicio"
+        );
+
+
+    const mensajeFormulario =
+        document.getElementById(
+            "mensajeFormularioInicio"
+        );
+
+
+
+    /* =====================================================
+       ABRIR SELECTOR DE CONTACTO
+    ===================================================== */
+
+    function abrirSelectorContacto() {
+
+
+        if (!selector) {
             return;
         }
 
 
-        modalContacto.classList.add("active");
+        selector.classList.add(
+            "active"
+        );
 
-        modalContacto.setAttribute(
+
+        selector.setAttribute(
             "aria-hidden",
             "false"
         );
 
 
-        document.body.style.overflow = "hidden";
+        document.body.style.overflow =
+            "hidden";
 
-
-        const nombre =
-            document.getElementById("nombreNosotros");
-
-
-        if (nombre) {
-
-            setTimeout(function () {
-
-                nombre.focus();
-
-            }, 200);
-
-        }
 
     }
 
 
 
-    /* =================================================
-       FUNCIÓN CERRAR MODAL
-    ================================================= */
+    /* =====================================================
+       CERRAR SELECTOR DE CONTACTO
+    ===================================================== */
 
-    function cerrarModal() {
+    function cerrarSelectorContacto() {
 
-        if (!modalContacto) {
+
+        if (!selector) {
             return;
         }
 
 
-        modalContacto.classList.remove("active");
+        selector.classList.remove(
+            "active"
+        );
 
-        modalContacto.setAttribute(
+
+        selector.setAttribute(
             "aria-hidden",
             "true"
         );
 
 
-        document.body.style.overflow = "";
+        if (
+            !modal ||
+            !modal.classList.contains("active")
+        ) {
 
-
-        const formularioNosotros =
-            document.getElementById(
-                "formularioContactoNosotros"
-            );
-
-
-        if (formularioNosotros) {
-
-            formularioNosotros.reset();
+            document.body.style.overflow =
+                "";
 
         }
 
 
-        const mensaje =
+    }
+
+
+
+    /* =====================================================
+       ABRIR MODAL DE CONTACTO
+    ===================================================== */
+
+    function abrirModalInicio() {
+
+
+        cerrarSelectorContacto();
+
+
+        if (!modal) {
+            return;
+        }
+
+
+        modal.classList.add(
+            "active"
+        );
+
+
+        modal.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+
+        document.body.style.overflow =
+            "hidden";
+
+
+        const nombre =
             document.getElementById(
-                "mensajeFormularioNosotros"
+                "nombreInicio"
             );
 
 
-        if (mensaje) {
+        if (nombre) {
 
-            mensaje.textContent = "";
+            setTimeout(
+                function () {
 
-            mensaje.style.color = "";
+                    nombre.focus();
+
+                },
+                200
+            );
 
         }
 
 
-        const textoBoton =
-            document.getElementById(
-                "textoBotonNosotros"
-            );
+    }
+
+
+
+    /* =====================================================
+       CERRAR MODAL DE CONTACTO
+    ===================================================== */
+
+    function cerrarModalInicio() {
+
+
+        if (!modal) {
+            return;
+        }
+
+
+        modal.classList.remove(
+            "active"
+        );
+
+
+        modal.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+
+        document.body.style.overflow =
+            "";
+
+
+        if (formulario) {
+
+            formulario.reset();
+
+        }
+
+
+        if (mensajeFormulario) {
+
+            mensajeFormulario.textContent =
+                "";
+
+            mensajeFormulario.style.color =
+                "";
+
+        }
 
 
         if (textoBoton) {
 
             textoBoton.textContent =
-                "ENVIAR SOLICITUD";
+                idioma === "en"
+                    ? "SEND REQUEST"
+                    : "ENVIAR SOLICITUD";
 
         }
 
+
+        if (botonEnviar) {
+
+            botonEnviar.disabled =
+                false;
+
+        }
+
+
     }
 
 
 
-    /* =================================================
-       BOTÓN CONTACTANOS DEL CTA
-    ================================================= */
+    /* =====================================================
+       BOTÓN HABLEMOS DEL HERO
+    ===================================================== */
 
-    if (botonContactanos) {
+    if (botonHero) {
 
-        botonContactanos.addEventListener(
+        botonHero.addEventListener(
             "click",
             function () {
 
-                abrirModalContacto();
+                abrirSelectorContacto();
 
             }
         );
@@ -243,17 +436,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    /* =================================================
-       BOTÓN HABLEMOS DEL HEADER
-    ================================================= */
+    /* =====================================================
+       BOTÓN CONTACTARNOS DEL CTA
+    ===================================================== */
 
-    if (botonContactanosHeader) {
+    if (botonContactarnos) {
 
-        botonContactanosHeader.addEventListener(
+        botonContactarnos.addEventListener(
             "click",
             function () {
 
-                abrirModalContacto();
+                abrirSelectorContacto();
 
             }
         );
@@ -262,17 +455,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    /* =================================================
-       BOTÓN CERRAR
-    ================================================= */
+    /* =====================================================
+       OPCIÓN CORREO
+    ===================================================== */
 
-    if (cerrarModalContacto) {
+    if (opcionCorreo) {
 
-        cerrarModalContacto.addEventListener(
+        opcionCorreo.addEventListener(
             "click",
             function () {
 
-                cerrarModal();
+                abrirModalInicio();
 
             }
         );
@@ -281,23 +474,63 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    /* =================================================
-       CERRAR AL HACER CLICK FUERA
-    ================================================= */
+    /* =====================================================
+       CERRAR SELECTOR
+    ===================================================== */
 
-    if (modalContacto) {
+    if (cerrarSelector) {
 
-        modalContacto.addEventListener(
+        cerrarSelector.addEventListener(
+            "click",
+            function () {
+
+                cerrarSelectorContacto();
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       CERRAR MODAL
+    ===================================================== */
+
+    if (cerrarModal) {
+
+        cerrarModal.addEventListener(
+            "click",
+            function () {
+
+                cerrarModalInicio();
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       CERRAR SELECTOR AL HACER CLICK FUERA
+    ===================================================== */
+
+    if (selector) {
+
+        selector.addEventListener(
             "click",
             function (event) {
 
+
                 if (
-                    event.target === modalContacto
+                    event.target === selector
                 ) {
 
-                    cerrarModal();
+                    cerrarSelectorContacto();
 
                 }
+
 
             }
         );
@@ -306,321 +539,516 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    /* =================================================
+    /* =====================================================
+       CERRAR MODAL AL HACER CLICK FUERA
+    ===================================================== */
+
+    if (modal) {
+
+        modal.addEventListener(
+            "click",
+            function (event) {
+
+
+                if (
+                    event.target === modal
+                ) {
+
+                    cerrarModalInicio();
+
+                }
+
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
        CERRAR CON ESC
-    ================================================= */
+    ===================================================== */
 
     document.addEventListener(
         "keydown",
         function (event) {
 
+
             if (
-                event.key === "Escape" &&
-                modalContacto &&
-                modalContacto.classList.contains("active")
+                event.key !== "Escape"
             ) {
 
-                cerrarModal();
+                return;
 
             }
+
+
+            if (
+                modal &&
+                modal.classList.contains("active")
+            ) {
+
+                cerrarModalInicio();
+
+                return;
+
+            }
+
+
+            if (
+                selector &&
+                selector.classList.contains("active")
+            ) {
+
+                cerrarSelectorContacto();
+
+            }
+
 
         }
     );
 
 
 
-    /* =================================================
-       FUNCIÓN GENERAL PARA WEB3FORMS
-    ================================================= */
+    /* =====================================================
+       ENVÍO DEL FORMULARIO - WEB3FORMS
+    ===================================================== */
 
-    async function enviarFormularioWeb3Forms(
-        formulario,
-        mensajeEstado,
-        textoBoton
+    if (formulario) {
+
+
+        formulario.addEventListener(
+            "submit",
+            async function (event) {
+
+
+                event.preventDefault();
+
+
+                if (
+                    !botonEnviar ||
+                    !textoBoton ||
+                    !mensajeFormulario
+                ) {
+
+                    return;
+
+                }
+
+
+                /* -----------------------------------------
+                   DESACTIVAR BOTÓN
+                ----------------------------------------- */
+
+                botonEnviar.disabled =
+                    true;
+
+
+                textoBoton.textContent =
+                    t.enviando;
+
+
+                mensajeFormulario.textContent =
+                    "";
+
+
+                mensajeFormulario.style.color =
+                    "";
+
+
+
+                try {
+
+
+                    /* -------------------------------------
+                       CREAR DATOS DEL FORMULARIO
+                    ------------------------------------- */
+
+                    const formData =
+                        new FormData(
+                            formulario
+                        );
+
+
+
+                    /* -------------------------------------
+                       ENVIAR A WEB3FORMS
+                    ------------------------------------- */
+
+                    const response =
+                        await fetch(
+                            "https://api.web3forms.com/submit",
+                            {
+                                method: "POST",
+                                body: formData
+                            }
+                        );
+
+
+
+                    /* -------------------------------------
+                       VERIFICAR RESPUESTA
+                    ------------------------------------- */
+
+                    if (
+                        !response.ok
+                    ) {
+
+                        throw new Error(
+                            "Error HTTP: " +
+                            response.status
+                        );
+
+                    }
+
+
+
+                    const data =
+                        await response.json();
+
+
+
+                    /* -------------------------------------
+                       FORMULARIO ENVIADO
+                    ------------------------------------- */
+
+                    if (
+                        data.success
+                    ) {
+
+
+                        mensajeFormulario.textContent =
+                            t.solicitudEnviada;
+
+
+                        mensajeFormulario.style.color =
+                            "#238636";
+
+
+                        textoBoton.textContent =
+                            t.enviado;
+
+
+                        formulario.reset();
+
+
+
+                        /* -----------------------------
+                           CERRAR MODAL
+                        ----------------------------- */
+
+                        setTimeout(
+                            function () {
+
+                                cerrarModalInicio();
+
+                            },
+                            3000
+                        );
+
+
+                    }
+
+
+                    /* -------------------------------------
+                       ERROR REPORTADO POR WEB3FORMS
+                    ------------------------------------- */
+
+                    else {
+
+
+                        throw new Error(
+                            data.message ||
+                            t.noSePudoEnviar
+                        );
+
+
+                    }
+
+
+                } catch (error) {
+
+
+                    console.error(
+                        "Error Web3Forms:",
+                        error
+                    );
+
+
+                    mensajeFormulario.textContent =
+                        t.errorEnvio;
+
+
+                    mensajeFormulario.style.color =
+                        "#c62828";
+
+
+                    textoBoton.textContent =
+                        t.intentarNuevamente;
+
+
+                } finally {
+
+
+                    botonEnviar.disabled =
+                        false;
+
+
+                }
+
+
+            }
+        );
+
+
+    }
+
+
+
+    /* =====================================================
+       ANIMACIONES DE APARICIÓN AL HACER SCROLL
+    ===================================================== */
+
+    const elementosReveal =
+        document.querySelectorAll(
+            ".scroll-reveal, " +
+            ".scroll-reveal-left, " +
+            ".scroll-reveal-right, " +
+            ".scroll-scale"
+        );
+
+
+
+    if (
+        elementosReveal.length > 0
     ) {
 
 
-        const boton =
-            formulario.querySelector(
-                'button[type="submit"]'
-            );
+        /* -----------------------------------------
+           NAVEGADORES CON INTERSECTION OBSERVER
+        ----------------------------------------- */
+
+        if (
+            "IntersectionObserver" in window
+        ) {
 
 
-        try {
+            const observer =
+                new IntersectionObserver(
+                    function (
+                        entries
+                    ) {
 
 
-            if (boton) {
-
-                boton.disabled = true;
-
-            }
-
-
-            if (textoBoton) {
-
-                textoBoton.textContent =
-                    "ENVIANDO...";
-
-            }
+                        entries.forEach(
+                            function (
+                                entry
+                            ) {
 
 
-            if (mensajeEstado) {
-
-                mensajeEstado.textContent = "";
-
-                mensajeEstado.style.color = "";
-
-            }
+                                if (
+                                    entry.isIntersecting
+                                ) {
 
 
-            const formData =
-                new FormData(formulario);
+                                    entry.target.classList.add(
+                                        "visible"
+                                    );
 
 
-            const response =
-                await fetch(
-                    "https://api.web3forms.com/submit",
+                                    observer.unobserve(
+                                        entry.target
+                                    );
+
+
+                                }
+
+
+                            }
+                        );
+
+
+                    },
                     {
-                        method: "POST",
-                        body: formData
+                        threshold: 0.12,
+
+                        rootMargin:
+                            "0px 0px -50px 0px"
                     }
                 );
 
 
-            const data =
-                await response.json();
+
+            elementosReveal.forEach(
+                function (
+                    elemento
+                ) {
 
 
-            if (data.success) {
+                    observer.observe(
+                        elemento
+                    );
 
-
-                if (mensajeEstado) {
-
-                    mensajeEstado.textContent =
-                        "¡Solicitud enviada correctamente! Nos pondremos en contacto contigo.";
-
-                    mensajeEstado.style.color =
-                        "#238636";
 
                 }
-
-
-                if (textoBoton) {
-
-                    textoBoton.textContent =
-                        "ENVIADO ✓";
-
-                }
-
-
-                formulario.reset();
-
-
-                return true;
-
-            }
-
-
-            throw new Error(
-                data.message ||
-                "No se pudo enviar el formulario."
             );
 
-
-        } catch (error) {
-
-
-            console.error(
-                "Error Web3Forms:",
-                error
-            );
-
-
-            if (mensajeEstado) {
-
-                mensajeEstado.textContent =
-                    "No pudimos enviar tu solicitud. Inténtalo nuevamente.";
-
-                mensajeEstado.style.color =
-                    "#c62828";
-
-            }
-
-
-            if (textoBoton) {
-
-                textoBoton.textContent =
-                    "INTENTAR NUEVAMENTE";
-
-            }
-
-
-            return false;
-
-
-        } finally {
-
-
-            if (boton) {
-
-                boton.disabled = false;
-
-            }
 
         }
 
+
+        /* -----------------------------------------
+           NAVEGADORES SIN INTERSECTION OBSERVER
+        ----------------------------------------- */
+
+        else {
+
+
+            elementosReveal.forEach(
+                function (
+                    elemento
+                ) {
+
+
+                    elemento.classList.add(
+                        "visible"
+                    );
+
+
+                }
+            );
+
+
+        }
+
+
     }
 
 
 
-    /* =================================================
-       FORMULARIO DE CONTACTO.HTML
-    ================================================= */
+    /* =====================================================
+       COOKIES
+    ===================================================== */
 
-    const formularioContacto =
+    const cookieBanner =
         document.getElementById(
-            "formularioContacto"
+            "cookieBanner"
         );
 
 
-    if (formularioContacto) {
+    const aceptarCookies =
+        document.getElementById(
+            "aceptarCookies"
+        );
 
 
-        formularioContacto.addEventListener(
-            "submit",
-            async function (event) {
-
-                event.preventDefault();
-
-
-                const mensajeEstado =
-                    document.getElementById(
-                        "mensajeFormulario"
-                    );
+    const cookiesAceptadas =
+        localStorage.getItem(
+            "deparcheCookiesAceptadas"
+        );
 
 
-                const textoBoton =
-                    document.getElementById(
-                        "textoBoton"
-                    );
+
+    /* =====================================================
+       COMPROBAR SI YA ACEPTÓ
+    ===================================================== */
+
+    if (
+        cookiesAceptadas === "true"
+    ) {
 
 
-                const enviado =
-                    await enviarFormularioWeb3Forms(
-                        formularioContacto,
-                        mensajeEstado,
-                        textoBoton
-                    );
+        if (cookieBanner) {
+
+            cookieBanner.classList.add(
+                "oculto"
+            );
+
+        }
 
 
-                if (enviado) {
+    }
 
-                    setTimeout(
-                        function () {
 
-                            if (mensajeEstado) {
 
-                                mensajeEstado.textContent =
-                                    "¡Gracias por contactarnos!";
+    /* =====================================================
+       BOTÓN ACEPTAR COOKIES
+    ===================================================== */
 
-                            }
+    if (aceptarCookies) {
 
-                        },
-                        3000
+
+        aceptarCookies.addEventListener(
+            "click",
+            function () {
+
+
+                localStorage.setItem(
+                    "deparcheCookiesAceptadas",
+                    "true"
+                );
+
+
+                if (cookieBanner) {
+
+                    cookieBanner.classList.add(
+                        "oculto"
                     );
 
                 }
 
+
             }
         );
+
 
     }
 
 
 
-    /* =================================================
-       FORMULARIO EMERGENTE DE NOSOTROS.HTML
-    ================================================= */
+    /* =====================================================
+       PREVENIR SCROLL DEL BODY CON MODALES ABIERTOS
+       AL CAMBIAR DE TAMAÑO DE PANTALLA
+    ===================================================== */
 
-    const formularioNosotros =
-        document.getElementById(
-            "formularioContactoNosotros"
-        );
-
-
-    if (formularioNosotros) {
+    window.addEventListener(
+        "resize",
+        function () {
 
 
-        formularioNosotros.addEventListener(
-            "submit",
-            async function (event) {
-
-                event.preventDefault();
-
-
-                const mensajeEstado =
-                    document.getElementById(
-                        "mensajeFormularioNosotros"
-                    );
+            const selectorActivo =
+                selector &&
+                selector.classList.contains(
+                    "active"
+                );
 
 
-                const textoBoton =
-                    document.getElementById(
-                        "textoBotonNosotros"
-                    );
+            const modalActivo =
+                modal &&
+                modal.classList.contains(
+                    "active"
+                );
 
 
-                const enviado =
-                    await enviarFormularioWeb3Forms(
-                        formularioNosotros,
-                        mensajeEstado,
-                        textoBoton
-                    );
+            if (
+                selectorActivo ||
+                modalActivo
+            ) {
 
-
-                if (enviado) {
-
-
-                    setTimeout(
-                        function () {
-
-                            cerrarModal();
-
-                        },
-                        2500
-                    );
-
-                }
+                document.body.style.overflow =
+                    "hidden";
 
             }
-        );
 
-    }
-
-
-
-    /* =================================================
-       ENLACES INTERNOS DE CONTACTO
-    ================================================= */
-
-    const enlacesContacto =
-        document.querySelectorAll(
-            'a[href="contacto.html"]'
-        );
-
-
-    enlacesContacto.forEach(
-        function (enlace) {
-
-            /*
-             * Los enlaces normales siguen llevando
-             * a contacto.html.
-             *
-             * No se modifica su comportamiento.
-             */
 
         }
     );
 
+
+
+    /* =====================================================
+       FIN
+    ===================================================== */
 
 });
