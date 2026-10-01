@@ -1,4 +1,3 @@
-```javascript
 /* =====================================================
    DEPARCHE APP SAS
    SCRIPT PRINCIPAL
@@ -424,4 +423,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
-```
