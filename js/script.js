@@ -1,9 +1,15 @@
 /* =====================================================
    DEPARCHE APP SAS
-   SCRIPT.JS
+   JAVASCRIPT GENERAL
+===================================================== */
+
+
+/* =====================================================
+   ESPERAR A QUE CARGUE EL DOCUMENTO
 ===================================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
+
 
     /* =================================================
        MENÚ MÓVIL
@@ -18,9 +24,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (menuMobile && menuMobileContent) {
 
+
         menuMobile.addEventListener("click", function () {
 
-            menuMobileContent.classList.toggle("active");
+            const activo =
+                menuMobileContent.classList.toggle("active");
+
+
+            menuMobile.setAttribute(
+                "aria-expanded",
+                activo ? "true" : "false"
+            );
 
         });
 
@@ -35,244 +49,578 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 menuMobileContent.classList.remove("active");
 
+                menuMobile.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
             });
 
         });
 
+
+        /* BOTÓN HABLEMOS DEL MENÚ MÓVIL */
+
+        const botonContactanosMobile =
+            document.getElementById(
+                "botonContactanosMobile"
+            );
+
+
+        if (botonContactanosMobile) {
+
+            botonContactanosMobile.addEventListener(
+                "click",
+                function () {
+
+                    menuMobileContent.classList.remove(
+                        "active"
+                    );
+
+                    menuMobile.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+
+                    abrirModalContacto();
+
+                }
+            );
+
+        }
+
     }
 
 
+
     /* =================================================
-       ANIMACIONES
+       MODAL CONTACTO - NOSOTROS
     ================================================= */
 
-    const elementos =
-        document.querySelectorAll(
-            ".animar-scroll, .animar-izquierda, .animar-derecha, .animar-escala"
+    const modalContacto =
+        document.getElementById("modalContacto");
+
+
+    const cerrarModalContacto =
+        document.getElementById("cerrarModalContacto");
+
+
+    const botonContactanos =
+        document.getElementById("botonContactanos");
+
+
+    const botonContactanosHeader =
+        document.getElementById(
+            "botonContactanosHeader"
         );
 
 
-    if ("IntersectionObserver" in window) {
-
-        const observador =
-            new IntersectionObserver(function (entradas) {
-
-                entradas.forEach(function (entrada) {
-
-                    if (entrada.isIntersecting) {
-
-                        entrada.target.classList.add("visible");
-
-                    }
-
-                });
-
-            }, {
-                threshold: 0.15
-            });
-
-
-        elementos.forEach(function (elemento) {
-
-            observador.observe(elemento);
-
-        });
-
-    } else {
-
-        elementos.forEach(function (elemento) {
-
-            elemento.classList.add("visible");
-
-        });
-
-    }
-
 
     /* =================================================
-       FORMULARIO CONTACTO
+       FUNCIÓN ABRIR MODAL
     ================================================= */
 
-    const formulario =
-        document.getElementById("formularioContacto");
+    function abrirModalContacto() {
+
+        if (!modalContacto) {
+            return;
+        }
 
 
-    if (!formulario) {
-        return;
-    }
+        modalContacto.classList.add("active");
+
+        modalContacto.setAttribute(
+            "aria-hidden",
+            "false"
+        );
 
 
-    const boton =
-        document.getElementById("botonEnviar");
-
-    const textoBoton =
-        document.getElementById("textoBoton");
-
-    const mensaje =
-        document.getElementById("mensajeFormulario");
-
-
-    formulario.addEventListener("submit", async function (evento) {
-
-        evento.preventDefault();
+        document.body.style.overflow = "hidden";
 
 
         const nombre =
-            document.getElementById("nombre");
-
-        const email =
-            document.getElementById("email");
-
-        const servicio =
-            document.getElementById("servicio");
+            document.getElementById("nombreNosotros");
 
 
-        /* VALIDACIÓN */
+        if (nombre) {
 
-        if (!nombre.value.trim()) {
+            setTimeout(function () {
 
-            mensaje.textContent =
-                "Por favor, escribe tu nombre.";
+                nombre.focus();
 
-            mensaje.style.color =
-                "#D9534F";
+            }, 200);
 
-            nombre.focus();
+        }
 
+    }
+
+
+
+    /* =================================================
+       FUNCIÓN CERRAR MODAL
+    ================================================= */
+
+    function cerrarModal() {
+
+        if (!modalContacto) {
             return;
+        }
+
+
+        modalContacto.classList.remove("active");
+
+        modalContacto.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+
+        document.body.style.overflow = "";
+
+
+        const formularioNosotros =
+            document.getElementById(
+                "formularioContactoNosotros"
+            );
+
+
+        if (formularioNosotros) {
+
+            formularioNosotros.reset();
 
         }
 
 
-        if (!email.value.trim()) {
-
-            mensaje.textContent =
-                "Por favor, escribe tu correo.";
-
-            mensaje.style.color =
-                "#D9534F";
-
-            email.focus();
-
-            return;
-
-        }
+        const mensaje =
+            document.getElementById(
+                "mensajeFormularioNosotros"
+            );
 
 
-        if (
-            !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
-                email.value.trim()
-            )
-        ) {
+        if (mensaje) {
 
-            mensaje.textContent =
-                "Escribe un correo electrónico válido.";
+            mensaje.textContent = "";
 
-            mensaje.style.color =
-                "#D9534F";
-
-            email.focus();
-
-            return;
+            mensaje.style.color = "";
 
         }
 
 
-        if (!servicio.value) {
-
-            mensaje.textContent =
-                "Selecciona un servicio.";
-
-            mensaje.style.color =
-                "#D9534F";
-
-            servicio.focus();
-
-            return;
-
-        }
+        const textoBoton =
+            document.getElementById(
+                "textoBotonNosotros"
+            );
 
 
-        /* ENVIANDO */
-
-        boton.disabled = true;
-
-        textoBoton.textContent =
-            "ENVIANDO...";
-
-        mensaje.textContent =
-            "Enviando tu solicitud...";
-
-        mensaje.style.color =
-            "#9032BB";
-
-
-        try {
-
-            const respuesta =
-                await fetch(
-                    "https://api.web3forms.com/submit",
-                    {
-                        method: "POST",
-                        body: new FormData(formulario)
-                    }
-                );
-
-
-            const resultado =
-                await respuesta.json();
-
-
-            if (resultado.success) {
-
-                formulario.reset();
-
-                mensaje.textContent =
-                    "¡Solicitud enviada correctamente! Nos pondremos en contacto contigo.";
-
-                mensaje.style.color =
-                    "#248A4A";
-
-                textoBoton.textContent =
-                    "SOLICITUD ENVIADA";
-
-
-                setTimeout(function () {
-
-                    boton.disabled = false;
-
-                    textoBoton.textContent =
-                        "ENVIAR SOLICITUD";
-
-                    mensaje.textContent = "";
-
-                }, 4000);
-
-
-            } else {
-
-                throw new Error();
-
-            }
-
-
-        } catch (error) {
-
-            console.error(error);
-
-            mensaje.textContent =
-                "No pudimos enviar la solicitud. Inténtalo nuevamente.";
-
-            mensaje.style.color =
-                "#D9534F";
-
-            boton.disabled = false;
+        if (textoBoton) {
 
             textoBoton.textContent =
                 "ENVIAR SOLICITUD";
 
         }
 
-    });
+    }
+
+
+
+    /* =================================================
+       BOTÓN CONTACTANOS DEL CTA
+    ================================================= */
+
+    if (botonContactanos) {
+
+        botonContactanos.addEventListener(
+            "click",
+            function () {
+
+                abrirModalContacto();
+
+            }
+        );
+
+    }
+
+
+
+    /* =================================================
+       BOTÓN HABLEMOS DEL HEADER
+    ================================================= */
+
+    if (botonContactanosHeader) {
+
+        botonContactanosHeader.addEventListener(
+            "click",
+            function () {
+
+                abrirModalContacto();
+
+            }
+        );
+
+    }
+
+
+
+    /* =================================================
+       BOTÓN CERRAR
+    ================================================= */
+
+    if (cerrarModalContacto) {
+
+        cerrarModalContacto.addEventListener(
+            "click",
+            function () {
+
+                cerrarModal();
+
+            }
+        );
+
+    }
+
+
+
+    /* =================================================
+       CERRAR AL HACER CLICK FUERA
+    ================================================= */
+
+    if (modalContacto) {
+
+        modalContacto.addEventListener(
+            "click",
+            function (event) {
+
+                if (
+                    event.target === modalContacto
+                ) {
+
+                    cerrarModal();
+
+                }
+
+            }
+        );
+
+    }
+
+
+
+    /* =================================================
+       CERRAR CON ESC
+    ================================================= */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape" &&
+                modalContacto &&
+                modalContacto.classList.contains("active")
+            ) {
+
+                cerrarModal();
+
+            }
+
+        }
+    );
+
+
+
+    /* =================================================
+       FUNCIÓN GENERAL PARA WEB3FORMS
+    ================================================= */
+
+    async function enviarFormularioWeb3Forms(
+        formulario,
+        mensajeEstado,
+        textoBoton
+    ) {
+
+
+        const boton =
+            formulario.querySelector(
+                'button[type="submit"]'
+            );
+
+
+        try {
+
+
+            if (boton) {
+
+                boton.disabled = true;
+
+            }
+
+
+            if (textoBoton) {
+
+                textoBoton.textContent =
+                    "ENVIANDO...";
+
+            }
+
+
+            if (mensajeEstado) {
+
+                mensajeEstado.textContent = "";
+
+                mensajeEstado.style.color = "";
+
+            }
+
+
+            const formData =
+                new FormData(formulario);
+
+
+            const response =
+                await fetch(
+                    "https://api.web3forms.com/submit",
+                    {
+                        method: "POST",
+                        body: formData
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if (data.success) {
+
+
+                if (mensajeEstado) {
+
+                    mensajeEstado.textContent =
+                        "¡Solicitud enviada correctamente! Nos pondremos en contacto contigo.";
+
+                    mensajeEstado.style.color =
+                        "#238636";
+
+                }
+
+
+                if (textoBoton) {
+
+                    textoBoton.textContent =
+                        "ENVIADO ✓";
+
+                }
+
+
+                formulario.reset();
+
+
+                return true;
+
+            }
+
+
+            throw new Error(
+                data.message ||
+                "No se pudo enviar el formulario."
+            );
+
+
+        } catch (error) {
+
+
+            console.error(
+                "Error Web3Forms:",
+                error
+            );
+
+
+            if (mensajeEstado) {
+
+                mensajeEstado.textContent =
+                    "No pudimos enviar tu solicitud. Inténtalo nuevamente.";
+
+                mensajeEstado.style.color =
+                    "#c62828";
+
+            }
+
+
+            if (textoBoton) {
+
+                textoBoton.textContent =
+                    "INTENTAR NUEVAMENTE";
+
+            }
+
+
+            return false;
+
+
+        } finally {
+
+
+            if (boton) {
+
+                boton.disabled = false;
+
+            }
+
+        }
+
+    }
+
+
+
+    /* =================================================
+       FORMULARIO DE CONTACTO.HTML
+    ================================================= */
+
+    const formularioContacto =
+        document.getElementById(
+            "formularioContacto"
+        );
+
+
+    if (formularioContacto) {
+
+
+        formularioContacto.addEventListener(
+            "submit",
+            async function (event) {
+
+                event.preventDefault();
+
+
+                const mensajeEstado =
+                    document.getElementById(
+                        "mensajeFormulario"
+                    );
+
+
+                const textoBoton =
+                    document.getElementById(
+                        "textoBoton"
+                    );
+
+
+                const enviado =
+                    await enviarFormularioWeb3Forms(
+                        formularioContacto,
+                        mensajeEstado,
+                        textoBoton
+                    );
+
+
+                if (enviado) {
+
+                    setTimeout(
+                        function () {
+
+                            if (mensajeEstado) {
+
+                                mensajeEstado.textContent =
+                                    "¡Gracias por contactarnos!";
+
+                            }
+
+                        },
+                        3000
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+
+    /* =================================================
+       FORMULARIO EMERGENTE DE NOSOTROS.HTML
+    ================================================= */
+
+    const formularioNosotros =
+        document.getElementById(
+            "formularioContactoNosotros"
+        );
+
+
+    if (formularioNosotros) {
+
+
+        formularioNosotros.addEventListener(
+            "submit",
+            async function (event) {
+
+                event.preventDefault();
+
+
+                const mensajeEstado =
+                    document.getElementById(
+                        "mensajeFormularioNosotros"
+                    );
+
+
+                const textoBoton =
+                    document.getElementById(
+                        "textoBotonNosotros"
+                    );
+
+
+                const enviado =
+                    await enviarFormularioWeb3Forms(
+                        formularioNosotros,
+                        mensajeEstado,
+                        textoBoton
+                    );
+
+
+                if (enviado) {
+
+
+                    setTimeout(
+                        function () {
+
+                            cerrarModal();
+
+                        },
+                        2500
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+
+    /* =================================================
+       ENLACES INTERNOS DE CONTACTO
+    ================================================= */
+
+    const enlacesContacto =
+        document.querySelectorAll(
+            'a[href="contacto.html"]'
+        );
+
+
+    enlacesContacto.forEach(
+        function (enlace) {
+
+            /*
+             * Los enlaces normales siguen llevando
+             * a contacto.html.
+             *
+             * No se modifica su comportamiento.
+             */
+
+        }
+    );
+
 
 });
