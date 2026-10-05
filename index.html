@@ -20,45 +20,6 @@
 
 
 <!-- =====================================================
-     GOOGLE ANALYTICS 4
-===================================================== -->
-
-<!--
-    REEMPLAZA G-TU_ID_AQUI POR TU ID REAL DE GOOGLE ANALYTICS.
-
-    Ejemplo:
-    G-ABC1234567
--->
-
-<script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=G-TU_ID_AQUI"
-></script>
-
-<script>
-
-window.dataLayer = window.dataLayer || [];
-
-function gtag() {
-
-    dataLayer.push(arguments);
-
-}
-
-gtag(
-    "js",
-    new Date()
-);
-
-gtag(
-    "config",
-    "G-TU_ID_AQUI"
-);
-
-</script>
-
-
-<!-- =====================================================
      FAVICON
 ===================================================== -->
 
@@ -74,14 +35,9 @@ gtag(
 >
 
 
-<!-- =====================================================
-     FUENTE
-===================================================== -->
+<!-- FUENTE -->
 
-<link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
->
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
 <link
     rel="preconnect"
@@ -95,9 +51,7 @@ gtag(
 >
 
 
-<!-- =====================================================
-     ICONOS
-===================================================== -->
+<!-- ICONOS -->
 
 <link
     rel="stylesheet"
@@ -105,9 +59,7 @@ gtag(
 >
 
 
-<!-- =====================================================
-     ESTILOS
-===================================================== -->
+<!-- ESTILOS -->
 
 <link
     rel="stylesheet"
@@ -2811,28 +2763,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         throw new Error(
                             data.message ||
                             "No se pudo enviar el formulario."
-                        );
-
-                    }
-
-
-                    /*
-                     * EVENTO DE GOOGLE ANALYTICS
-                     * Se registra cuando el formulario
-                     * se envía correctamente.
-                     */
-
-                    if (
-                        typeof gtag === "function"
-                    ) {
-
-                        gtag(
-                            "event",
-                            "generate_lead",
-                            {
-                                event_category: "Formulario",
-                                event_label: "Formulario de contacto - Inicio"
-                            }
                         );
 
                     }
