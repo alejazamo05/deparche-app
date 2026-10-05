@@ -64,6 +64,45 @@
 
 
     <!-- =====================================================
+         GOOGLE ANALYTICS 4
+    ====================================================== -->
+
+    <!--
+        REEMPLAZA G-XXXXXXXXXX POR TU ID REAL DE GOOGLE ANALYTICS.
+
+        Ejemplo:
+        G-ABC1234567
+    -->
+
+    <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+    ></script>
+
+    <script>
+
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+
+            dataLayer.push(arguments);
+
+        }
+
+        gtag(
+            'js',
+            new Date()
+        );
+
+        gtag(
+            'config',
+            'G-XXXXXXXXXX'
+        );
+
+    </script>
+
+
+    <!-- =====================================================
          ESTILOS PRINCIPALES
     ====================================================== -->
 
@@ -2892,3 +2931,4 @@ document.addEventListener("DOMContentLoaded", function () {
 </body>
 
 </html>
+
