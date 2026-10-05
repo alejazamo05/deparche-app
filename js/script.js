@@ -1,4 +1,3 @@
-```javascript
 /* =====================================================
    DEPARCHE APP SAS
    JAVASCRIPT GENERAL
@@ -673,4 +672,4 @@ document.addEventListener("DOMContentLoaded", function () {
      */
 
 });
-```
+
