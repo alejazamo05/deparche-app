@@ -20,6 +20,27 @@
 
 
 <!-- =====================================================
+     GOOGLE ANALYTICS
+===================================================== -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V4Z0LSDWHV"></script>
+
+<script>
+
+window.dataLayer = window.dataLayer || [];
+
+function gtag(){
+    dataLayer.push(arguments);
+}
+
+gtag('js', new Date());
+
+gtag('config', 'G-V4Z0LSDWHV');
+
+</script>
+
+
+<!-- =====================================================
      FAVICON
 ===================================================== -->
 
@@ -35,13 +56,15 @@
 >
 
 
-<!-- FUENTE -->
+<!-- =====================================================
+     FUENTE
+===================================================== -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
 <link
     rel="preconnect"
-    href="https://fonts.gstatic.com"
+    href="https://fonts.googleapis.com"
     crossorigin
 >
 
@@ -51,7 +74,9 @@
 >
 
 
-<!-- ICONOS -->
+<!-- =====================================================
+     ICONOS
+===================================================== -->
 
 <link
     rel="stylesheet"
@@ -59,7 +84,9 @@
 >
 
 
-<!-- ESTILOS PRINCIPALES -->
+<!-- =====================================================
+     ESTILOS PRINCIPALES
+===================================================== -->
 
 <link
     rel="stylesheet"
@@ -629,8 +656,6 @@ p:not(.etiqueta) {
 }
 
 
-/* Aparición desde abajo */
-
 .animar-scroll {
 
     transform:
@@ -638,8 +663,6 @@ p:not(.etiqueta) {
 
 }
 
-
-/* Aparición desde la izquierda */
 
 .animar-izquierda {
 
@@ -649,8 +672,6 @@ p:not(.etiqueta) {
 }
 
 
-/* Aparición desde la derecha */
-
 .animar-derecha {
 
     transform:
@@ -659,8 +680,6 @@ p:not(.etiqueta) {
 }
 
 
-/* Aparición con zoom sutil */
-
 .animar-escala {
 
     transform:
@@ -668,8 +687,6 @@ p:not(.etiqueta) {
 
 }
 
-
-/* Estado visible */
 
 .animar-scroll.visible,
 .animar-izquierda.visible,
@@ -909,11 +926,20 @@ p:not(.etiqueta) {
    </nav>
 
 
+   <!-- =================================================
+        HABLEMOS → WHATSAPP
+   ================================================= -->
+
    <a
-       href="contacto.html"
+       href="https://wa.me/573133514030"
        class="boton boton-nav"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Contactar a DEPARCHE APP SAS por WhatsApp"
    >
+
        HABLEMOS
+
    </a>
 
 
@@ -922,7 +948,9 @@ p:not(.etiqueta) {
        id="menuMobile"
        aria-label="Abrir menú"
    >
+
        ☰
+
    </button>
 
 
@@ -1067,7 +1095,9 @@ p:not(.etiqueta) {
        </div>
 
 
-       <!-- REDES -->
+       <!-- =================================================
+            REDES
+       ================================================= -->
 
        <div class="contacto-redes animar-escala retraso-5">
 
@@ -1202,7 +1232,9 @@ p:not(.etiqueta) {
        >
 
 
-           <!-- WEB3FORMS -->
+           <!-- =================================================
+                WEB3FORMS
+           ================================================= -->
 
            <input
                type="hidden"
@@ -1225,10 +1257,11 @@ p:not(.etiqueta) {
            >
 
 
-           <!-- NOMBRE / EMPRESA -->
+           <!-- =================================================
+                NOMBRE / EMPRESA
+           ================================================= -->
 
            <div class="contacto-form-row animar-scroll retraso-2">
-
 
                <div class="contacto-campo">
 
@@ -1267,10 +1300,11 @@ p:not(.etiqueta) {
            </div>
 
 
-           <!-- CORREO / TELÉFONO -->
+           <!-- =================================================
+                CORREO / TELÉFONO
+           ================================================= -->
 
            <div class="contacto-form-row animar-scroll retraso-3">
-
 
                <div class="contacto-campo">
 
@@ -1309,7 +1343,9 @@ p:not(.etiqueta) {
            </div>
 
 
-           <!-- SERVICIO -->
+           <!-- =================================================
+                SERVICIO
+           ================================================= -->
 
            <div class="contacto-campo animar-scroll retraso-4">
 
@@ -1353,7 +1389,9 @@ p:not(.etiqueta) {
            </div>
 
 
-           <!-- MENSAJE OPCIONAL -->
+           <!-- =================================================
+                MENSAJE
+           ================================================= -->
 
            <div class="contacto-campo animar-scroll retraso-4">
 
@@ -1371,7 +1409,9 @@ p:not(.etiqueta) {
            </div>
 
 
-           <!-- ANTISPAM -->
+           <!-- =================================================
+                ANTISPAM
+           ================================================= -->
 
            <input
                type="checkbox"
@@ -1382,7 +1422,9 @@ p:not(.etiqueta) {
            >
 
 
-           <!-- BOTÓN -->
+           <!-- =================================================
+                BOTÓN
+           ================================================= -->
 
            <button
                type="submit"
@@ -1397,7 +1439,9 @@ p:not(.etiqueta) {
            </button>
 
 
-           <!-- MENSAJE -->
+           <!-- =================================================
+                MENSAJE
+           ================================================= -->
 
            <p
                id="mensajeFormulario"
@@ -1480,7 +1524,9 @@ p:not(.etiqueta) {
            rel="noopener noreferrer"
            aria-label="Facebook"
        >
+
            <i class="fa-brands fa-facebook-f"></i>
+
        </a>
 
 
@@ -1492,7 +1538,9 @@ p:not(.etiqueta) {
            rel="noopener noreferrer"
            aria-label="Instagram"
        >
+
            <i class="fa-brands fa-instagram"></i>
+
        </a>
 
 
@@ -1504,7 +1552,9 @@ p:not(.etiqueta) {
            rel="noopener noreferrer"
            aria-label="X"
        >
+
            <i class="fa-brands fa-x-twitter"></i>
+
        </a>
 
 
@@ -1516,7 +1566,9 @@ p:not(.etiqueta) {
            rel="noopener noreferrer"
            aria-label="LinkedIn"
        >
+
            <i class="fa-brands fa-linkedin-in"></i>
+
        </a>
 
 
@@ -1528,7 +1580,9 @@ p:not(.etiqueta) {
            rel="noopener noreferrer"
            aria-label="TikTok"
        >
+
            <i class="fa-brands fa-tiktok"></i>
+
        </a>
 
 
@@ -1549,6 +1603,9 @@ p:not(.etiqueta) {
 </footer>
 
 
+<!-- =====================================================
+     JAVASCRIPT PRINCIPAL
+===================================================== -->
 
 <script src="js/script.js"></script>
 
