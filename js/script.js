@@ -1,3 +1,4 @@
+```javascript
 /* =====================================================
    DEPARCHE APP SAS
    JAVASCRIPT GENERAL
@@ -9,6 +10,14 @@
 ===================================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
+
+
+    /* =================================================
+       WHATSAPP
+    ================================================= */
+
+    const WHATSAPP_URL =
+        "https://wa.me/573133514030";
 
 
     /* =================================================
@@ -58,39 +67,86 @@ document.addEventListener("DOMContentLoaded", function () {
 
         });
 
+    }
 
-        /* BOTÓN HABLEMOS DEL MENÚ MÓVIL */
 
-        const botonContactanosMobile =
-            document.getElementById(
-                "botonContactanosMobile"
+
+    /* =================================================
+       BOTONES HABLEMOS / WHATSAPP
+    ================================================= */
+
+    const botonesWhatsApp =
+        document.querySelectorAll(
+            ".boton-whatsapp, " +
+            "#botonContactanos, " +
+            "#botonContactanosHeader, " +
+            "#botonContactanosMobile"
+        );
+
+
+    botonesWhatsApp.forEach(function (boton) {
+
+        boton.addEventListener("click", function (event) {
+
+            event.preventDefault();
+
+
+            window.open(
+                WHATSAPP_URL,
+                "_blank",
+                "noopener,noreferrer"
             );
 
+        });
 
-        if (botonContactanosMobile) {
+    });
 
-            botonContactanosMobile.addEventListener(
+
+
+    /* =================================================
+       BOTÓN HABLEMOS DEL HEADER
+       
+       Funciona con:
+       .boton-nav
+       
+       Solamente si el texto es HABLEMOS.
+    ================================================= */
+
+    const botonesHeader =
+        document.querySelectorAll(
+            ".boton-nav"
+        );
+
+
+    botonesHeader.forEach(function (boton) {
+
+        const texto =
+            boton.textContent
+                .trim()
+                .toUpperCase();
+
+
+        if (texto === "HABLEMOS") {
+
+            boton.addEventListener(
                 "click",
-                function () {
+                function (event) {
 
-                    menuMobileContent.classList.remove(
-                        "active"
+                    event.preventDefault();
+
+
+                    window.open(
+                        WHATSAPP_URL,
+                        "_blank",
+                        "noopener,noreferrer"
                     );
-
-                    menuMobile.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-
-                    abrirModalContacto();
 
                 }
             );
 
         }
 
-    }
+    });
 
 
 
@@ -99,22 +155,21 @@ document.addEventListener("DOMContentLoaded", function () {
     ================================================= */
 
     const modalContacto =
-        document.getElementById("modalContacto");
+        document.getElementById(
+            "modalContacto"
+        );
 
 
     const cerrarModalContacto =
-        document.getElementById("cerrarModalContacto");
+        document.getElementById(
+            "cerrarModalContacto"
+        );
 
 
     const botonContactanos =
-        document.getElementById("botonContactanos");
-
-
-    const botonContactanosHeader =
         document.getElementById(
-            "botonContactanosHeader"
+            "botonContactanos"
         );
-
 
 
     /* =================================================
@@ -124,11 +179,16 @@ document.addEventListener("DOMContentLoaded", function () {
     function abrirModalContacto() {
 
         if (!modalContacto) {
+
             return;
+
         }
 
 
-        modalContacto.classList.add("active");
+        modalContacto.classList.add(
+            "active"
+        );
+
 
         modalContacto.setAttribute(
             "aria-hidden",
@@ -136,11 +196,14 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
-        document.body.style.overflow = "hidden";
+        document.body.style.overflow =
+            "hidden";
 
 
         const nombre =
-            document.getElementById("nombreNosotros");
+            document.getElementById(
+                "nombreNosotros"
+            );
 
 
         if (nombre) {
@@ -164,11 +227,16 @@ document.addEventListener("DOMContentLoaded", function () {
     function cerrarModal() {
 
         if (!modalContacto) {
+
             return;
+
         }
 
 
-        modalContacto.classList.remove("active");
+        modalContacto.classList.remove(
+            "active"
+        );
+
 
         modalContacto.setAttribute(
             "aria-hidden",
@@ -176,7 +244,8 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
-        document.body.style.overflow = "";
+        document.body.style.overflow =
+            "";
 
 
         const formularioNosotros =
@@ -226,6 +295,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =================================================
        BOTÓN CONTACTANOS DEL CTA
+       NOSOTROS.HTML
     ================================================= */
 
     if (botonContactanos) {
@@ -244,26 +314,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =================================================
-       BOTÓN HABLEMOS DEL HEADER
-    ================================================= */
-
-    if (botonContactanosHeader) {
-
-        botonContactanosHeader.addEventListener(
-            "click",
-            function () {
-
-                abrirModalContacto();
-
-            }
-        );
-
-    }
-
-
-
-    /* =================================================
-       BOTÓN CERRAR
+       BOTÓN CERRAR MODAL
     ================================================= */
 
     if (cerrarModalContacto) {
@@ -282,7 +333,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =================================================
-       CERRAR AL HACER CLICK FUERA
+       CERRAR MODAL AL HACER CLICK AFUERA
     ================================================= */
 
     if (modalContacto) {
@@ -292,7 +343,8 @@ document.addEventListener("DOMContentLoaded", function () {
             function (event) {
 
                 if (
-                    event.target === modalContacto
+                    event.target ===
+                    modalContacto
                 ) {
 
                     cerrarModal();
@@ -307,7 +359,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =================================================
-       CERRAR CON ESC
+       CERRAR MODAL CON ESC
     ================================================= */
 
     document.addEventListener(
@@ -317,7 +369,9 @@ document.addEventListener("DOMContentLoaded", function () {
             if (
                 event.key === "Escape" &&
                 modalContacto &&
-                modalContacto.classList.contains("active")
+                modalContacto.classList.contains(
+                    "active"
+                )
             ) {
 
                 cerrarModal();
@@ -330,7 +384,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =================================================
-       FUNCIÓN GENERAL PARA WEB3FORMS
+       FUNCIÓN GENERAL WEB3FORMS
     ================================================= */
 
     async function enviarFormularioWeb3Forms(
@@ -385,6 +439,16 @@ document.addEventListener("DOMContentLoaded", function () {
                         body: formData
                     }
                 );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Error HTTP: " +
+                    response.status
+                );
+
+            }
 
 
             const data =
@@ -600,27 +664,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =================================================
-       ENLACES INTERNOS DE CONTACTO
+       ENLACES INTERNOS
     ================================================= */
 
-    const enlacesContacto =
-        document.querySelectorAll(
-            'a[href="contacto.html"]'
-        );
-
-
-    enlacesContacto.forEach(
-        function (enlace) {
-
-            /*
-             * Los enlaces normales siguen llevando
-             * a contacto.html.
-             *
-             * No se modifica su comportamiento.
-             */
-
-        }
-    );
-
+    /*
+     * Los enlaces que llevan a contacto.html
+     * permanecen funcionando normalmente.
+     */
 
 });
+```
