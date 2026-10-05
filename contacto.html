@@ -20,6 +20,27 @@
 
 
 <!-- =====================================================
+     GOOGLE ANALYTICS
+===================================================== -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V4Z0LSDWHV"></script>
+
+<script>
+
+window.dataLayer = window.dataLayer || [];
+
+function gtag(){
+    dataLayer.push(arguments);
+}
+
+gtag('js', new Date());
+
+gtag('config', 'G-V4Z0LSDWHV');
+
+</script>
+
+
+<!-- =====================================================
      FAVICON
 ===================================================== -->
 
@@ -35,9 +56,14 @@
 >
 
 
-<!-- FUENTE -->
+<!-- =====================================================
+     FUENTE
+===================================================== -->
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
 
 <link
     rel="preconnect"
@@ -51,7 +77,9 @@
 >
 
 
-<!-- ICONOS -->
+<!-- =====================================================
+     ICONOS
+===================================================== -->
 
 <link
     rel="stylesheet"
@@ -59,7 +87,9 @@
 >
 
 
-<!-- ESTILOS PRINCIPALES -->
+<!-- =====================================================
+     ESTILOS PRINCIPALES
+===================================================== -->
 
 <link
     rel="stylesheet"
@@ -629,8 +659,6 @@ p:not(.etiqueta) {
 }
 
 
-/* Aparición desde abajo */
-
 .animar-scroll {
 
     transform:
@@ -638,8 +666,6 @@ p:not(.etiqueta) {
 
 }
 
-
-/* Aparición desde la izquierda */
 
 .animar-izquierda {
 
@@ -649,8 +675,6 @@ p:not(.etiqueta) {
 }
 
 
-/* Aparición desde la derecha */
-
 .animar-derecha {
 
     transform:
@@ -659,8 +683,6 @@ p:not(.etiqueta) {
 }
 
 
-/* Aparición con zoom sutil */
-
 .animar-escala {
 
     transform:
@@ -668,8 +690,6 @@ p:not(.etiqueta) {
 
 }
 
-
-/* Estado visible */
 
 .animar-scroll.visible,
 .animar-izquierda.visible,
@@ -690,37 +710,23 @@ p:not(.etiqueta) {
 ===================================================== */
 
 .retraso-1 {
-
     transition-delay: .10s;
-
 }
-
 
 .retraso-2 {
-
     transition-delay: .20s;
-
 }
-
 
 .retraso-3 {
-
     transition-delay: .30s;
-
 }
-
 
 .retraso-4 {
-
     transition-delay: .40s;
-
 }
 
-
 .retraso-5 {
-
     transition-delay: .50s;
-
 }
 
 
@@ -909,11 +915,19 @@ p:not(.etiqueta) {
    </nav>
 
 
+   <!-- =================================================
+        HABLEMOS → WHATSAPP
+   ================================================= -->
+
    <a
-       href="contacto.html"
+       href="https://wa.me/573133514030"
        class="boton boton-nav"
+       target="_blank"
+       rel="noopener noreferrer"
    >
+
        HABLEMOS
+
    </a>
 
 
@@ -922,7 +936,9 @@ p:not(.etiqueta) {
        id="menuMobile"
        aria-label="Abrir menú"
    >
+
        ☰
+
    </button>
 
 
@@ -952,6 +968,16 @@ p:not(.etiqueta) {
 
    <a href="contacto.html">
        CONTACTO
+   </a>
+
+   <!-- HABLEMOS → WHATSAPP -->
+
+   <a
+       href="https://wa.me/573133514030"
+       target="_blank"
+       rel="noopener noreferrer"
+   >
+       HABLEMOS
    </a>
 
 </div>
@@ -1353,7 +1379,7 @@ p:not(.etiqueta) {
            </div>
 
 
-           <!-- MENSAJE OPCIONAL -->
+           <!-- MENSAJE -->
 
            <div class="contacto-campo animar-scroll retraso-4">
 
