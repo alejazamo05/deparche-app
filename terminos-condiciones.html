@@ -1,0 +1,1527 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Consulta los términos y condiciones de uso del sitio web y de contratación de servicios de DEPARCHE APP SAS."
+    >
+
+    <meta name="robots" content="index, follow">
+
+    <meta name="theme-color" content="#32113F">
+
+    <title>TÉRMINOS Y CONDICIONES | DEPARCHE APP SAS</title>
+
+    <link rel="icon" href="img/logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        /* =====================================================
+           VARIABLES
+        ===================================================== */
+
+        :root {
+            --morado: #9032BB;
+            --morado-oscuro: #672187;
+            --morado-profundo: #32113F;
+            --morado-claro: #F3E5F8;
+            --morado-suave: #FBF7FD;
+
+            --blanco: #FFFFFF;
+            --fondo: #FCFAFD;
+
+            --texto: #29242C;
+            --gris: #706A73;
+            --borde: #E5DDE8;
+        }
+
+
+        /* =====================================================
+           RESET Y BASE
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            font-family: "DM Sans", Arial, Helvetica, sans-serif;
+            background: var(--fondo);
+            color: var(--texto);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a:focus-visible {
+            outline: 3px solid var(--morado);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        .contenedor {
+            width: 90%;
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--borde);
+        }
+
+        .navegacion {
+            min-height: 88px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            width: 180px;
+            max-height: 65px;
+            object-fit: contain;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .menu a {
+            position: relative;
+            padding: 8px 0;
+            color: var(--texto);
+            font-size: 12px;
+            font-weight: 700;
+            transition: color 0.25s ease;
+        }
+
+        .menu a:hover,
+        .menu a.activo {
+            color: var(--morado);
+        }
+
+        .menu a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--morado);
+            transition: width 0.25s ease;
+        }
+
+        .menu a:hover::after,
+        .menu a.activo::after {
+            width: 100%;
+        }
+
+        .boton-contacto {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            border-radius: 50px;
+            background: var(--morado);
+            color: var(--blanco);
+            font-size: 12px;
+            font-weight: 800;
+            transition: all 0.25s ease;
+        }
+
+        .boton-contacto:hover {
+            background: var(--morado-oscuro);
+            transform: translateY(-2px);
+        }
+
+        .menu-mobile {
+            display: none;
+            padding: 8px;
+            border: none;
+            background: transparent;
+            color: var(--morado);
+            font-size: 27px;
+            cursor: pointer;
+        }
+
+        .menu-mobile-content {
+            display: none;
+        }
+
+
+        /* =====================================================
+           ENCABEZADO DE PÁGINA
+        ===================================================== */
+
+        .hero-legal {
+            position: relative;
+            overflow: hidden;
+            padding: 90px 0 85px;
+            background: linear-gradient(
+                135deg,
+                #FBF7FD 0%,
+                #FFFFFF 55%,
+                #F3E5F8 100%
+            );
+            border-bottom: 1px solid var(--borde);
+        }
+
+        .hero-legal::before {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            top: -180px;
+            right: 5%;
+            border-radius: 50%;
+            background: rgba(144, 50, 187, 0.08);
+        }
+
+        .hero-legal .contenedor {
+            position: relative;
+            z-index: 1;
+        }
+
+        .etiqueta {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 8px 14px;
+            border-radius: 50px;
+            background: var(--morado-claro);
+            color: var(--morado);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .hero-legal h1 {
+            max-width: 850px;
+            margin-bottom: 20px;
+            color: var(--morado-profundo);
+            font-size: clamp(36px, 5vw, 58px);
+            line-height: 1.1;
+            letter-spacing: -1.8px;
+        }
+
+        .hero-legal p {
+            max-width: 760px;
+            color: var(--gris);
+            font-size: 16px;
+        }
+
+        .fecha-documento {
+            display: inline-block;
+            margin-top: 22px;
+            padding: 9px 13px;
+            border: 1px solid var(--borde);
+            border-radius: 10px;
+            background: var(--blanco);
+            color: var(--gris);
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           CONTENIDO LEGAL
+        ===================================================== */
+
+        .contenido-legal {
+            padding: 75px 0 100px;
+        }
+
+        .legal-grid {
+            display: grid;
+            grid-template-columns: 270px minmax(0, 1fr);
+            align-items: start;
+            gap: 35px;
+        }
+
+        .indice {
+            position: sticky;
+            top: 115px;
+            padding: 25px;
+            border: 1px solid var(--borde);
+            border-radius: 20px;
+            background: var(--blanco);
+            box-shadow: 0 12px 35px rgba(60, 30, 70, 0.04);
+        }
+
+        .indice h2 {
+            margin-bottom: 16px;
+            color: var(--morado-profundo);
+            font-size: 15px;
+        }
+
+        .indice ul {
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+            list-style: none;
+        }
+
+        .indice a {
+            display: block;
+            color: var(--gris);
+            font-size: 12px;
+            line-height: 1.5;
+            transition: color 0.2s ease;
+        }
+
+        .indice a:hover {
+            color: var(--morado);
+        }
+
+        .documento {
+            min-width: 0;
+            padding: 42px;
+            border: 1px solid var(--borde);
+            border-radius: 24px;
+            background: var(--blanco);
+            box-shadow: 0 18px 50px rgba(60, 30, 70, 0.04);
+        }
+
+        .introduccion {
+            margin-bottom: 35px;
+            padding: 22px;
+            border-left: 4px solid var(--morado);
+            border-radius: 0 14px 14px 0;
+            background: var(--morado-suave);
+            color: var(--gris);
+            font-size: 14px;
+        }
+
+        .documento section {
+            margin-bottom: 35px;
+            scroll-margin-top: 115px;
+        }
+
+        .documento section:last-child {
+            margin-bottom: 0;
+        }
+
+        .documento h2 {
+            margin-bottom: 14px;
+            color: var(--morado-oscuro);
+            font-size: 22px;
+            line-height: 1.35;
+        }
+
+        .documento h3 {
+            margin: 22px 0 9px;
+            color: var(--texto);
+            font-size: 16px;
+        }
+
+        .documento p {
+            margin-bottom: 13px;
+            color: var(--gris);
+            font-size: 14px;
+        }
+
+        .documento ul,
+        .documento ol {
+            margin: 12px 0 16px 22px;
+            color: var(--gris);
+        }
+
+        .documento li {
+            padding-left: 4px;
+            margin-bottom: 9px;
+            font-size: 14px;
+        }
+
+        .documento strong {
+            color: var(--texto);
+        }
+
+        .documento a {
+            color: var(--morado);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            overflow-wrap: anywhere;
+        }
+
+        .documento a:hover {
+            color: var(--morado-oscuro);
+        }
+
+        .nota-importante {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid var(--borde);
+            border-radius: 14px;
+            background: var(--morado-suave);
+            color: var(--gris);
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           CTA
+        ===================================================== */
+
+        .cta {
+            padding: 65px 0;
+            background: var(--morado);
+            color: var(--blanco);
+        }
+
+        .cta-contenido {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .cta h2 {
+            margin-bottom: 8px;
+            font-size: clamp(25px, 3vw, 36px);
+            line-height: 1.2;
+        }
+
+        .cta p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 14px;
+        }
+
+        .boton-blanco {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            padding: 14px 23px;
+            border-radius: 50px;
+            background: var(--blanco);
+            color: var(--morado);
+            font-size: 12px;
+            font-weight: 800;
+            transition: all 0.25s ease;
+        }
+
+        .boton-blanco:hover {
+            background: var(--morado-claro);
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .footer {
+            padding: 55px 0 30px;
+            background: var(--morado-profundo);
+            color: var(--blanco);
+            text-align: center;
+        }
+
+        .footer-logo {
+            width: 155px;
+            max-height: 65px;
+            margin: 0 auto 15px;
+            object-fit: contain;
+        }
+
+        .footer-descripcion {
+            color: var(--blanco);
+            opacity: 0.8;
+            font-size: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 22px;
+            margin: 26px 0 20px;
+        }
+
+        .footer-links a,
+        .footer-links a:visited {
+            color: #DFA9ED;
+            font-size: 12px;
+            opacity: 1;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover,
+        .footer-links a:focus-visible {
+            color: #FFFFFF;
+        }
+
+        .footer-linea {
+            width: 100%;
+            height: 1px;
+            margin: 25px 0;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .copyright {
+            color: var(--blanco);
+            opacity: 0.55;
+            font-size: 10px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1000px) {
+            .menu {
+                gap: 15px;
+            }
+
+            .menu a {
+                font-size: 11px;
+            }
+
+            .legal-grid {
+                grid-template-columns: 220px minmax(0, 1fr);
+                gap: 22px;
+            }
+
+            .documento {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .navegacion {
+                min-height: 75px;
+            }
+
+            .logo img {
+                width: 145px;
+                max-height: 55px;
+            }
+
+            .menu,
+            .navegacion > .boton-contacto {
+                display: none;
+            }
+
+            .menu-mobile {
+                display: block;
+            }
+
+            .menu-mobile-content {
+                padding: 10px 5% 20px;
+                border-top: 1px solid var(--borde);
+                background: var(--blanco);
+            }
+
+            .menu-mobile-content.active {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .menu-mobile-content a {
+                padding: 12px;
+                border-radius: 10px;
+                color: var(--texto);
+                font-size: 13px;
+                font-weight: 600;
+            }
+
+            .menu-mobile-content a:hover {
+                background: var(--morado-claro);
+                color: var(--morado);
+            }
+
+            .hero-legal {
+                padding: 65px 0;
+            }
+
+            .hero-legal h1 {
+                letter-spacing: -1px;
+            }
+
+            .hero-legal p {
+                font-size: 14px;
+            }
+
+            .contenido-legal {
+                padding: 45px 0 65px;
+            }
+
+            .legal-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .indice {
+                position: static;
+            }
+
+            .indice ul {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .documento {
+                padding: 25px 20px;
+                border-radius: 18px;
+            }
+
+            .documento h2 {
+                font-size: 20px;
+            }
+
+            .documento p,
+            .documento li {
+                font-size: 13px;
+            }
+
+            .cta-contenido {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-links {
+                gap: 14px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .contenedor {
+                width: 91%;
+            }
+
+            .indice ul {
+                grid-template-columns: 1fr;
+            }
+
+            .documento {
+                padding: 22px 17px;
+            }
+
+            .fecha-documento {
+                font-size: 10px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="header">
+
+        <div class="contenedor navegacion">
+
+            <a
+                href="index.html"
+                class="logo"
+                aria-label="DEPARCHE APP SAS - Inicio"
+            >
+                <img
+                    src="img/logo.png"
+                    alt="Logo de DEPARCHE APP SAS"
+                >
+            </a>
+
+            <nav class="menu" aria-label="Navegación principal">
+                <a href="index.html">INICIO</a>
+                <a href="nosotros.html">NOSOTROS</a>
+                <a href="servicios.html">SERVICIOS</a>
+                <a href="portafolio.html">PORTAFOLIO</a>
+                <a href="contacto.html">CONTACTO</a>
+            </nav>
+
+            <a href="contacto.html" class="boton-contacto">
+                HABLEMOS
+            </a>
+
+            <button
+                type="button"
+                class="menu-mobile"
+                id="menuMobile"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+                aria-controls="menuMobileContent"
+            >
+                ☰
+            </button>
+
+        </div>
+
+        <nav
+            class="menu-mobile-content"
+            id="menuMobileContent"
+            aria-label="Navegación móvil"
+        >
+            <a href="index.html">INICIO</a>
+            <a href="nosotros.html">NOSOTROS</a>
+            <a href="servicios.html">SERVICIOS</a>
+            <a href="portafolio.html">PORTAFOLIO</a>
+            <a href="contacto.html">CONTACTO</a>
+            <a href="politica-privacidad.html">POLÍTICA DE PRIVACIDAD</a>
+            <a href="terminos-condiciones.html">TÉRMINOS Y CONDICIONES</a>
+        </nav>
+
+    </header>
+
+
+    <!-- =====================================================
+         ENCABEZADO
+    ====================================================== -->
+
+    <main>
+
+        <section class="hero-legal">
+
+            <div class="contenedor">
+
+                <span class="etiqueta">
+                    INFORMACIÓN LEGAL
+                </span>
+
+                <h1>
+                    Términos y condiciones
+                </h1>
+
+                <p>
+                    Estas condiciones describen las reglas generales
+                    de uso del sitio web de DEPARCHE APP SAS y los
+                    criterios generales aplicables a la solicitud
+                    y contratación de sus servicios digitales.
+                </p>
+
+                <div class="fecha-documento">
+                    Última actualización:
+                    <strong>26 de Octubre de 2026</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             CONTENIDO
+        ====================================================== -->
+
+        <section class="contenido-legal">
+
+            <div class="contenedor legal-grid">
+
+                <aside class="indice">
+
+                    <h2>Contenido</h2>
+
+                    <ul>
+                        <li><a href="#aceptacion">1. Aceptación</a></li>
+                        <li><a href="#identificacion">2. Identificación</a></li>
+                        <li><a href="#sitio">3. Uso del sitio</a></li>
+                        <li><a href="#servicios">4. Servicios</a></li>
+                        <li><a href="#cotizaciones">5. Cotizaciones</a></li>
+                        <li><a href="#pagos">6. Pagos y gastos</a></li>
+                        <li><a href="#obligaciones">7. Obligaciones</a></li>
+                        <li><a href="#propiedad">8. Propiedad intelectual</a></li>
+                        <li><a href="#terceros">9. Terceros</a></li>
+                        <li><a href="#datos">10. Datos personales</a></li>
+                        <li><a href="#responsabilidad">11. Responsabilidad</a></li>
+                        <li><a href="#cancelaciones">12. Cambios y cancelaciones</a></li>
+                        <li><a href="#internacionales">13. Clientes internacionales</a></li>
+                        <li><a href="#modificaciones">14. Modificaciones</a></li>
+                        <li><a href="#contacto">15. Contacto y ley aplicable</a></li>
+                    </ul>
+
+                </aside>
+
+
+                <article class="documento">
+
+                    <div class="introduccion">
+                        Este documento establece condiciones generales
+                        para el uso del sitio web. No sustituye una
+                        propuesta comercial, un contrato de servicios,
+                        una autorización de tratamiento de datos ni
+                        otros acuerdos específicos que puedan ser
+                        necesarios para un proyecto.
+                    </div>
+
+
+                    <section id="aceptacion">
+
+                        <h2>1. Aceptación de los términos</h2>
+
+                        <p>
+                            Al acceder y navegar por este sitio web,
+                            el usuario acepta las reglas de uso que
+                            resulten aplicables a su navegación.
+                            Si no está de acuerdo con ellas, debe
+                            abstenerse de utilizar el sitio.
+                        </p>
+
+                        <p>
+                            La visita al sitio web o el envío de un
+                            formulario de contacto no implica, por sí
+                            solo, la celebración de un contrato de
+                            prestación de servicios.
+                        </p>
+
+                        <p>
+                            La contratación de un servicio se regirá
+                            por la cotización aceptada, la propuesta
+                            comercial, el contrato y los demás
+                            acuerdos que correspondan al proyecto.
+                        </p>
+
+                    </section>
+
+
+                    <section id="identificacion">
+
+                        <h2>2. Identificación de la empresa</h2>
+
+                        <p>
+                            Este sitio web corresponde a
+                            <strong>DEPARCHE APP SAS</strong>,
+                            marca y empresa que presenta servicios,
+                            productos y soluciones del ámbito digital.
+                        </p>
+
+                        <p>
+                            Para consultas generales o solicitudes
+                            comerciales, puedes escribir a:
+                            <a href="mailto:commercial@deparchesas.com">
+                                commercial@deparchesas.com
+                            </a>.
+                        </p>
+
+                        <p>
+                            Los datos registrales, la identificación
+                            tributaria y el domicilio legal de la
+                            empresa deberán verificarse y completarse
+                            en este documento cuando corresponda.
+                        </p>
+
+                    </section>
+
+
+                    <section id="sitio">
+
+                        <h2>3. Uso permitido del sitio web</h2>
+
+                        <p>
+                            El usuario se compromete a utilizar el
+                            sitio de forma lícita, respetuosa y
+                            compatible con su funcionamiento.
+                        </p>
+
+                        <p>No está permitido:</p>
+
+                        <ul>
+                            <li>
+                                Utilizar el sitio para actividades
+                                fraudulentas, ilícitas o engañosas.
+                            </li>
+                            <li>
+                                Intentar acceder sin autorización a
+                                sistemas, cuentas, servidores o datos.
+                            </li>
+                            <li>
+                                Introducir código malicioso o realizar
+                                acciones destinadas a interrumpir o
+                                perjudicar el funcionamiento del sitio.
+                            </li>
+                            <li>
+                                Copiar, reproducir o explotar contenidos
+                                protegidos sin contar con autorización
+                                o con una base legal que lo permita.
+                            </li>
+                            <li>
+                                Enviar información falsa, abusiva o
+                                que vulnere derechos de otras personas.
+                            </li>
+                        </ul>
+
+                    </section>
+
+
+                    <section id="servicios">
+
+                        <h2>4. Servicios ofrecidos</h2>
+
+                        <p>
+                            DEPARCHE APP SAS puede presentar, entre
+                            otros, servicios relacionados con:
+                        </p>
+
+                        <ul>
+                            <li>Marketing digital y adquisición de clientes.</li>
+                            <li>Creación y gestión de contenido digital.</li>
+                            <li>Diseño, desarrollo y mantenimiento web.</li>
+                            <li>Optimización para motores de búsqueda (SEO).</li>
+                            <li>Soluciones y productos digitales.</li>
+                            <li>Otras soluciones acordadas con cada cliente.</li>
+                        </ul>
+
+                        <p>
+                            La disponibilidad, el alcance, las
+                            características, los plazos y los resultados
+                            de cada servicio se determinarán en la
+                            propuesta o acuerdo correspondiente.
+                        </p>
+
+                        <p>
+                            La información publicada en el sitio tiene
+                            carácter general y no constituye una oferta
+                            irrevocable ni garantiza que todos los
+                            servicios estén disponibles en todo momento
+                            o para cualquier ubicación.
+                        </p>
+
+                    </section>
+
+
+                    <section id="cotizaciones">
+
+                        <h2>5. Cotizaciones y acuerdos comerciales</h2>
+
+                        <p>
+                            Los servicios se ofrecerán normalmente
+                            mediante una cotización, propuesta
+                            comercial o acuerdo particular con el
+                            cliente.
+                        </p>
+
+                        <p>
+                            Antes de iniciar un proyecto, las partes
+                            deberán confirmar los aspectos que
+                            correspondan, incluyendo:
+                        </p>
+
+                        <ul>
+                            <li>Descripción y alcance de los servicios.</li>
+                            <li>Entregables y características acordadas.</li>
+                            <li>Precio, moneda, impuestos y forma de pago, cuando correspondan.</li>
+                            <li>Plazos estimados y fechas de entrega.</li>
+                            <li>Responsabilidades de cada parte.</li>
+                            <li>Revisiones, cambios y condiciones de aprobación.</li>
+                            <li>Licencias, derechos de uso y titularidad de los entregables.</li>
+                            <li>Condiciones de soporte, mantenimiento o servicios recurrentes, si aplican.</li>
+                        </ul>
+
+                        <p>
+                            Una cotización solo se considerará aceptada
+                            conforme al procedimiento indicado en ella
+                            o al mecanismo acordado entre las partes.
+                            Cualquier cambio en el alcance podrá
+                            requerir una nueva cotización o aprobación
+                            escrita.
+                        </p>
+
+                        <p>
+                            Si existe un contrato o acuerdo particular,
+                            sus condiciones específicas prevalecerán
+                            sobre estas reglas generales en aquello
+                            que regulen expresamente y en la medida
+                            permitida por la normativa aplicable.
+                        </p>
+
+                    </section>
+
+
+                    <section id="pagos">
+
+                        <h2>6. Precios, pagos y gastos</h2>
+
+                        <p>
+                            El precio, la moneda, los impuestos
+                            aplicables, los anticipos, los pagos
+                            parciales, las fechas de vencimiento y
+                            los demás gastos se definirán en la
+                            cotización o acuerdo correspondiente.
+                        </p>
+
+                        <p>
+                            Salvo que se haya acordado expresamente,
+                            este documento no establece una tarifa
+                            universal, un porcentaje de anticipo ni
+                            un plazo fijo de pago para todos los
+                            proyectos.
+                        </p>
+
+                        <p>
+                            Los servicios o recursos de terceros,
+                            como alojamiento web, dominios, licencias,
+                            publicidad, suscripciones o plataformas,
+                            deberán identificarse en la propuesta
+                            cuando formen parte del proyecto.
+                        </p>
+
+                        <p>
+                            Las condiciones sobre retrasos de pago,
+                            suspensión de servicios, reembolsos,
+                            cancelaciones y gastos adicionales deberán
+                            quedar claras en el acuerdo particular
+                            aplicable y respetar la normativa vigente.
+                        </p>
+
+                    </section>
+
+
+                    <section id="obligaciones">
+
+                        <h2>7. Obligaciones de las partes</h2>
+
+                        <h3>Obligaciones del cliente</h3>
+
+                        <p>
+                            Según el servicio contratado, el cliente
+                            deberá proporcionar información e
+                            instrucciones suficientes, facilitar los
+                            accesos necesarios de forma segura y
+                            revisar o aprobar los entregables dentro
+                            de los plazos acordados.
+                        </p>
+
+                        <p>
+                            El cliente declara que cuenta con las
+                            autorizaciones necesarias para entregar
+                            textos, imágenes, marcas, bases de datos
+                            y otros materiales que solicite utilizar
+                            en su proyecto.
+                        </p>
+
+                        <h3>Obligaciones de DEPARCHE APP SAS</h3>
+
+                        <p>
+                            DEPARCHE APP SAS desarrollará las
+                            actividades acordadas conforme al alcance
+                            y las condiciones aceptadas por las partes.
+                            Informará al cliente cuando identifique
+                            circunstancias relevantes que puedan
+                            afectar la ejecución del proyecto.
+                        </p>
+
+                        <p>
+                            Las obligaciones concretas dependerán del
+                            servicio contratado y de lo establecido
+                            en su propuesta o contrato.
+                        </p>
+
+                    </section>
+
+
+                    <section id="propiedad">
+
+                        <h2>8. Propiedad intelectual y uso de contenidos</h2>
+
+                        <p>
+                            Los elementos del sitio web, incluyendo
+                            textos, diseños, logotipos, elementos
+                            gráficos, código y otros materiales,
+                            pueden estar protegidos por normas de
+                            propiedad intelectual o industrial.
+                        </p>
+
+                        <p>
+                            Salvo autorización, licencia o excepción
+                            legal aplicable, no se permite reproducir,
+                            distribuir, modificar o explotar
+                            comercialmente dichos elementos sin
+                            los permisos correspondientes.
+                        </p>
+
+                        <p>
+                            Los derechos sobre los entregables creados
+                            para un cliente, así como las licencias
+                            sobre herramientas, plantillas, software,
+                            componentes preexistentes y materiales de
+                            terceros, se determinarán en el acuerdo
+                            del proyecto y conforme a la normativa
+                            aplicable.
+                        </p>
+
+                        <p>
+                            La contratación de un servicio no implica
+                            automáticamente la transferencia de todos
+                            los derechos de propiedad intelectual
+                            sobre cada elemento utilizado o creado.
+                        </p>
+
+                    </section>
+
+
+                    <section id="terceros">
+
+                        <h2>9. Plataformas y servicios de terceros</h2>
+
+                        <p>
+                            Algunos proyectos pueden requerir
+                            herramientas, plataformas o proveedores
+                            externos, como servicios de alojamiento,
+                            dominios, publicidad, analítica, redes
+                            sociales o software.
+                        </p>
+
+                        <p>
+                            Estos proveedores pueden tener sus propias
+                            condiciones de uso, políticas de privacidad,
+                            tarifas, requisitos técnicos y periodos
+                            de disponibilidad.
+                        </p>
+
+                        <p>
+                            Cuando un proyecto dependa de un tercero,
+                            el alcance de la intervención de DEPARCHE
+                            APP SAS y las responsabilidades relacionadas
+                            deberán aclararse en el acuerdo aplicable.
+                            Las condiciones de estos terceros no se
+                            sustituyen por este documento.
+                        </p>
+
+                    </section>
+
+
+                    <section id="datos">
+
+                        <h2>10. Protección de datos personales</h2>
+
+                        <p>
+                            Los datos personales que se recojan a
+                            través del sitio web se tratarán de acuerdo
+                            con la finalidad informada, las
+                            autorizaciones que correspondan y la
+                            normativa aplicable.
+                        </p>
+
+                        <p>
+                            La información sobre las finalidades del
+                            tratamiento, los derechos de los titulares
+                            y los canales para presentar solicitudes
+                            deberá consultarse en nuestra
+                            <a href="politica-privacidad.html">
+                                Política de privacidad
+                            </a>.
+                        </p>
+
+                        <p>
+                            El envío de un formulario de contacto no
+                            reemplaza las autorizaciones o avisos
+                            específicos que sean necesarios para
+                            determinados tratamientos de datos.
+                        </p>
+
+                        <p>
+                            Las cookies y tecnologías similares, cuando
+                            se utilicen, deberán gestionarse de acuerdo
+                            con la información y los mecanismos de
+                            consentimiento que correspondan.
+                        </p>
+
+                    </section>
+
+
+                    <section id="responsabilidad">
+
+                        <h2>11. Disponibilidad y responsabilidad</h2>
+
+                        <p>
+                            Se procura mantener el sitio web disponible
+                            y actualizado, pero pueden presentarse
+                            interrupciones, errores, tareas de
+                            mantenimiento o circunstancias técnicas
+                            ajenas al control de la empresa.
+                        </p>
+
+                        <p>
+                            La información del sitio se proporciona
+                            con fines generales. Antes de tomar
+                            decisiones comerciales o técnicas, el
+                            usuario debe confirmar las condiciones
+                            específicas del servicio que necesita.
+                        </p>
+
+                        <p>
+                            La responsabilidad de cada parte se
+                            determinará según las obligaciones asumidas,
+                            las circunstancias del caso y la normativa
+                            aplicable. Nada de lo establecido aquí
+                            pretende excluir o limitar responsabilidades
+                            que legalmente no puedan excluirse o
+                            limitarse.
+                        </p>
+
+                        <p>
+                            Cuando un proyecto dependa de plataformas
+                            externas, resultados de campañas, cambios
+                            en buscadores o condiciones técnicas de
+                            terceros, cualquier alcance, expectativa
+                            o compromiso específico deberá constar
+                            en el acuerdo correspondiente.
+                        </p>
+
+                    </section>
+
+
+                    <section id="cancelaciones">
+
+                        <h2>12. Modificaciones, cancelaciones y terminación</h2>
+
+                        <p>
+                            Los cambios de alcance, solicitudes
+                            adicionales, pausas, cancelaciones y
+                            terminaciones de proyectos se regirán
+                            por las condiciones acordadas con cada
+                            cliente y por la normativa aplicable.
+                        </p>
+
+                        <p>
+                            Antes de iniciar el trabajo, es
+                            recomendable que la propuesta o contrato
+                            establezca cómo se aprobarán los cambios,
+                            cómo se calcularán los trabajos realizados
+                            y cómo se tratarán los pagos, gastos y
+                            entregables en caso de terminación.
+                        </p>
+
+                        <p>
+                            DEPARCHE APP SAS podrá actualizar,
+                            reorganizar o retirar contenidos del sitio
+                            web cuando resulte necesario, sin que ello
+                            modifique automáticamente los compromisos
+                            específicos de un contrato vigente.
+                        </p>
+
+                    </section>
+
+
+                    <section id="internacionales">
+
+                        <h2>13. Clientes internacionales</h2>
+
+                        <p>
+                            DEPARCHE APP SAS puede recibir solicitudes
+                            de clientes ubicados en Colombia y otros
+                            países.
+                        </p>
+
+                        <p>
+                            Para proyectos internacionales, las partes
+                            deberán especificar en la propuesta o
+                            contrato los aspectos que correspondan,
+                            incluyendo moneda, impuestos, medios de
+                            pago, alcance, idioma, entregas, tratamiento
+                            de datos y cualquier condición transfronteriza
+                            relevante.
+                        </p>
+
+                        <p>
+                            La disponibilidad de un servicio para un
+                            cliente situado fuera de Colombia dependerá
+                            del proyecto, de las condiciones acordadas
+                            y de las normas aplicables.
+                        </p>
+
+                    </section>
+
+
+                    <section id="modificaciones">
+
+                        <h2>14. Modificaciones de estos términos</h2>
+
+                        <p>
+                            Este documento podrá actualizarse para
+                            reflejar cambios en el sitio, los servicios
+                            o las necesidades operativas y legales
+                            de la empresa.
+                        </p>
+
+                        <p>
+                            La versión publicada indicará la fecha
+                            de su última actualización. Los cambios
+                            que afecten una relación contractual
+                            vigente se aplicarán de acuerdo con el
+                            contrato y la normativa correspondiente.
+                        </p>
+
+                        <p>
+                            Se recomienda consultar esta página
+                            periódicamente para conocer la versión
+                            vigente.
+                        </p>
+
+                    </section>
+
+
+                    <section id="contacto">
+
+                        <h2>15. Contacto y ley aplicable</h2>
+
+                        <p>
+                            Para consultas sobre estos términos o
+                            sobre los servicios de DEPARCHE APP SAS,
+                            puedes comunicarte a través de:
+                        </p>
+
+                        <p>
+                            Correo electrónico:
+                            <a href="mailto:commercial@deparchesas.com">
+                                commercial@deparchesas.com
+                            </a>.
+                        </p>
+
+                        <p>
+                            Estos términos se preparan tomando como
+                            referencia general el contexto empresarial
+                            colombiano. La legislación aplicable y
+                            la autoridad competente para resolver
+                            controversias deberán determinarse
+                            atendiendo a la relación jurídica, al
+                            contrato correspondiente y a las normas
+                            aplicables.
+                        </p>
+
+                        <p>
+                            Cuando exista un contrato específico,
+                            se deberán revisar sus cláusulas sobre
+                            legislación aplicable, solución de
+                            controversias y jurisdicción.
+                        </p>
+
+                        <div class="nota-importante">
+                            <strong>Importante:</strong>
+                            este texto es un borrador general para
+                            publicación web. Antes de publicarlo,
+                            completa y verifica los datos legales
+                            de la empresa y revisa si las condiciones
+                            corresponden a los servicios que realmente
+                            ofreces. Este documento no constituye
+                            asesoría jurídica ni confirma por sí solo
+                            el cumplimiento de todas las obligaciones
+                            legales aplicables.
+                        </div>
+
+                    </section>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             CTA
+        ====================================================== -->
+
+        <section class="cta">
+
+            <div class="contenedor cta-contenido">
+
+                <div>
+                    <h2>¿Tienes dudas sobre nuestros servicios?</h2>
+
+                    <p>
+                        Escríbenos y conversemos sobre tu proyecto.
+                    </p>
+                </div>
+
+                <a href="contacto.html" class="boton-blanco">
+                    CONTACTAR A DEPARCHE
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+        <div class="contenedor">
+
+            <a href="index.html" aria-label="Volver al inicio">
+                <img
+                    src="img/logo.png"
+                    alt="DEPARCHE APP SAS"
+                    class="footer-logo"
+                >
+            </a>
+
+            <p class="footer-descripcion">
+                AGENCIA · PRODUCTOS · PLATAFORMAS
+            </p>
+
+            <div class="footer-links">
+
+                <a href="index.html">INICIO</a>
+
+                <a href="servicios.html">SERVICIOS</a>
+
+                <a href="portafolio.html">PORTAFOLIO</a>
+
+                <a href="nosotros.html">NOSOTROS</a>
+
+                <a href="contacto.html">CONTACTO</a>
+
+                <a href="politica-privacidad.html">
+                    POLÍTICA DE PRIVACIDAD
+                </a>
+
+                <a href="terminos-condiciones.html">
+                    TÉRMINOS Y CONDICIONES
+                </a>
+
+            </div>
+
+            <div class="footer-linea"></div>
+
+            <p class="copyright">
+                © <span id="anioActual"></span> DEPARCHE APP SAS.
+                Todos los derechos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const menuMobile =
+                document.getElementById("menuMobile");
+
+            const menuMobileContent =
+                document.getElementById("menuMobileContent");
+
+            if (menuMobile && menuMobileContent) {
+
+                menuMobile.addEventListener("click", function () {
+
+                    const abierto =
+                        menuMobileContent.classList.toggle("active");
+
+                    menuMobile.setAttribute(
+                        "aria-expanded",
+                        String(abierto)
+                    );
+
+                    menuMobile.setAttribute(
+                        "aria-label",
+                        abierto ? "Cerrar menú" : "Abrir menú"
+                    );
+
+                    menuMobile.textContent =
+                        abierto ? "×" : "☰";
+
+                });
+
+                menuMobileContent
+                    .querySelectorAll("a")
+                    .forEach(function (enlace) {
+
+                        enlace.addEventListener("click", function () {
+
+                            menuMobileContent.classList.remove("active");
+
+                            menuMobile.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+
+                            menuMobile.setAttribute(
+                                "aria-label",
+                                "Abrir menú"
+                            );
+
+                            menuMobile.textContent = "☰";
+
+                        });
+
+                    });
+
+            }
+
+            const anioActual =
+                document.getElementById("anioActual");
+
+            if (anioActual) {
+                anioActual.textContent =
+                    new Date().getFullYear();
+            }
+
+        });
+    </script>
+
+</body>
+</html>
