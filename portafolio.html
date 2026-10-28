@@ -17,6 +17,120 @@
 
 <title>PORTAFOLIO | DEPARCHE APP SAS</title>
 
+<link
+    rel="canonical"
+    href="https://deparchesas.com/portafolio.html"
+>
+
+<meta property="og:type" content="website">
+
+<meta property="og:locale" content="es_CO">
+
+<meta
+    property="og:title"
+    content="Portafolio | DEPARCHE APP SAS"
+>
+
+<meta
+    property="og:description"
+    content="Conoce los proyectos, productos y soluciones digitales de DEPARCHE APP SAS."
+>
+
+<meta
+    property="og:url"
+    content="https://deparchesas.com/portafolio.html"
+>
+
+<meta
+    property="og:image"
+    content="https://deparchesas.com/img/deparche-app.png"
+>
+
+<!-- GOOGLE ANALYTICS 4, GOOGLE ADS Y CONSENT MODE V2 -->
+<script>
+(function () {
+    "use strict";
+
+    const claveConsentimiento = "deparcheCookiesPreferencia";
+
+    function prepararGoogle() {
+        window.dataLayer = window.dataLayer || [];
+
+        window.gtag = window.gtag || function () {
+            window.dataLayer.push(arguments);
+        };
+    }
+
+    function actualizarConsentimiento(aceptado) {
+        if (typeof window.gtag !== "function") return;
+
+        const estado = aceptado ? "granted" : "denied";
+
+        window.gtag("consent", "update", {
+            analytics_storage: estado,
+            ad_storage: estado,
+            ad_user_data: estado,
+            ad_personalization: estado
+        });
+    }
+
+    function cargarEtiquetasGoogle() {
+        prepararGoogle();
+
+        // Si Google ya se cargó, actualizar el consentimiento
+        // sin volver a insertar la etiqueta.
+        if (window.deparcheGoogleCargado) {
+            actualizarConsentimiento(true);
+            return;
+        }
+
+        // Configurar el consentimiento antes de cargar Google.
+        window.gtag("consent", "default", {
+            analytics_storage: "denied",
+            ad_storage: "denied",
+            ad_user_data: "denied",
+            ad_personalization: "denied",
+            functionality_storage: "denied",
+            personalization_storage: "denied",
+            security_storage: "granted",
+            wait_for_update: 500
+        });
+
+        actualizarConsentimiento(true);
+
+        window.gtag("js", new Date());
+        window.gtag("config", "G-V4Z0LSDWHV");
+        window.gtag("config", "AW-18487593882");
+
+        window.deparcheGoogleCargado = true;
+
+        const script = document.createElement("script");
+        script.async = true;
+        script.src =
+            "https://www.googletagmanager.com/gtag/js?id=G-V4Z0LSDWHV";
+
+        script.onerror = function () {
+            window.deparcheGoogleCargado = false;
+            console.error("No se pudieron cargar las etiquetas de Google.");
+        };
+
+        document.head.appendChild(script);
+    }
+
+    window.deparcheCargarGoogle = cargarEtiquetasGoogle;
+    window.deparcheActualizarConsentimiento = actualizarConsentimiento;
+
+    try {
+        if (
+            localStorage.getItem(claveConsentimiento) === "aceptadas"
+        ) {
+            cargarEtiquetasGoogle();
+        }
+    } catch (error) {
+        console.warn("No se pudo verificar el consentimiento.");
+    }
+})();
+</script>
 
 <!-- =====================================================
      FAVICON
@@ -39,12 +153,7 @@
 ===================================================== -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-    crossorigin
->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link
     href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
@@ -2157,6 +2266,206 @@
 
 }
 
+/* =====================================================
+   AVISO DE COOKIES DEPARCHE
+===================================================== */
+
+.cookie-banner {
+    position: fixed;
+    z-index: 10000;
+    left: 50%;
+    bottom: 22px;
+    right: auto;
+    transform: translateX(-50%);
+    width: calc(100% - 32px);
+    max-width: 1050px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    color: #302437;
+    border: 1px solid #E9DDEE;
+    border-radius: 20px;
+    box-shadow: 0 18px 60px rgba(36, 15, 45, 0.22);
+    font-family: "DM Sans", sans-serif;
+}
+
+.cookie-banner[hidden],
+.cookie-banner.oculto {
+    display: none !important;
+}
+
+.cookie-icono {
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background: #F5E8FA;
+    color: #9032BB;
+    font-size: 22px;
+}
+
+.cookie-texto {
+    flex: 1;
+    min-width: 0;
+}
+
+.cookie-texto h2 {
+    margin: 0 0 7px;
+    color: #302437;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.cookie-texto p {
+    margin: 0;
+    color: #6F6574;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.cookie-texto a {
+    color: #9032BB;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.cookie-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.cookie-boton {
+    min-height: 43px;
+    padding: 0 18px;
+    border: 1px solid #9032BB;
+    border-radius: 11px;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease,
+                transform 0.2s ease;
+}
+
+.cookie-boton:hover {
+    transform: translateY(-2px);
+}
+
+#aceptarCookies {
+    background: #9032BB;
+    color: #FFFFFF;
+}
+
+#aceptarCookies:hover {
+    background: #74259B;
+}
+
+#rechazarCookies {
+    background: #FFFFFF;
+    color: #9032BB;
+}
+
+#rechazarCookies:hover {
+    background: #F8F0FB;
+}
+
+.cookie-boton:focus-visible {
+    outline: 3px solid rgba(144, 50, 187, 0.35);
+    outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+    .cookie-banner {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .cookie-texto {
+        flex-basis: calc(100% - 75px);
+    }
+
+    .cookie-acciones {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 600px) {
+    .cookie-banner {
+        left: 50%;
+        right: auto;
+        bottom: 10px;
+        transform: translateX(-50%);
+        width: calc(100% - 20px);
+        padding: 17px;
+        gap: 12px;
+        border-radius: 17px;
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+
+    .cookie-icono {
+        flex-basis: 40px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .cookie-texto {
+        flex-basis: calc(100% - 55px);
+    }
+
+    .cookie-texto h2 {
+        font-size: 14px;
+    }
+
+    .cookie-texto p {
+        font-size: 11px;
+    }
+
+    .cookie-acciones {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .cookie-boton {
+        width: 100%;
+        padding: 0 8px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    .cookie-acciones {
+        grid-template-columns: 1fr;
+    }
+}
+
+.enlace-preferencias-cookies {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.enlace-preferencias-cookies:focus-visible {
+    outline: 2px solid #9032BB;
+    outline-offset: 4px;
+}
+
 </style>
 
 </head>
@@ -3502,13 +3811,15 @@
         ></p>
 
 
-        <p class="modal-privacidad">
-
-            Al enviar este formulario, tus datos serán utilizados
-            únicamente para responder a tu solicitud.
-
-        </p>
-
+       
+         <p class="modal-privacidad">
+            Al enviar este formulario, autorizas el tratamiento de tus
+            datos para gestionar y responder a tu solicitud, conforme
+            a nuestra
+        <a href="politica-privacidad.html">
+            Política de Privacidad
+    </a>.
+</p>
 
     </form>
 
@@ -3517,7 +3828,55 @@
 
 </div>
 
+<!-- =====================================================
+     AVISO DE COOKIES DEPARCHE APP SAS
+===================================================== -->
 
+<section
+    class="cookie-banner"
+    id="cookieBanner"
+    role="dialog"
+    aria-labelledby="cookieTitulo"
+    aria-describedby="cookieDescripcion"
+    hidden
+>
+    <div class="cookie-icono" aria-hidden="true">
+        <i class="fa-solid fa-cookie-bite"></i>
+    </div>
+
+    <div class="cookie-texto">
+        <h2 id="cookieTitulo">
+            Tu privacidad nos importa
+        </h2>
+
+        <p id="cookieDescripcion">
+            Utilizamos cookies opcionales de analítica y publicidad
+            para comprender el uso de nuestro sitio y medir nuestras
+            campañas. Puedes aceptarlas o rechazarlas. Consulta nuestra
+            <a href="politica-privacidad.html">
+                política de privacidad
+            </a>.
+        </p>
+    </div>
+
+    <div class="cookie-acciones">
+        <button
+            type="button"
+            class="cookie-boton"
+            id="aceptarCookies"
+        >
+            Aceptar cookies
+        </button>
+
+        <button
+            type="button"
+            class="cookie-boton"
+            id="rechazarCookies"
+        >
+            Rechazar cookies opcionales
+        </button>
+    </div>
+</section>
 
 <!-- =====================================================
      FOOTER
@@ -3568,6 +3927,13 @@
             CONTACTO
         </a>
 
+        <a href="politica-privacidad.html">
+            POLÍTICA DE PRIVACIDAD
+        </a>
+
+        <a href="terminos-condiciones.html">
+           TÉRMINOS Y CONDICIONES
+       </a>
 
     </div>
 
@@ -3688,17 +4054,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         if (entrada.isIntersecting) {
 
-                            entrada.target.classList.add(
-                                "visible"
-                            );
+                         entrada.target.classList.add("visible");
 
-                        } else {
+                         observerScroll.unobserve(entrada.target);
 
-                            entrada.target.classList.remove(
-                                "visible"
-                            );
-
-                        }
+                       }
 
                     }
                 );
@@ -4309,6 +4669,75 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </script>
 
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    "use strict";
+
+    const banner = document.getElementById("cookieBanner");
+    const aceptar = document.getElementById("aceptarCookies");
+    const rechazar = document.getElementById("rechazarCookies");
+    const abrirPreferencias =
+        document.getElementById("abrirPreferenciasCookies");
+
+    const claveConsentimiento = "deparcheCookiesPreferencia";
+
+    if (!banner || !aceptar || !rechazar) return;
+
+    function leerEleccion() {
+        try {
+            return localStorage.getItem(claveConsentimiento);
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function guardarEleccion(valor) {
+        try {
+            localStorage.setItem(claveConsentimiento, valor);
+        } catch (error) {
+            console.warn("No se pudo guardar la elección de cookies.");
+        }
+
+        if (valor === "aceptadas") {
+            if (typeof window.deparcheCargarGoogle === "function") {
+                window.deparcheCargarGoogle();
+            }
+        } else if (
+            typeof window.deparcheActualizarConsentimiento === "function"
+        ) {
+            window.deparcheActualizarConsentimiento(false);
+        }
+
+        banner.hidden = true;
+    }
+
+    function mostrarPreferencias() {
+        banner.hidden = false;
+        aceptar.focus();
+    }
+
+    const eleccion = leerEleccion();
+
+    banner.hidden =
+        eleccion === "aceptadas" || eleccion === "rechazadas";
+
+    aceptar.addEventListener("click", function () {
+        guardarEleccion("aceptadas");
+    });
+
+    rechazar.addEventListener("click", function () {
+        guardarEleccion("rechazadas");
+    });
+
+    if (abrirPreferencias) {
+        abrirPreferencias.addEventListener(
+            "click",
+            mostrarPreferencias
+        );
+    }
+});
+</script>
 
 </body>
 
