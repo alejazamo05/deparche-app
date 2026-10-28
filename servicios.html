@@ -72,8 +72,47 @@
     href="css/estilos.css"
 >
 
-
 <style>
+
+/* Galletica flotante para abrir las preferencias de cookies */
+.boton-cookies-flotante {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 9997;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #E9DDEE;
+    border-radius: 50%;
+    background: #FFFFFF;
+    color: #9032BB;
+    box-shadow: 0 6px 22px rgba(36, 15, 45, 0.18);
+    font-size: 23px;
+    cursor: pointer;
+    transition: transform .2s ease, background .2s ease;
+}
+
+.boton-cookies-flotante:hover {
+    transform: translateY(-3px);
+    background: #F8F0FB;
+}
+
+.boton-cookies-flotante:focus-visible {
+    outline: 3px solid rgba(144, 50, 187, 0.35);
+    outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+    .boton-cookies-flotante {
+        right: 14px;
+        bottom: 14px;
+        width: 48px;
+        height: 48px;
+    }
+}
 
 /* =====================================================
    SERVICIOS - PÁGINA
@@ -1719,7 +1758,259 @@
 
 }
 
+
+/* =====================================================
+   AVISO DE COOKIES — MISMO ESTILO DE PORTAFOLIO
+===================================================== */
+
+.cookie-banner {
+    position: fixed;
+    z-index: 10000;
+    left: 50%;
+    bottom: 22px;
+    right: auto;
+    transform: translateX(-50%);
+    width: calc(100% - 32px);
+    max-width: 1050px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    color: #302437;
+    border: 1px solid #E9DDEE;
+    border-radius: 20px;
+    box-shadow: 0 18px 60px rgba(36, 15, 45, 0.22);
+    font-family: "DM Sans", sans-serif;
+}
+
+.cookie-banner[hidden],
+.cookie-banner.oculto {
+    display: none !important;
+}
+
+.cookie-banner-texto {
+    flex: 1;
+    min-width: 0;
+}
+
+.cookie-banner-texto h2 {
+    margin: 0 0 7px;
+    color: #302437;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.cookie-banner-texto p {
+    margin: 0;
+    color: #6F6574;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.cookie-banner-texto a {
+    color: #9032BB;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.cookie-banner-botones {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.cookie-banner-botones button {
+    min-height: 43px;
+    padding: 0 18px;
+    border: 1px solid #9032BB;
+    border-radius: 11px;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+    transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease;
+}
+
+.cookie-banner-botones button:hover {
+    transform: translateY(-2px);
+}
+
+#aceptarCookies {
+    background: #9032BB;
+    color: #FFFFFF;
+}
+
+#aceptarCookies:hover {
+    background: #74259B;
+}
+
+#rechazarCookies {
+    background: #FFFFFF;
+    color: #9032BB;
+}
+
+#rechazarCookies:hover {
+    background: #F8F0FB;
+}
+
+.cookie-banner button:focus-visible {
+    outline: 3px solid rgba(144, 50, 187, 0.35);
+    outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+    .cookie-banner {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .cookie-banner-texto {
+        flex-basis: calc(100% - 75px);
+    }
+
+    .cookie-banner-botones {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 600px) {
+    .cookie-banner {
+        left: 50%;
+        right: auto;
+        bottom: 10px;
+        transform: translateX(-50%);
+        width: calc(100% - 20px);
+        padding: 17px;
+        gap: 12px;
+        border-radius: 17px;
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+
+    .cookie-banner-texto {
+        flex-basis: 100%;
+    }
+
+    .cookie-banner-texto h2 {
+        font-size: 14px;
+    }
+
+    .cookie-banner-texto p {
+        font-size: 11px;
+    }
+
+    .cookie-banner-botones {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .cookie-banner-botones button {
+        width: 100%;
+        padding: 0 8px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    .cookie-banner-botones {
+        grid-template-columns: 1fr;
+    }
+}
+
 </style>
+
+
+<!-- GOOGLE ANALYTICS 4, GOOGLE ADS Y CONSENT MODE V2 -->
+<script>
+(function () {
+    "use strict";
+
+    const clave = "deparcheCookiesPreferencia";
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () {
+        window.dataLayer.push(arguments);
+    };
+
+    // Estado predeterminado: analítica y publicidad desactivadas.
+    window.gtag("consent", "default", {
+        analytics_storage: "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        functionality_storage: "granted",
+        personalization_storage: "denied",
+        security_storage: "granted",
+        wait_for_update: 500
+    });
+
+    window.deparcheActualizarConsentimiento = function (aceptado) {
+        const estado = aceptado ? "granted" : "denied";
+
+        window.gtag("consent", "update", {
+            analytics_storage: estado,
+            ad_storage: estado,
+            ad_user_data: estado,
+            ad_personalization: estado
+        });
+    };
+
+    window.deparcheCargarGoogle = function () {
+        // Nunca cargar las etiquetas si no existe una aceptación válida.
+        try {
+            if (localStorage.getItem(clave) !== "aceptadas") {
+                window.deparcheActualizarConsentimiento(false);
+                return;
+            }
+        } catch (error) {
+            window.deparcheActualizarConsentimiento(false);
+            return;
+        }
+
+        if (window.deparcheGoogleCargado) {
+            window.deparcheActualizarConsentimiento(true);
+            return;
+        }
+
+        // Actualizar el consentimiento antes de inicializar las etiquetas.
+        window.deparcheActualizarConsentimiento(true);
+        window.gtag("js", new Date());
+        window.gtag("config", "G-V4Z0LSDWHV");
+        window.gtag("config", "AW-18487593882");
+
+        window.deparcheGoogleCargado = true;
+
+        const script = document.createElement("script");
+        script.async = true;
+        script.src =
+            "https://www.googletagmanager.com/gtag/js?id=G-V4Z0LSDWHV";
+
+        script.onerror = function () {
+            window.deparcheGoogleCargado = false;
+            console.error("No se pudieron cargar las etiquetas de Google.");
+        };
+
+        document.head.appendChild(script);
+    };
+
+    // Solo cargar Google si ya se había aceptado anteriormente.
+    try {
+        if (localStorage.getItem(clave) === "aceptadas") {
+            window.deparcheCargarGoogle();
+        }
+    } catch (error) {
+        console.warn("No se pudo leer el consentimiento de cookies.");
+    }
+})();
+</script>
 
 </head>
 
@@ -2744,13 +3035,15 @@
             aria-live="polite"
         ></p>
 
-
         <p class="modal-privacidad">
+            Consulta nuestra
+              <a href="politica-privacidad.html">
+                  Política de Privacidad
+         </a>
+            para conocer cómo tratamos tus datos personales
+            y cómo puedes ejercer tus derechos.
+</p>
 
-            Al enviar este formulario, tus datos serán utilizados
-            únicamente para responder a tu solicitud.
-
-        </p>
 
     </form>
 
@@ -2758,12 +3051,59 @@
 
 </div>
 
+<!-- CONSENTIMIENTO DE COOKIES -->
+
+<section
+    class="cookie-banner"
+    id="cookieBanner"
+    role="dialog"
+    aria-labelledby="cookieTitulo"
+    aria-describedby="cookieDescripcion"
+    aria-hidden="true"
+    hidden
+>
+    <div class="cookie-banner-texto">
+        <h2 id="cookieTitulo">Tu privacidad nos importa</h2>
+
+        <p id="cookieDescripcion">
+            Utilizamos cookies opcionales de analítica y publicidad
+            para comprender el uso de nuestro sitio y medir nuestras
+            campañas. Puedes aceptarlas o rechazarlas. Consulta
+            nuestra
+            <a href="politica-privacidad.html">
+                política de privacidad
+            </a>.
+        </p>
+    </div>
+
+    <div class="cookie-banner-botones">
+        <button type="button" id="aceptarCookies">
+            Aceptar cookies
+        </button>
+
+        <button type="button" id="rechazarCookies">
+            Rechazar cookies opcionales
+        </button>
+    </div>
+</section>
+
+
+<button
+    type="button"
+    class="boton-cookies-flotante"
+    id="abrirPreferenciasCookies"
+    aria-label="Abrir preferencias de cookies"
+    title="Preferencias de cookies"
+>
+    <i class="fa-solid fa-cookie-bite" aria-hidden="true"></i>
+</button>
 
 <!-- =====================================================
      FOOTER
 ===================================================== -->
 
 <footer class="footer">
+
 
 <div class="contenedor footer-contenido">
 
@@ -2801,6 +3141,14 @@
         <a href="contacto.html">
             CONTACTO
         </a>
+
+        <a href="politica-privacidad.html">
+            POLÍTICA DE PRIVACIDAD
+        </a>
+
+        <a href="terminos-condiciones.html">
+           TÉRMINOS Y CONDICIONES
+       </a>
 
     </div>
 
@@ -3040,6 +3388,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function cerrarSelectorContacto() {
 
+        const elementoActivo =
+            document.activeElement;
+
+        if (
+            elementoActivo &&
+            selector.contains(
+                elementoActivo
+            )
+        ) {
+
+            elementoActivo.blur();
+
+        }
+
         selector.classList.remove(
             "active"
         );
@@ -3112,6 +3474,20 @@ document.addEventListener("DOMContentLoaded", function () {
     ====================================================== */
 
     function cerrarModalServicios() {
+
+        const elementoActivo =
+            document.activeElement;
+
+        if (
+            elementoActivo &&
+            modal.contains(
+                elementoActivo
+            )
+        ) {
+
+            elementoActivo.blur();
+
+        }
 
         modal.classList.remove(
             "active"
@@ -3427,10 +3803,9 @@ document.addEventListener("DOMContentLoaded", function () {
     ====================================================== */
 
     const enlacesServicio =
-        document.querySelectorAll(
-            ".servicio-contacto"
-        );
-
+    document.querySelectorAll(
+        "a.servicio-contacto[data-servicio]"
+    );
 
     enlacesServicio.forEach(
         function (enlace) {
@@ -3932,6 +4307,94 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    "use strict";
+
+    const CLAVE = "deparcheCookiesPreferencia";
+
+    const banner = document.getElementById("cookieBanner");
+    const aceptar = document.getElementById("aceptarCookies");
+    const rechazar = document.getElementById("rechazarCookies");
+    const preferencias = document.getElementById("abrirPreferenciasCookies");
+
+    if (!banner || !aceptar || !rechazar) {
+        console.error("No se encontraron los elementos del banner de cookies.");
+        return;
+    }
+
+    function leerEleccion() {
+        try {
+            return localStorage.getItem(CLAVE);
+        } catch (error) {
+            console.warn("No se pudo leer la elección de cookies.");
+            return null;
+        }
+    }
+
+    function mostrarBanner() {
+        banner.hidden = false;
+        banner.setAttribute("aria-hidden", "false");
+    }
+
+    function ocultarBanner() {
+        banner.hidden = true;
+        banner.setAttribute("aria-hidden", "true");
+    }
+
+    function guardarEleccion(valor) {
+        try {
+            localStorage.setItem(CLAVE, valor);
+
+            // Comprueba que la elección realmente quedó guardada.
+            if (localStorage.getItem(CLAVE) !== valor) {
+                throw new Error("No se pudo verificar la elección guardada.");
+            }
+        } catch (error) {
+            console.error("No se pudo guardar el consentimiento.", error);
+            return;
+        }
+
+        if (valor === "aceptadas") {
+            if (typeof window.deparcheCargarGoogle === "function") {
+                window.deparcheCargarGoogle();
+            }
+        } else if (
+            typeof window.deparcheActualizarConsentimiento === "function"
+        ) {
+            window.deparcheActualizarConsentimiento(false);
+        }
+
+        ocultarBanner();
+    }
+
+    // Consultar la elección guardada antes de decidir si mostrar el aviso.
+    const eleccion = leerEleccion();
+
+    if (eleccion === "aceptadas" || eleccion === "rechazadas") {
+        ocultarBanner();
+    } else {
+        mostrarBanner();
+    }
+
+    aceptar.addEventListener("click", function () {
+        guardarEleccion("aceptadas");
+    });
+
+    rechazar.addEventListener("click", function () {
+        guardarEleccion("rechazadas");
+    });
+
+    if (preferencias) {
+        preferencias.addEventListener("click", function () {
+            mostrarBanner();
+            aceptar.focus();
+        });
+    }
+});
 </script>
 
 </body>
