@@ -429,9 +429,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     );
 
-
     /* =================================================
        6. ANIMACIONES AL DESPLAZARSE
+       Se repiten al bajar y subir por la página.
     ================================================= */
 
     const elementosAnimados = document.querySelectorAll(
@@ -440,14 +440,26 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
     if ("IntersectionObserver" in window) {
+
         const observador = new IntersectionObserver(
-            function (entradas, observer) {
+            function (entradas) {
+
                 entradas.forEach(function (entrada) {
+
                     if (entrada.isIntersecting) {
+
+                        // Al entrar en pantalla, aparece.
                         entrada.target.classList.add("visible");
-                        observer.unobserve(entrada.target);
+
+                    } else {
+
+                        // Al salir de pantalla, se prepara para repetirse.
+                        entrada.target.classList.remove("visible");
+
                     }
+
                 });
+
             },
             {
                 threshold: 0.12
@@ -459,9 +471,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     } else {
+
         elementosAnimados.forEach(function (elemento) {
             elemento.classList.add("visible");
         });
+
     }
 
 });
