@@ -302,12 +302,21 @@
             font-size: 10px;
             line-height: 1.6;
         }
+.modal-inicio-privacidad a,
+.cookie-texto a {
+    color: var(--morado);
+}
 
-        .modal-inicio-privacidad a,
-        .cookie-texto a,
-        .footer-links a {
-            color: var(--morado);
-        }
+/* Corrección de color de los enlaces del footer */
+.footer-links a,
+.footer-links a:visited {
+    color: #DFA9ED !important;
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+    color: #FFFFFF !important;
+}
 
         /* Animaciones al desplazarse */
         .scroll-reveal,
@@ -521,88 +530,74 @@
     }
 }
 
-/* CELULARES PEQUEÑOS */
-@media (max-width: 360px) {
+/* TABLET Y CELULARES */
+@media (max-width: 700px) {
     .cookie-banner {
-        left: 8px;
-        right: 8px;
-        bottom: 8px;
-        padding: 14px;
-        gap: 13px;
-        border-radius: 14px;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        transform: none;
+        width: auto;
+        max-width: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding: 15px;
+        border-radius: 15px;
     }
 
     .cookie-texto {
+        width: 100%;
         gap: 10px;
     }
 
     .cookie-icono {
         width: 32px;
         height: 32px;
-        flex-basis: 32px;
+        flex: 0 0 32px;
+    }
+
+    .cookie-texto h3 {
+        font-size: 12px;
+    }
+
+    .cookie-texto p {
+        font-size: 10px;
+        line-height: 1.45;
+    }
+
+    .cookie-texto a {
+        font-size: 10px;
     }
 
     .cookie-acciones {
-        flex-direction: column;
-        align-items: stretch;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 100%;
+        gap: 8px;
     }
 
     .cookie-boton {
-        width: 100%;
-        flex: 1 1 auto;
+        flex: 1 1 0;
+        width: auto;
+        min-width: 0;
+        min-height: 36px;
+        padding: 8px 5px;
+        font-size: 10px;
+        border-radius: 8px;
+        white-space: nowrap;
     }
 }
 
-        @media (max-width: 600px) {
-            .contacto-selector { padding: 12px; }
-            .contacto-selector-card { padding: 28px 22px; }
+@media (max-width: 360px) {
+    .cookie-boton {
+        font-size: 9px;
+        padding: 8px 3px;
+    }
+}
 
-            .modal-inicio {
-                padding: 12px;
-                align-items: flex-start;
-            }
 
-            .modal-inicio-contenido {
-                margin-top: 20px;
-                padding: 28px 22px;
-                border-radius: 22px;
-                max-height: 94vh;
-            }
-
-            .inicio-form-row {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-
-            .modal-inicio-header h2 { font-size: 25px; }
-
-            .cookie-banner {
-                left: 12px;
-                right: 12px;
-                bottom: 12px;
-                flex-direction: column;
-                align-items: stretch;
-                gap: 15px;
-                padding: 18px;
-            }
-
-            .cookie-acciones {
-                flex-direction: column-reverse;
-            }
-
-            .cookie-boton { width: 100%; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .scroll-reveal,
-            .scroll-reveal-left,
-            .scroll-reveal-right,
-            .scroll-scale {
-                opacity: 1;
-                transform: none;
-                transition: none;
-            }
-        }
     </style>
 </head>
 <body>
@@ -1459,234 +1454,6 @@
 </div>
 
 </footer>
-
-
-<!-- =====================================================
-     JAVASCRIPT
-     Este bloque controla el menú, el formulario,
-     las animaciones y el consentimiento de cookies.
-===================================================== -->
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    /* MENÚ MÓVIL */
-
-    const menuMobile = document.getElementById("menuMobile");
-    const menuMobileContent = document.getElementById("menuMobileContent");
-
-    if (menuMobile && menuMobileContent) {
-        menuMobile.addEventListener("click", function () {
-            const abierto = menuMobileContent.classList.toggle("active");
-            menuMobile.setAttribute("aria-expanded", String(abierto));
-        });
-
-        menuMobileContent.querySelectorAll("a").forEach(function (enlace) {
-            enlace.addEventListener("click", function () {
-                menuMobileContent.classList.remove("active");
-                menuMobile.setAttribute("aria-expanded", "false");
-            });
-        });
-    }
-
-
-    /* SELECTOR DE CONTACTO Y MODAL */
-
-    const selector = document.getElementById("contactoSelectorInicio");
-    const modal = document.getElementById("modalInicio");
-
-    const botonHero = document.getElementById("botonHablemosHero");
-    const botonCTA = document.getElementById("botonContactarnosInicio");
-
-    const cerrarSelector = document.getElementById("cerrarSelectorInicio");
-    const opcionCorreo = document.getElementById("opcionCorreoInicio");
-    const cerrarModal = document.getElementById("cerrarModalInicio");
-
-    function abrirSelector() {
-        if (!selector) return;
-
-        selector.classList.add("active");
-        selector.setAttribute("aria-hidden", "false");
-        document.body.style.overflow = "hidden";
-    }
-
-    function cerrarSelectorFuncion() {
-        if (!selector) return;
-
-        const elementoActivo = document.activeElement;
-
-        if (elementoActivo && selector.contains(elementoActivo)) {
-            elementoActivo.blur();
-        }
-
-        selector.classList.remove("active");
-        selector.setAttribute("aria-hidden", "true");
-
-        if (!modal || !modal.classList.contains("active")) {
-            document.body.style.overflow = "";
-        }
-    }
-
-    function abrirFormulario() {
-        cerrarSelectorFuncion();
-
-        if (!modal) return;
-
-        modal.classList.add("active");
-        modal.setAttribute("aria-hidden", "false");
-        document.body.style.overflow = "hidden";
-
-        const campoNombre = document.getElementById("nombreInicio");
-        if (campoNombre) campoNombre.focus();
-    }
-
-    function cerrarFormulario() {
-        if (!modal) return;
-
-        const elementoActivo = document.activeElement;
-
-        if (elementoActivo && modal.contains(elementoActivo)) {
-            elementoActivo.blur();
-        }
-
-        modal.classList.remove("active");
-        modal.setAttribute("aria-hidden", "true");
-        document.body.style.overflow = "";
-    }
-
-    if (botonHero) botonHero.addEventListener("click", abrirSelector);
-    if (botonCTA) botonCTA.addEventListener("click", abrirSelector);
-
-    if (cerrarSelector) {
-        cerrarSelector.addEventListener("click", cerrarSelectorFuncion);
-    }
-
-    if (opcionCorreo) {
-        opcionCorreo.addEventListener("click", abrirFormulario);
-    }
-
-    if (cerrarModal) {
-        cerrarModal.addEventListener("click", cerrarFormulario);
-    }
-
-    if (selector) {
-        selector.addEventListener("click", function (evento) {
-            if (evento.target === selector) cerrarSelectorFuncion();
-        });
-    }
-
-    if (modal) {
-        modal.addEventListener("click", function (evento) {
-            if (evento.target === modal) cerrarFormulario();
-        });
-    }
-
-    document.addEventListener("keydown", function (evento) {
-        if (evento.key === "Escape") {
-            cerrarFormulario();
-            cerrarSelectorFuncion();
-        }
-    });
-
-
-    /* ENVÍO DEL FORMULARIO WEB3FORMS */
-
-    const formulario = document.getElementById("formularioContactoInicio");
-
-    if (formulario) {
-        formulario.addEventListener("submit", async function (evento) {
-            evento.preventDefault();
-
-            if (!formulario.checkValidity()) {
-                formulario.reportValidity();
-                return;
-            }
-
-            const boton = document.getElementById("botonEnviarInicio");
-            const textoBoton = document.getElementById("textoBotonInicio");
-            const mensaje = document.getElementById("mensajeFormularioInicio");
-
-            boton.disabled = true;
-            textoBoton.textContent = "ENVIANDO...";
-            mensaje.textContent = "";
-
-            try {
-                const respuesta = await fetch(
-                    "https://api.web3forms.com/submit",
-                    {
-                        method: "POST",
-                        body: new FormData(formulario)
-                    }
-                );
-
-                const resultado = await respuesta.json();
-
-                if (!respuesta.ok || !resultado.success) {
-                    throw new Error("No se pudo enviar el formulario.");
-                }
-
-                mensaje.textContent =
-                    "¡Solicitud enviada correctamente! Gracias por contactarnos.";
-
-                mensaje.style.color = "#238636";
-                textoBoton.textContent = "ENVIADO ✓";
-
-                formulario.reset();
-
-                setTimeout(cerrarFormulario, 3000);
-
-            } catch (error) {
-                console.error("Error al enviar el formulario:", error);
-
-                mensaje.textContent =
-                    "No pudimos enviar tu solicitud. Inténtalo nuevamente.";
-
-                mensaje.style.color = "#c62828";
-                textoBoton.textContent = "INTENTAR NUEVAMENTE";
-
-            } finally {
-                boton.disabled = false;
-
-                if (textoBoton.textContent === "ENVIADO ✓") {
-                    textoBoton.textContent = "ENVIAR SOLICITUD";
-                }
-            }
-        });
-    }
-
-
-    /* ANIMACIONES AL DESPLAZARSE */
-
-    const elementos = document.querySelectorAll(
-        ".scroll-reveal, .scroll-reveal-left, " +
-        ".scroll-reveal-right, .scroll-scale"
-    );
-
-    if ("IntersectionObserver" in window) {
-        const observador = new IntersectionObserver(function (entradas) {
-            entradas.forEach(function (entrada) {
-                if (entrada.isIntersecting) {
-                    entrada.target.classList.add("visible");
-                } else {
-                    entrada.target.classList.remove("visible");
-                }
-            });
-        }, {
-            threshold: 0.12,
-            rootMargin: "0px 0px -50px 0px"
-        });
-
-        elementos.forEach(function (elemento) {
-            observador.observe(elemento);
-        });
-    } else {
-        elementos.forEach(function (elemento) {
-            elemento.classList.add("visible");
-        });
-    }
-
-});
-</script>
 
 <script src="js/script.js"></script>
 <script src="js/cookies.js"></script>
